@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-blue: #blue; /* Replace with your exact blue color code */
+    --color-red: #red;   /* Replace with your exact red color code */
+    --color-purple: #purple; /* Replace with your exact purple color code */
+  }
