@@ -11,13 +11,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#0070f3', // Example primary color
-        'secondary': '#ff4081',
-        blue: 'var(--color-blue)',
-        red: 'var(--color-red)',
-        purple: 'var(--color-purple)',
+        primary: "#0070f3", // Example primary color
+        secondary: "#ff4081",
+        blue: "var(--color-blue)",
+        red: "var(--color-red)",
+        purple: "var(--color-purple)",
       },
     },
   },
   plugins: [],
-}
+};
