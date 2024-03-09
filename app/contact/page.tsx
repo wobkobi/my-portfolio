@@ -8,7 +8,6 @@ import { cn } from "@/utils/cn";
 const ContactPage = () => {
   return (
     <>
-      <Nav />
       <Head>
         <title>Contact Me</title>
       </Head>

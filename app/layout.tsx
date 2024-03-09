@@ -1,5 +1,8 @@
 import "./globals.css";
 import { Roboto } from "next/font/google";
+
+import { Providers } from "@/app/providers";
+import Nav from "@/components/Nav.client";
 const roboto = Roboto({
   weight: "400",
   subsets: ["latin"],
@@ -16,8 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={roboto.className}>
-      <body>{children}</body>
+    <html lang="en" className={roboto.className} suppressHydrationWarning>
+      <body>
+        <Providers>
+          <Nav />
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }

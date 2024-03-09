@@ -3,51 +3,52 @@
 "use client";
 
 import Link from "next/link";
+import React from "react";
 import { cn } from "@/utils/cn";
-
+import ThemeSwitch from "./ThemeSwitch";
 const Nav = () => {
   return (
-    <nav className={cn("bg-raisin_black fixed inset-x-0 top-0 z-10 py-3")}>
-      <div className={cn("mx-auto max-w-6xl px-4")}>
-        <div className={cn("flex items-center justify-between")}>
-          <div className={cn("flex space-x-4")}>
-            <Link href="/">
-              <span
-                className={cn(
-                  "hover:text-plum cursor-pointer rounded px-3 py-2 text-white",
-                )}
-              >
-                Home
-              </span>
-            </Link>
-            <Link href="/portfolio">
-              <span
-                className={cn(
-                  "hover:text-plum cursor-pointer rounded px-3 py-2 text-white",
-                )}
-              >
-                Portfolio
-              </span>
-            </Link>
-            <Link href="/about">
-              <span
-                className={cn(
-                  "hover:text-plum cursor-pointer rounded px-3 py-2 text-white",
-                )}
-              >
-                About
-              </span>
-            </Link>
-            <Link href="/contact">
-              <span
-                className={cn(
-                  "hover:text-plum cursor-pointer rounded px-3 py-2 text-white",
-                )}
-              >
-                Contact
-              </span>
-            </Link>
-          </div>
+    <nav className="bg-jet dark:bg-indigo_dye fixed inset-x-0 top-0 z-10 shadow-md">
+      <div className="flex w-full justify-center">
+        <div className="flex items-center justify-between space-x-10 py-4">
+          <Link
+            href="/"
+            passHref
+            className={cn(
+              "text-platinum dark:text-platinum-200 text-xl hover:opacity-75",
+            )}
+          >
+            Home
+          </Link>
+          <Link
+            href="/portfolio"
+            passHref
+            className={cn(
+              "text-platinum dark:text-platinum-200 text-xl hover:opacity-75",
+            )}
+          >
+            Portfolio
+          </Link>
+          <Link
+            href="/about"
+            passHref
+            className={cn(
+              "text-platinum dark:text-platinum-200 text-xl hover:opacity-75",
+            )}
+          >
+            About
+          </Link>
+          <Link
+            href="/contact"
+            passHref
+            className={cn(
+              "text-platinum dark:text-platinum-200 text-xl hover:opacity-75",
+            )}
+          >
+            Contact
+          </Link>
+          {/* Theme toggle button */}
+          <ThemeSwitch />
         </div>
       </div>
     </nav>
