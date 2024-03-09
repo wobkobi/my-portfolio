@@ -1,10 +1,9 @@
 // pages/contact.tsx
 
 import Head from "next/head";
-import React from "react";
-import ContactForm from "../components/ContactForm";
-import Nav from "../components/Nav.client";
-import { cn } from "../utils/cn";
+import Nav from "@/components/Nav.client";
+import ContactForm from "@/components/ContactForm";
+import { cn } from "@/utils/cn";
 
 const ContactPage = () => {
   return (
@@ -13,21 +12,23 @@ const ContactPage = () => {
       <Head>
         <title>Contact Me</title>
       </Head>
-      {/* The main container for the Contact page */}
       <div
         className={cn(
-          "bg-gray-50flex min-h-screen flex-col items-center pt-24",
+          "bg-paynes_gray flex min-h-screen flex-col items-center justify-center",
         )}
       >
-        {/* Title placed in the center of the screen at the top */}
-        <div className={cn("w-full text-center")}>
-          <h1 className={cn("mb-4 text-4xl font-bold")}>Contact Me</h1>
-          <p className={cn("mb-8 text-gray-600")}>
-            Fill out the form below to send me an email.
-          </p>
-        </div>
-        {/* Form container with 75% screen width on larger screens */}
-        <div className={cn("w-full max-w-4xl px-4")}>
+        <div
+          className={cn(
+            "w-full max-w-2xl rounded bg-white px-6 py-8 shadow-md",
+          )}
+        >
+          <h1
+            className={cn(
+              "text-raisin_black mb-4 text-center text-4xl font-bold",
+            )}
+          >
+            Contact Me
+          </h1>
           <ContactForm />
         </div>
       </div>

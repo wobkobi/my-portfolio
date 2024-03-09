@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../components/Nav.client"; // Ensure this is the correct relative path
+import Nav from "@/components/Nav.client"; // Ensure this is the correct relative path
 
 export default function Portfolio() {
   return (

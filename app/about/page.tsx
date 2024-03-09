@@ -1,7 +1,7 @@
 // pages/about.tsx
 
 import React from "react";
-import Nav from "../components/Nav.client"; // Ensure the correct path
+import Nav from "@/components/Nav.client"; // Ensure the correct path
 
 export default function About() {
   return (
