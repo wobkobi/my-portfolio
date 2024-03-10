@@ -1,9 +1,7 @@
 // pages/contact.tsx
 
 import Head from "next/head";
-import Nav from "@/components/Nav.client";
 import ContactForm from "@/components/ContactForm";
-import { cn } from "@/utils/cn";
 
 const ContactPage = () => {
   return (
@@ -11,21 +9,12 @@ const ContactPage = () => {
       <Head>
         <title>Contact Me</title>
       </Head>
-      <div
-        className={cn(
-          "bg-paynes_gray flex min-h-screen flex-col items-center justify-center",
-        )}
-      >
-        <div
-          className={cn(
-            "w-full max-w-2xl rounded bg-white px-6 py-8 shadow-md",
-          )}
-        >
-          <h1
-            className={cn(
-              "text-raisin_black mb-4 text-center text-4xl font-bold",
-            )}
-          >
+
+      {/* Apply universal background colors for light and dark modes */}
+      <div className="flex min-h-screen flex-col items-center justify-center">
+        {/* Ensure the card contrasts against the background appropriately */}
+        <div className="w-full max-w-2xl rounded bg-white px-6 py-8 shadow-md dark:bg-jet-400">
+          <h1 className="mb-4 text-center text-4xl font-bold text-indigo_dye dark:text-caribbean_current">
             Contact Me
           </h1>
           <ContactForm />

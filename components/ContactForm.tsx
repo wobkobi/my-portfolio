@@ -1,7 +1,5 @@
-// components/ContactForm.tsx
 "use client";
 
-import React, { FC } from "react";
 import { cn } from "../utils/cn"; // Make sure this utility path is correct
 import { sendEmail } from "../utils/sendEmail";
 import { useForm } from "react-hook-form";
@@ -12,8 +10,12 @@ export type FormData = {
   subject: string;
   message: string;
 };
+// static classNames
+const inputClassNames = cn(
+  "w-full rounded border p-3 text-gray-700 bg-white dark:bg-jet dark:text-platinum dark:border-transparent", // dark:border-jet for a blending border
+);
 
-const ContactForm: FC = () => {
+const ContactForm = () => {
   const { register, handleSubmit } = useForm<FormData>();
 
   function onSubmit(data: FormData) {
@@ -24,33 +26,32 @@ const ContactForm: FC = () => {
     <form onSubmit={handleSubmit(onSubmit)} className={cn("space-y-6")}>
       <input
         type="text"
-        className={cn("w-full rounded border p-3 text-gray-700")}
+        className={inputClassNames}
         placeholder="Full Name"
         {...register("fullName", { required: true })}
       />
       <input
         type="email"
-        className={cn("w-full rounded border p-3 text-gray-700")}
+        className={inputClassNames}
         placeholder="Email"
         {...register("email", { required: true })}
       />
-
       <input
         type="text"
-        className={cn("w-full rounded border p-3 text-gray-700")}
+        className={inputClassNames}
         placeholder="Subject"
         {...register("subject", { required: true })}
       />
-
       <textarea
-        className={cn("w-full rounded border p-3 text-gray-700")}
+        className={inputClassNames}
         placeholder="Message"
         {...register("message", { required: true })}
+        rows={4}
       />
       <button
         type="submit"
         className={cn(
-          "bg-plum hover:bg-timberwolf w-full rounded border border-transparent px-4 py-2 text-white",
+          "mt-2 w-full rounded border border-transparent bg-indigo_dye px-4 py-2 text-white hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye",
         )}
       >
         Submit

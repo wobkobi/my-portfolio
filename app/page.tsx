@@ -8,13 +8,17 @@ const HomePage = () => {
       <Head>
         <title>Home</title>
       </Head>
-      <div className="bg-jet dark:bg-indigo_dye flex min-h-screen flex-col items-center justify-center">
-        <h1 className="text-caribbean_current dark:text-caribbean_current-600 text-6xl">
-          Welcome to My Website
+      <div
+        className={cn(
+          " flex min-h-screen flex-col items-center justify-center bg-white dark:bg-jet",
+        )}
+      >
+        <h1
+          className={cn("text-6xl text-indigo_dye dark:text-caribbean_current")}
+        >
+          Harrison Raynes
         </h1>
-        <p className="text-platinum dark:text-platinum-300 mt-4">
-          Discover my world of development.
-        </p>
+        <p className={cn("mt-4 text-jet dark:text-platinum")}>My portfolio</p>
       </div>
     </>
   );

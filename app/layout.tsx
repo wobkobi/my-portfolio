@@ -1,12 +1,11 @@
 import "./globals.css";
 import { Roboto } from "next/font/google";
-
+import { useTheme } from "next-themes";
 import { Providers } from "@/app/providers";
 import Nav from "@/components/Nav.client";
 const roboto = Roboto({
-  weight: "400",
-  subsets: ["latin"],
-  display: "swap",
+  weight: ["300", "500"],
+  subsets: ["latin-ext"],
 });
 export const metadata = {
   title: "Harrison Raynes Portfolio",
@@ -20,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={roboto.className} suppressHydrationWarning>
-      <body>
+      <body className="min-h-screen bg-white dark:bg-jet">
         <Providers>
           <Nav />
           {children}
