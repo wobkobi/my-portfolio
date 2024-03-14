@@ -10,10 +10,6 @@ export type FormData = {
   subject: string;
   message: string;
 };
-// static classNames
-const inputClassNames = cn(
-  "w-full rounded border p-3 text-gray-700 bg-white dark:bg-jet dark:text-platinum dark:border-transparent", // dark:border-jet for a blending border
-);
 
 const ContactForm = () => {
   const { register, handleSubmit } = useForm<FormData>();
@@ -26,34 +22,31 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className={cn("space-y-6")}>
       <input
         type="text"
-        className={inputClassNames}
+        className={cn("w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum")}
         placeholder="Full Name"
         {...register("fullName", { required: true })}
       />
       <input
         type="email"
-        className={inputClassNames}
+        className={cn("w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum")}
         placeholder="Email"
         {...register("email", { required: true })}
       />
       <input
         type="text"
-        className={inputClassNames}
+        className={cn("w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum")}
         placeholder="Subject"
         {...register("subject", { required: true })}
       />
       <textarea
-        className={inputClassNames}
+        className={cn("w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum")}
         placeholder="Message"
         {...register("message", { required: true })}
         rows={4}
       />
       <button
         type="submit"
-        className={cn(
-          "mt-2 w-full rounded border border-transparent bg-indigo_dye px-4 py-2 text-white hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye",
-        )}
-      >
+        className={cn("mt-2 w-full rounded border border-transparent bg-indigo_dye px-4 py-2 text-white hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye")}>
         Submit
       </button>
     </form>

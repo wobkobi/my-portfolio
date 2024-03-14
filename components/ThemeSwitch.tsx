@@ -15,11 +15,7 @@ export default function ThemeSwitch() {
   if (!mounted) return null;
 
   return (
-    <button
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="rounded-md p-2 focus:border-blue-300 focus:outline-none focus:ring"
-      aria-label="Toggle Dark Mode"
-    >
+    <button onClick={() => setTheme(theme === "light" ? "dark" : "light")} className="rounded-md p-2 focus:border-blue-300 focus:outline-none focus:ring" aria-label="Toggle Dark Mode">
       {theme === "light" ? <FiMoon size={18} /> : <FiSun size={18} />}
     </button>
   );
