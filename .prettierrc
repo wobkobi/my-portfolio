@@ -3,5 +3,6 @@
   "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
   "tailwindFunctions": ["clsx"],
   "bracketSameLine": true,
-  "printWidth": 180
+  "printWidth": 150,
+  "trailingComma": "es5"
 }

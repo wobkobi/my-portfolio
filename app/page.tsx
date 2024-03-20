@@ -15,7 +15,7 @@ const HomePage = () => {
           href="/portfolio"
           passHref
           className={cn(
-            "mb-4 inline-block rounded-md bg-indigo_dye px-6 py-3 text-lg font-medium text-white shadow-lg transition duration-300 ease-in-out hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye",
+            "mb-4 inline-block rounded-md bg-indigo_dye px-6 py-3 text-lg font-medium text-white shadow-lg transition duration-300 ease-in-out hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye"
           )}>
           View Portfolio
         </Link>
@@ -24,7 +24,7 @@ const HomePage = () => {
           href="/files/HarrisonRaynesCV.pdf"
           download="HarrisonRaynesCV.pdf"
           className={cn(
-            "inline-block rounded-md bg-gray-500 px-6 py-3 text-lg font-medium text-white shadow-lg transition duration-300 ease-in-out hover:bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-800",
+            "inline-block rounded-md bg-gray-500 px-6 py-3 text-lg font-medium text-white shadow-lg transition duration-300 ease-in-out hover:bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-800"
           )}>
           Download CV
         </a>

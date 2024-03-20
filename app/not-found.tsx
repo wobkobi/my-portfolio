@@ -10,7 +10,7 @@ export default function NotFound() {
         <Link
           href="/"
           className={cn(
-            "mt-6 inline-block rounded bg-indigo_dye px-4 py-2 font-medium text-white transition-colors duration-300 hover:bg-caribbean_current dark:bg-caribbean_current dark:text-white dark:hover:bg-indigo_dye",
+            "mt-6 inline-block rounded bg-indigo_dye px-4 py-2 font-medium text-white transition-colors duration-300 hover:bg-caribbean_current dark:bg-caribbean_current dark:text-white dark:hover:bg-indigo_dye"
           )}>
           Return Home
         </Link>

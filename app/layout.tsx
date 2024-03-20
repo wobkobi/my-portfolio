@@ -9,7 +9,8 @@ const roboto = Roboto({
 });
 export const metadata = {
   title: "Harrison Raynes - Software Development & Networks and Security Graduate",
-  description: "Welcome to the portfolio of Harrison Raynes, a passionate software developer and technologist showcasing projects, skills, and professional experiences.",
+  description:
+    "Welcome to the portfolio of Harrison Raynes, a passionate software developer and technologist showcasing projects, skills, and professional experiences.",
   image: "/images/portfolio-thumbnail.png", // Path to an image thumbnail for social media sharing
   type: "website",
   url: "https://www.harrisonraynes.com",

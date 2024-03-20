@@ -31,7 +31,11 @@ export const WorkExperience = [
     id: "work3",
     title: "Coach for Point Chevalier School",
     summary: "11/2020 - 12/2020",
-    details: ["Coached a primary school flippa ball team.", "Brought experience from playing water polo up until 2020.", "The ages of the children ranged from 8 to 11."],
+    details: [
+      "Coached a primary school flippa ball team.",
+      "Brought experience from playing water polo up until 2020.",
+      "The ages of the children ranged from 8 to 11.",
+    ],
   },
   {
     id: "work4",
@@ -51,16 +55,23 @@ export const Projects = [
     id: "project1",
     title: "Chat Bot Platform",
     summary: "02/2023 - 11/2023",
-    details: ["Engaged in a comprehensive project to design and implement a chatbot, as a key part of my degree's coursework, in collaboration with Counties Manukau."],
+    details: [
+      "Engaged in a comprehensive project to design and implement a chatbot, as a key part of my degree's coursework, in collaboration with Counties Manukau.",
+    ],
 
-    link: { url: "https://www.countiesmanukau.health.nz/", text: "Counties Manukau Health" },
+    link: {
+      url: "https://www.countiesmanukau.health.nz/",
+      text: "Counties Manukau Health",
+    },
   },
   {
     id: "project2",
     title: "RamenNFT",
     summary: "12/2021 - 02/2022",
     subtitle: "Social Media Manager",
-    details: ["Oversaw and curated content for the company's Twitter and Instagram pages, focusing on exploring WEB3 technologies and the digital art landscape."],
+    details: [
+      "Oversaw and curated content for the company's Twitter and Instagram pages, focusing on exploring WEB3 technologies and the digital art landscape.",
+    ],
   },
   {
     id: "project3",

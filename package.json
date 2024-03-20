@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "prepare": "husky"
   },
   "dependencies": {
     "@types/nodemailer": "^6.4.14",
@@ -39,13 +39,8 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix",
-    "src/**/*.{css,html,json,md}": "prettier --write"
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+    "*.{js,jsx,ts,tsx,css,html,json,md}": "prettier --write"
   }
 }

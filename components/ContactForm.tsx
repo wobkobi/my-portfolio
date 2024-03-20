@@ -53,7 +53,7 @@ const ContactForm = () => {
       <button
         type="submit"
         className={cn(
-          "mt-2 w-full rounded border border-transparent bg-indigo_dye px-4 py-2 text-white hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye",
+          "mt-2 w-full rounded border border-transparent bg-indigo_dye px-4 py-2 text-white hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye"
         )}>
         Submit
       </button>

@@ -30,7 +30,7 @@ const PortfolioPage: React.FC = () => {
           <div
             className={cn(
               "mx-auto flex w-full grid-cols-1 justify-center gap-4  p-4 transition-all duration-500 ease-in-out sm:grid-cols-2   md:grid-cols-3 lg:grid-cols-4 ",
-              itemID ? "mb-8" : "mb-0",
+              itemID ? "mb-8" : "mb-0"
             )}>
             {data.map((item) => (
               <div key={item.id} className={cn("flex w-full min-w-0  max-w-xs flex-col items-stretch p-4 ")}>
@@ -43,7 +43,14 @@ const PortfolioPage: React.FC = () => {
               {data
                 .filter((item) => item.id === itemID)
                 .map((item, index) => (
-                  <DetailBox key={`${item.id}-${index}`} id={item.id} details={item.details} isVisible={true} subtitle={item.subtitle} link={item.link} />
+                  <DetailBox
+                    key={`${item.id}-${index}`}
+                    id={item.id}
+                    details={item.details}
+                    isVisible={true}
+                    subtitle={item.subtitle}
+                    link={item.link}
+                  />
                 ))}
             </div>
           )}
@@ -57,7 +64,9 @@ const PortfolioPage: React.FC = () => {
         <div className={cn("md:w-85% mx-auto w-11/12 sm:w-3/4 lg:w-4/5")}>
           <h1 className={cn("mb-6 text-4xl font-bold text-indigo_dye dark:text-caribbean_current")}>Portfolio</h1>
           <section className={cn(" mb-6")}>{renderSectionWithDetailBox(Education, "Education", expandedEducationId, toggleEducation)}</section>
-          <section className={cn(" mb-6")}>{renderSectionWithDetailBox(WorkExperience, "Work Experience", expandedWorkExperienceId, toggleWorkExperience)}</section>
+          <section className={cn(" mb-6")}>
+            {renderSectionWithDetailBox(WorkExperience, "Work Experience", expandedWorkExperienceId, toggleWorkExperience)}
+          </section>
           <section className={cn(" mb-6")}>{renderSectionWithDetailBox(Projects, "Projects", expandedProjectsId, toggleProjects)}</section>
           <section className={cn(" mb-6")}>
             <h2 className={cn("mb-6 text-2xl font-semibold text-indigo_dye dark:text-caribbean_current")}>Skills</h2>
