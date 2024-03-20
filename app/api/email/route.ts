@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
 
-async function POST(request: NextRequest) {
+export async function POST(request: NextRequest) {
   const { email, name, subject, message } = await request.json();
 
   const transport = nodemailer.createTransport({
@@ -43,5 +43,3 @@ async function POST(request: NextRequest) {
     return NextResponse.json({ error: err }, { status: 500 });
   }
 }
-
-export default POST;
