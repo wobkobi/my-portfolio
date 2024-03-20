@@ -1,6 +1,6 @@
+import cn from "@/utils/cn"; // Ensure the correct path
 import Head from "next/head";
 import Link from "next/link"; // Import Link for internal navigation
-import { cn } from "@/utils/cn"; // Ensure the correct path
 
 const HomePage = () => {
   return (

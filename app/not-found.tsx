@@ -1,5 +1,5 @@
+import cn from "@/utils/cn";
 import Link from "next/link";
-import { cn } from "@/utils/cn";
 export default function NotFound() {
   return (
     <div className={cn("flex min-h-screen items-center justify-center bg-white dark:bg-jet")}>

@@ -1,8 +1,6 @@
-// pages/contact.tsx
-
-import Head from "next/head";
 import ContactForm from "@/components/ContactForm";
-import { cn } from "@/utils/cn";
+import cn from "@/utils/cn";
+import Head from "next/head";
 import { FiMail } from "react-icons/fi";
 
 const ContactPage = () => {
