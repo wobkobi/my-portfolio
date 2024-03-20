@@ -1,9 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-:root {
-    --color-blue: #blue; /* Replace with your exact blue color code */
-    --color-red: #red;   /* Replace with your exact red color code */
-    --color-purple: #purple; /* Replace with your exact purple color code */
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600; /* Ensures headers are bolder */
+}
+
+body,
+p,
+a,
+input,
+textarea,
+button,
+select,
+label {
+  font-weight: 400; /* Ensures regular text is lighter */
+}
