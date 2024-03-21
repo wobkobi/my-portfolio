@@ -1,19 +1,4 @@
 import cn from "@/utils/cn";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "About Me",
-  description: "Learn more about me and my background.",
-  keywords: [
-    "Harrison Raynes",
-    "Software Developer",
-    "Portfolio",
-    "Technology",
-    "Programming",
-    "Projects",
-    "Resume",
-  ],
-};
 
 export default function AboutPage() {
   return (

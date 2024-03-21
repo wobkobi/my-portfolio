@@ -1,18 +1,5 @@
 import cn from "@/utils/cn"; // Ensure the correct path
-import { Metadata } from "next";
 import Link from "next/link"; // Import Link for internal navigation
-export const metadata: Metadata = {
-  title: "Home",
-  keywords: [
-    "Harrison Raynes",
-    "Software Developer",
-    "Portfolio",
-    "Technology",
-    "Programming",
-    "Projects",
-    "Resume",
-  ],
-};
 
 export default function HomePage() {
   return (

@@ -1,22 +1,7 @@
 import ContactForm from "@/components/ContactForm";
 import cn from "@/utils/cn";
-import { Metadata } from "next";
 import { FiMail } from "react-icons/fi";
 
-export const metadata: Metadata = {
-  title: "Contact Me",
-  description:
-    "Contact Harrison Raynes, a passionate software developer and technologist.",
-  keywords: [
-    "Harrison Raynes",
-    "Software Developer",
-    "Portfolio",
-    "Technology",
-    "Programming",
-    "Projects",
-    "Resume",
-  ],
-};
 export default function ContactPage() {
   const yourEmail = "harrisonraynes8@gmail.com";
   return (
