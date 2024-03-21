@@ -16,7 +16,7 @@ export default function ContactPage() {
           )}>
           <h1
             className={cn(
-              "mb-6 text-center text-2xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-3xl md:text-4xl"
+              "mb-6 text-center  text-3xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-4xl md:text-5xl"
             )}>
             Contact Me
           </h1>
