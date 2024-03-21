@@ -8,9 +8,8 @@ const roboto = Roboto({
   subsets: ["latin-ext"],
 });
 export const metadata = {
-  title: "Harrison Raynes - Computer Science Graduate",
-  description:
-    "Harrison Raynes, a passionate software developer and technologist showcasing projects, skills, and professional experiences.",
+  title: "Harrison Raynes",
+  description: "Harrison Raynes, a passionate Computer Science Graduate",
   image: "/images/portfolio-thumbnail.png",
   type: "website",
   url: "https://www.harrisonraynes.com",
