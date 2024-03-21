@@ -8,7 +8,7 @@ export default function AboutPage() {
       )}>
       <div
         className={cn(
-          "sm:w-95% md:w-90% lg:w-85% mx-auto w-11/12 rounded p-4 shadow-md dark:bg-jet-400"
+          "xl:w-85% 2xl:w-80% rounded p-4 shadow-md dark:bg-jet-400 sm:w-11/12 md:w-4/5 lg:w-3/4"
         )}>
         <h1
           className={cn(
