@@ -1,6 +1,6 @@
 import { FormData } from "@/components/ContactForm";
 
-function sendEmail(data: FormData) {
+export default function sendEmail(data: FormData) {
   const apiEndpoint = "/api/email";
 
   // Return the fetch promise
@@ -18,5 +18,3 @@ function sendEmail(data: FormData) {
     return res.json();
   });
 }
-
-export { sendEmail };

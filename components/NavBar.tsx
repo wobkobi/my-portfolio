@@ -4,17 +4,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThemeSwitch from "./ThemeSwitch";
 
-const NavBar = () => {
+export default function NavBar() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
     const handleScroll = () => {
-      if (window.scrollY === 0 || window.scrollY < lastScrollY) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(window.scrollY === 0 || window.scrollY < lastScrollY);
       lastScrollY = window.scrollY;
     };
 
@@ -25,37 +21,48 @@ const NavBar = () => {
   return (
     <nav
       className={cn(
-        "fixed inset-x-0 top-0 z-10 mx-auto max-w-xl rounded-full bg-white shadow-lg transition-opacity duration-300 dark:bg-jet",
-        isVisible ? "opacity-100" : "opacity-0",
-        "hover:opacity-100"
+        "fixed inset-x-0 top-0 z-10 mx-auto max-w-xl rounded-full px-5 py-3 shadow-lg transition-opacity duration-300",
+        isVisible ? "opacity-100" : "opacity-0 hover:opacity-100",
+        "flex items-center justify-center",
+        "bg-platinum dark:bg-gray-700"
       )}
       onMouseOver={() => setIsVisible(true)}>
-      <div className={cn("flex items-center justify-evenly space-x-4 py-2")}>
-        {/* Navigation Links */}
+      <div className={cn("flex w-full items-center justify-evenly")}>
+        {/* Make text size reactive */}
         <Link
           href="/"
-          className={cn("text-lg text-indigo_dye hover:text-caribbean_current dark:text-caribbean_current-800 dark:hover:text-platinum")}>
+          className={cn(
+            "hover:text-indigo_dye dark:text-white dark:hover:text-caribbean_current",
+            "text-sm sm:text-base md:text-lg lg:text-xl"
+          )}>
           Home
         </Link>
         <Link
           href="/portfolio"
-          className={cn("text-lg text-indigo_dye hover:text-caribbean_current dark:text-caribbean_current-800 dark:hover:text-platinum")}>
+          className={cn(
+            "hover:text-indigo_dye dark:text-white dark:hover:text-caribbean_current",
+            "text-sm sm:text-base md:text-lg lg:text-xl"
+          )}>
           Portfolio
         </Link>
         <Link
           href="/about"
-          className={cn("text-lg text-indigo_dye hover:text-caribbean_current dark:text-caribbean_current-800 dark:hover:text-platinum")}>
+          className={cn(
+            "hover:text-indigo_dye dark:text-white dark:hover:text-caribbean_current",
+            "text-sm sm:text-base md:text-lg lg:text-xl"
+          )}>
           About
         </Link>
         <Link
           href="/contact"
-          className={cn("text-lg text-indigo_dye hover:text-caribbean_current dark:text-caribbean_current-800 dark:hover:text-platinum")}>
+          className={cn(
+            "hover:text-indigo_dye dark:text-white dark:hover:text-caribbean_current",
+            "text-sm sm:text-base md:text-lg lg:text-xl"
+          )}>
           Contact
         </Link>
         <ThemeSwitch />
       </div>
     </nav>
   );
-};
-
-export default NavBar;
+}
