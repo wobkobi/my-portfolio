@@ -15,6 +15,9 @@ export default function ExpandableBox({
   isExpanded,
   onToggle,
 }: ExpandableBoxProps) {
+  const handleToggle = () => {
+    onToggle(id);
+  };
   return (
     <div
       className={cn(
@@ -23,7 +26,11 @@ export default function ExpandableBox({
         isExpanded ? "ring-2 ring-caribbean_current" : "",
         "bg-white"
       )}
-      onClick={() => onToggle(id)}>
+      onClick={() => onToggle(id)}
+      onTouchEnd={handleToggle}
+      role="button"
+      tabIndex={0}
+      aria-pressed={isExpanded}>
       <h2
         className={cn(
           "text-center text-lg font-bold",

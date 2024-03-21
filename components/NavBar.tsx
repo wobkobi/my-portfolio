@@ -6,17 +6,22 @@ import ThemeSwitch from "./ThemeSwitch";
 
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
     const handleScroll = () => {
-      setIsVisible(window.scrollY === 0 || window.scrollY < lastScrollY);
-      lastScrollY = window.scrollY;
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      }
+      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <nav
@@ -26,7 +31,9 @@ export default function NavBar() {
         "flex items-center justify-center",
         "bg-platinum dark:bg-gray-700"
       )}
-      onMouseOver={() => setIsVisible(true)}>
+      onMouseEnter={() => setIsVisible(true)} // Use onMouseEnter instead of onMouseOver
+      onMouseLeave={() => setIsVisible(window.scrollY > 100 ? false : true)} // Hide nav if scrolled down on mouse leave
+    >
       <div className={cn("flex w-full items-center justify-evenly")}>
         {/* Make text size reactive */}
         <Link
