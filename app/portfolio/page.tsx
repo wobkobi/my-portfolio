@@ -80,11 +80,11 @@ export default function PortfolioPage() {
 
   return (
     <div className={cn("min-h-screen bg-white dark:bg-jet")}>
-      <main className={cn("p-4 pt-20 text-center")}>
+      <main className={cn("p-4 pt-20 text-center sm:pt-28")}>
         <div className={cn("sm:w-95% md:w-90% lg:w-85% mx-auto w-11/12")}>
           <h1
             className={cn(
-              "mb-6 text-4xl font-bold text-indigo_dye dark:text-caribbean_current"
+              "mb-6 text-3xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-4xl md:text-5xl"
             )}>
             Portfolio
           </h1>

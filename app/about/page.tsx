@@ -12,7 +12,7 @@ export default function AboutPage() {
         )}>
         <h1
           className={cn(
-            "mb-6 text-center text-3xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-4xl md:text-5xl"
+            "mb-6 text-center  text-3xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-4xl md:text-5xl"
           )}>
           About Me
         </h1>
