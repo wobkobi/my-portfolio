@@ -4,7 +4,10 @@ export const Education = [
     id: "edu1",
     title: "Bachelor of Computer and Information Sciences",
     summary: "2021 - 2023",
-    details: ["Majored in Software Development & Networks and Security", "Average grade of B+"],
+    details: [
+      "Majored in Software Development & Networks and Security",
+      "Average grade of B+",
+    ],
   },
 ];
 export const WorkExperience = [
@@ -25,7 +28,10 @@ export const WorkExperience = [
     id: "work2",
     title: "Lifeguard for Waitakere Water Polo",
     summary: "06/2020 - 09/2020",
-    details: ["Assisted my former water polo club with lifeguard duties.", "Worked at West Wave Aquatic Center due to a shortage of lifeguards."],
+    details: [
+      "Assisted my former water polo club with lifeguard duties.",
+      "Worked at West Wave Aquatic Center due to a shortage of lifeguards.",
+    ],
   },
   {
     id: "work3",
@@ -77,17 +83,28 @@ export const Projects = [
     id: "project3",
     title: "iFridge",
     summary: "07/2022 - 11/2022",
+    subtitle: "Backend Developer",
     details: [
       "Spearheaded the development of backend solutions and executed comprehensive web scraping for top supermarkets, significantly enhancing data collection and analysis capabilities.",
     ],
+
+    link: {
+      url: "https://github.com/TheIFridge",
+      text: "iFridge GitHub",
+    },
   },
   {
     id: "project4",
     title: "My GitHub",
     summary: "",
+    subtitle: "My Personal Projects",
     details: [
       "Currently maintaining a compact yet impactful collection of projects on GitHub. Actively planning to expand this repository with diverse and innovative future projects.",
     ],
+    link: {
+      url: "https://github.com/wobkobi",
+      text: "My GitHub",
+    },
   },
 ];
 const skills = [

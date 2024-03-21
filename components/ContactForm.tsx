@@ -1,7 +1,8 @@
 "use client";
+import cn from "@/utils/cn"; // Make sure this utility path is correct
+import sendEmail from "@/utils/sendEmail";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import cn from "../utils/cn"; // Make sure this utility path is correct
-import { sendEmail } from "../utils/sendEmail";
 
 export type FormData = {
   name: string;
@@ -10,55 +11,88 @@ export type FormData = {
   message: string;
 };
 
-const ContactForm = () => {
-  const { register, handleSubmit, reset } = useForm<FormData>();
+export default function ContactForm() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>();
+  const [submitting, setSubmitting] = useState(false);
 
-  function onSubmit(data: FormData) {
-    sendEmail(data)
-      .then((response) => {
-        if (response.message === "Email sent") {
-          reset();
-        }
-        alert(response.message);
-      })
-      .catch((error) => {
-        alert(error);
-      });
+  async function onSubmit(data: FormData) {
+    setSubmitting(true);
+    try {
+      const response = await sendEmail(data);
+      alert(response.message);
+      if (response.message === "Email sent") {
+        reset();
+      }
+    } catch (error) {
+      alert(error);
+    }
+    setSubmitting(false);
   }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={cn("space-y-6")}>
       <input
         type="text"
-        className={cn("w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum")}
+        className={cn(
+          "w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum",
+          errors.name && "border-red-500"
+        )}
         placeholder="Full Name or Company Name"
-        {...register("name", { required: true })}
+        {...register("name", { required: "Name is required" })}
       />
+      {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+
       <input
         type="email"
-        className={cn("w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum")}
+        className={cn(
+          "w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum",
+          errors.email && "border-red-500"
+        )}
         placeholder="Email"
-        {...register("email", { required: true })}
+        {...register("email", { required: "Email is required" })}
       />
+      {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+
       <input
         type="text"
-        className={cn("w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum")}
+        className={cn(
+          "w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum",
+          errors.subject && "border-red-500"
+        )}
         placeholder="Subject"
-        {...register("subject", { required: true })}
+        {...register("subject", { required: "Subject is required" })}
       />
+      {errors.subject && (
+        <p className="text-red-500">{errors.subject.message}</p>
+      )}
+
       <textarea
-        className={cn("min-h-[8rem] w-full resize-none rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum")}
+        className={cn(
+          "w-full resize-none rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum",
+          errors.message && "border-red-500"
+        )}
         placeholder="Message"
-        {...register("message", { required: true })}
+        {...register("message", { required: "Message is required" })}
+        rows={4}
       />
+      {errors.message && (
+        <p className="text-red-500">{errors.message.message}</p>
+      )}
+
       <button
         type="submit"
+        disabled={isSubmitting}
         className={cn(
-          "mt-2 w-full rounded border border-transparent bg-indigo_dye px-4 py-2 text-white hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye"
+          "mt-2 w-full rounded border border-transparent bg-indigo_dye px-4 py-2 text-white hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye",
+          isSubmitting && "cursor-not-allowed opacity-50"
         )}>
-        Submit
+        {submitting ? "Sending..." : "Submit"}
       </button>
     </form>
   );
-};
-
-export default ContactForm;
+}

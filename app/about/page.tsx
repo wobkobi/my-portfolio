@@ -1,38 +1,104 @@
 import cn from "@/utils/cn";
+import { Metadata } from "next";
 
-function About() {
+export const metadata: Metadata = {
+  title: "About Me",
+  description: "Learn more about me and my background.",
+  keywords: [
+    "Harrison Raynes",
+    "Software Developer",
+    "Portfolio",
+    "Technology",
+    "Programming",
+    "Projects",
+    "Resume",
+  ],
+};
+
+export default function AboutPage() {
   return (
-    <div className={cn("min-h-screen bg-white p-4 pt-20 text-center dark:bg-jet")}>
-      <main className={cn("mx-auto flex max-w-[85%] flex-col items-center justify-center p-4 text-center")}>
-        <h1 className={cn("text-4xl font-bold text-indigo_dye dark:text-caribbean_current")}>About Me</h1>
-        <p className={cn("mt-2 text-gray-600 dark:text-platinum")}>Here's a little more about me.</p>
+    <div
+      className={cn(
+        "flex min-h-screen flex-col items-center justify-center bg-white p-4 dark:bg-jet"
+      )}>
+      <div
+        className={cn(
+          "sm:w-95% md:w-90% lg:w-85% mx-auto w-11/12 rounded p-4 shadow-md dark:bg-jet-400"
+        )}>
+        <h1
+          className={cn(
+            "mb-6 text-center text-3xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-4xl md:text-5xl"
+          )}>
+          About Me
+        </h1>
 
-        {/* Introduction */}
-        <section className={cn("mt-6")}>
-          <h2 className={cn("text-2xl font-semibold text-indigo_dye dark:text-caribbean_current")}>Introduction</h2>
-          <p className={cn("mt-2 text-gray-600 dark:text-platinum")}></p>
+        <section className={cn("mt-8")}>
+          <h2
+            className={cn(
+              "text-center text-xl font-semibold text-indigo_dye dark:text-caribbean_current sm:text-2xl md:text-3xl"
+            )}>
+            Introduction
+          </h2>
+          <p
+            className={cn(
+              "mt-4 text-center text-base text-gray-600 dark:text-platinum sm:text-lg md:text-xl"
+            )}>
+            My name is Harrison Raynes, a Bachelor of Computer and Information
+            Sciences graduate from Auckland University of Technology. I majored
+            in Software Development and Networks & Cyber Security. I am a
+            passionate software developer and technologist, always looking for
+            new opportunities to learn and grow.
+          </p>
         </section>
 
         {/* Background */}
         <section className={cn("mt-6")}>
-          <h2 className={cn("text-2xl font-semibold text-indigo_dye dark:text-caribbean_current")}>Background</h2>
-          <p className={cn("mt-2 text-gray-600 dark:text-platinum")}></p>
+          <h2
+            className={cn(
+              "text-center text-xl font-semibold text-indigo_dye dark:text-caribbean_current sm:text-2xl"
+            )}>
+            Background
+          </h2>
+          <p
+            className={cn(
+              "mt-4 text-center text-base text-gray-600 dark:text-platinum sm:text-lg"
+            )}>
+            {/* Add your background details here */}
+          </p>
         </section>
 
         {/* Interests */}
         <section className={cn("mt-6")}>
-          <h2 className={cn("text-2xl font-semibold text-indigo_dye dark:text-caribbean_current")}>Interests</h2>
-          <p className={cn("mt-2 text-gray-600 dark:text-platinum")}></p>
+          <h2
+            className={cn(
+              "text-center text-xl font-semibold text-indigo_dye dark:text-caribbean_current sm:text-2xl"
+            )}>
+            Interests
+          </h2>
+          <p
+            className={cn(
+              "mt-4 text-base text-gray-600 dark:text-platinum sm:text-lg"
+            )}>
+            {/* Add your interests here */}
+          </p>
         </section>
 
         {/* Goals */}
         <section className={cn("mb-8 mt-6")}>
-          <h2 className={cn("text-2xl font-semibold text-indigo_dye dark:text-caribbean_current")}>Goals</h2>
-          <p className={cn("mt-2 text-gray-600 dark:text-platinum")}></p>
+          <h2
+            className={cn(
+              "text-center text-xl  font-semibold text-indigo_dye dark:text-caribbean_current sm:text-2xl"
+            )}>
+            Goals
+          </h2>
+          <p
+            className={cn(
+              "mt-4 text-center text-base text-gray-600 dark:text-platinum sm:text-lg"
+            )}>
+            {/* Add your goals here */}
+          </p>
         </section>
-      </main>
+      </div>
     </div>
   );
 }
-
-export default About;
