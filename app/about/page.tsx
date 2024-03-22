@@ -1,3 +1,4 @@
+import { Background, Goals, Interests, Introduction } from "@/data/AboutMeData";
 import cn from "@/utils/cn";
 
 export default function AboutPage() {
@@ -8,15 +9,14 @@ export default function AboutPage() {
       )}>
       <div
         className={cn(
-          "xl:w-85% 2xl:w-80% rounded p-4 shadow-md dark:bg-jet-400 sm:w-11/12 md:w-4/5 lg:w-3/4"
+          "xl:w-85% 2xl:w-80% mt-20 rounded p-4 shadow-md dark:bg-jet-400 sm:w-11/12 md:w-4/5 lg:w-3/4" // Added mt-20 for spacing
         )}>
         <h1
           className={cn(
-            "mb-6 text-center  text-3xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-4xl md:text-5xl"
+            "mb-6 text-center text-3xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-4xl md:text-5xl"
           )}>
           About Me
         </h1>
-
         <section className={cn("mt-8")}>
           <h2
             className={cn(
@@ -28,11 +28,7 @@ export default function AboutPage() {
             className={cn(
               "mt-4 text-center text-base text-gray-600 dark:text-platinum sm:text-lg md:text-xl"
             )}>
-            My name is Harrison Raynes, a Bachelor of Computer and Information
-            Sciences graduate from Auckland University of Technology. I majored
-            in Software Development and Networks & Cyber Security. I am a
-            passionate software developer and technologist, always looking for
-            new opportunities to learn and grow.
+            {Introduction}
           </p>
         </section>
 
@@ -48,7 +44,7 @@ export default function AboutPage() {
             className={cn(
               "mt-4 text-center text-base text-gray-600 dark:text-platinum sm:text-lg"
             )}>
-            {/* Add your background details here */}
+            {Background}
           </p>
         </section>
 
@@ -62,9 +58,9 @@ export default function AboutPage() {
           </h2>
           <p
             className={cn(
-              "mt-4 text-base text-gray-600 dark:text-platinum sm:text-lg"
+              "mt-4 text-center text-base text-gray-600 dark:text-platinum sm:text-lg"
             )}>
-            {/* Add your interests here */}
+            {Interests}
           </p>
         </section>
 
@@ -80,7 +76,7 @@ export default function AboutPage() {
             className={cn(
               "mt-4 text-center text-base text-gray-600 dark:text-platinum sm:text-lg"
             )}>
-            {/* Add your goals here */}
+            {Goals}
           </p>
         </section>
       </div>

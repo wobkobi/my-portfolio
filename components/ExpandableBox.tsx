@@ -8,16 +8,18 @@ interface ExpandableBoxProps {
   onToggle: (id: string) => void;
 }
 
-export default function ExpandableBox({
+const ExpandableBox: React.FC<ExpandableBoxProps> = ({
   id,
   title,
   summary,
   isExpanded,
   onToggle,
-}: ExpandableBoxProps) {
-  const handleToggle = () => {
+}) => {
+  const handleTouchEnd = (event: React.TouchEvent) => {
+    event.preventDefault();
     onToggle(id);
   };
+
   return (
     <div
       className={cn(
@@ -27,10 +29,11 @@ export default function ExpandableBox({
         "bg-white"
       )}
       onClick={() => onToggle(id)}
-      onTouchEnd={handleToggle}
+      onTouchEnd={handleTouchEnd}
       role="button"
       tabIndex={0}
-      aria-pressed={isExpanded}>
+      aria-pressed={isExpanded}
+      onKeyDown={(e) => e.key === "Enter" && onToggle(id)}>
       <h2
         className={cn(
           "text-center text-lg font-bold",
@@ -50,4 +53,6 @@ export default function ExpandableBox({
       )}
     </div>
   );
-}
+};
+
+export default ExpandableBox;
