@@ -16,7 +16,7 @@ export default function PortfolioPage() {
   const [expandedProjectsId, setExpandedProjectsId] = useState<string | null>(
     null
   );
-
+  const [hasScrolled, setHasScrolled] = useState(false);
   const detailsRef = useRef<HTMLDivElement>(null);
 
   const toggleEducation = (id: string) => {
@@ -32,34 +32,28 @@ export default function PortfolioPage() {
   };
 
   useEffect(() => {
-    if (expandedEduId || expandedWorkId || expandedProjectsId) {
+    if (
+      (expandedEduId || expandedWorkId || expandedProjectsId) &&
+      !hasScrolled
+    ) {
       if (detailsRef.current) {
         const element = detailsRef.current;
         const rect = element.getBoundingClientRect();
-
         const isFullyVisible =
           rect.top >= 0 &&
           rect.bottom <=
             (window.innerHeight || document.documentElement.clientHeight);
 
-        const isBelowViewport =
-          rect.top >
-          (window.innerHeight || document.documentElement.clientHeight);
-        const isAboveViewport = rect.bottom < 0;
-
         if (!isFullyVisible) {
-          if (
-            isBelowViewport ||
-            rect.bottom >
-              (window.innerHeight || document.documentElement.clientHeight)
-          ) {
-            element.scrollIntoView({ behavior: "smooth", block: "end" });
-          } else if (isAboveViewport || rect.top < 0) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
+          element.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          setHasScrolled(true);
         }
       }
     }
+  }, [expandedEduId, expandedWorkId, expandedProjectsId, hasScrolled]);
+
+  useEffect(() => {
+    setHasScrolled(false);
   }, [expandedEduId, expandedWorkId, expandedProjectsId]);
 
   const renderSectionWithDetailBox = (
