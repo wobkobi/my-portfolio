@@ -62,10 +62,7 @@ export default function AboutPage() {
           </p>
         </section>
 
-        <section
-          className={cn(
-            "I have multiple interests, such as gaming, PC building, and managing my server. I have always been interested in gaming and have been playing games since I was a child. I have also always been interested in building my own PC and have built multiple PCs for myself and friends. I have also been managing my server for a few years and have learned a lot about server management and networking. I have always been interested in learning new things and challenging myself to become a better software developer. mt-6"
-          )}>
+        <section className={cn(" mt-6")}>
           <h2
             className={cn(
               "text-center text-xl  font-semibold text-indigo_dye dark:text-caribbean_current sm:text-2xl"
