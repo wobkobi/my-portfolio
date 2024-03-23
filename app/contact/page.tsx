@@ -11,7 +11,7 @@ export default function ContactPage() {
       )}>
       <div
         className={cn(
-          "xl:w-85% 2xl:w-80% mt-20 rounded p-4 shadow-md dark:bg-jet-400 sm:w-11/12 md:w-4/5 lg:w-3/4" // Added mt-20 for spacing
+          "mt-20 rounded p-4 shadow-md dark:bg-jet-400 sm:w-5/6 md:w-3/4 lg:w-2/3 xl:w-4/5 2xl:w-3/4"
         )}>
         <h1
           className={cn(

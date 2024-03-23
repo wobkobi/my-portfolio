@@ -13,8 +13,8 @@ export default function NavBar() {
 
     const updateVisibility = () => {
       setIsVisible(window.scrollY <= lastScrollY || window.scrollY <= 0);
-      ticking = false;
       lastScrollY = window.scrollY;
+      ticking = false;
     };
 
     const handleScroll = () => {
@@ -25,53 +25,34 @@ export default function NavBar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const linkClass = cn(
+    "hover:text-indigo_dye dark:text-platinum dark:hover:text-caribbean_current",
+    "text-sm sm:text-base md:text-lg lg:text-xl"
+  );
 
   return (
     <nav
       className={cn(
         "fixed inset-x-0 top-0 z-10 mx-auto max-w-xl rounded-full px-5 py-3 shadow-lg transition-opacity duration-300",
         isVisible ? "opacity-100" : "opacity-0 hover:opacity-100",
-        "flex items-center justify-center",
-        "bg-platinum-900 dark:bg-gray-700"
+        "flex items-center justify-center bg-platinum-900 dark:bg-jet-400"
       )}
-      onMouseEnter={() => setIsVisible(true)} // Use onMouseEnter instead of onMouseOver
-      onMouseLeave={() => setIsVisible(window.scrollY > 100 ? false : true)} // Hide nav if scrolled down on mouse leave
-    >
-      <div className={cn("flex w-full items-center justify-evenly")}>
-        <Link
-          href="/"
-          className={cn(
-            "hover:text-indigo_dye dark:text-white dark:hover:text-caribbean_current",
-            "text-sm sm:text-base md:text-lg lg:text-xl"
-          )}>
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(window.scrollY > 100 ? false : true)}>
+      <div className="flex w-full items-center justify-evenly">
+        <Link href="/" className={linkClass}>
           Home
         </Link>
-        <Link
-          href="/portfolio"
-          className={cn(
-            "hover:text-indigo_dye dark:text-white dark:hover:text-caribbean_current",
-            "text-sm sm:text-base md:text-lg lg:text-xl"
-          )}>
+        <Link href="/portfolio" className={linkClass}>
           Portfolio
         </Link>
-        <Link
-          href="/about"
-          className={cn(
-            "hover:text-indigo_dye dark:text-white dark:hover:text-caribbean_current",
-            "text-sm sm:text-base md:text-lg lg:text-xl"
-          )}>
+        <Link href="/about" className={linkClass}>
           About
         </Link>
-        <Link
-          href="/contact"
-          className={cn(
-            "hover:text-indigo_dye dark:text-white dark:hover:text-caribbean_current",
-            "text-sm sm:text-base md:text-lg lg:text-xl"
-          )}>
+        <Link href="/contact" className={linkClass}>
           Contact
         </Link>
         <ThemeSwitch />

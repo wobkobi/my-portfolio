@@ -42,7 +42,7 @@ export default function DetailBox({
   return (
     <div
       className={cn(
-        "xl:max-w-2/3 m-2 mx-auto max-w-full rounded bg-white p-4 shadow-lg dark:bg-jet-400 sm:max-w-md md:max-w-lg"
+        "xl:max-w-2/3 m-2 mx-auto max-w-full rounded bg-platinum-900 p-4 shadow-lg dark:bg-jet-400 sm:max-w-md md:max-w-lg"
       )}>
       <h3
         className={cn(

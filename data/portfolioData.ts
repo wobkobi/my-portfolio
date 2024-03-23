@@ -101,7 +101,8 @@ export const Projects = [
     summary: "",
     subtitle: "My Personal Projects",
     details: [
-      "Currently maintaining a compact yet impactful collection of projects on GitHub. Actively planning to expand this repository with diverse and innovative future projects. My current project is reactionBot, a discord bot made in Python, which I'm moving over to typescript. And this website: ",
+      "Currently maintaining a compact yet impactful collection of projects on GitHub. Actively planning to expand this repository with diverse and innovative future projects.",
+      " My current projects are: reactionBot, a discord bot made for personal use in Python, which I'm moving over to typescript. And this website: ",
     ],
     link: {
       url: "https://github.com/wobkobi",

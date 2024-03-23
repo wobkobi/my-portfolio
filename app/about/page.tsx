@@ -5,11 +5,11 @@ export default function AboutPage() {
   return (
     <div
       className={cn(
-        "flex min-h-screen flex-col items-center justify-center bg-white p-4 dark:bg-jet"
+        "flex min-h-screen flex-col items-center justify-center  p-4"
       )}>
       <div
         className={cn(
-          "xl:w-85% 2xl:w-80% mt-20 rounded p-4 shadow-md dark:bg-jet-400 sm:w-11/12 md:w-4/5 lg:w-3/4" // Added mt-20 for spacing
+          "mt-20 rounded p-4 shadow-md dark:bg-jet-400 sm:w-5/6 md:w-3/4 lg:w-2/3 xl:w-4/5 2xl:w-3/4"
         )}>
         <h1
           className={cn(
@@ -32,7 +32,6 @@ export default function AboutPage() {
           </p>
         </section>
 
-        {/* Background */}
         <section className={cn("mt-6")}>
           <h2
             className={cn(
@@ -48,7 +47,6 @@ export default function AboutPage() {
           </p>
         </section>
 
-        {/* Interests */}
         <section className={cn("mt-6")}>
           <h2
             className={cn(
@@ -64,8 +62,10 @@ export default function AboutPage() {
           </p>
         </section>
 
-        {/* Goals */}
-        <section className={cn("mb-8 mt-6")}>
+        <section
+          className={cn(
+            "I have multiple interests, such as gaming, PC building, and managing my server. I have always been interested in gaming and have been playing games since I was a child. I have also always been interested in building my own PC and have built multiple PCs for myself and friends. I have also been managing my server for a few years and have learned a lot about server management and networking. I have always been interested in learning new things and challenging myself to become a better software developer. mt-6"
+          )}>
           <h2
             className={cn(
               "text-center text-xl  font-semibold text-indigo_dye dark:text-caribbean_current sm:text-2xl"

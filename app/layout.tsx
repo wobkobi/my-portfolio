@@ -3,19 +3,22 @@ import NavBar from "@/components/NavBar";
 import cn from "@/utils/cn";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+
 const roboto = Roboto({
   weight: ["300", "500"],
   subsets: ["latin-ext"],
 });
+
 export const metadata = {
   title: "Harrison Raynes",
-  description: "Harrison Raynes, a passionate Computer Science Graduate",
-  image: "/images/portfolio-thumbnail.png",
+  description: "Harrison Raynes, a Computer Science Graduate",
   type: "website",
   url: "https://www.harrisonraynes.com",
   siteName: "Harrison Raynes Portfolio",
   keywords: [
     "Harrison Raynes",
+    "Harrison",
+    "Raynes",
     "Software Developer",
     "Portfolio",
     "Technology",

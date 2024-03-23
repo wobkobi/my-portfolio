@@ -5,21 +5,11 @@ import { useEffect, useState } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 
 export default function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-  const [iconSize, setIconSize] = useState(20); // Default icon size
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const handleResize = () => {
-      const newSize = window.innerWidth < 768 ? 18 : 24;
-      setIconSize(newSize);
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   if (!mounted) return null;
@@ -37,11 +27,13 @@ export default function ThemeSwitch() {
         "dark:text-white dark:hover:text-caribbean_current"
       )}
       aria-label="Toggle Dark Mode"
-      title="Toggle Dark Mode">
+      title="Toggle Dark Mode"
+      role="switch"
+      aria-checked={theme === "dark"}>
       {theme === "light" ? (
-        <FiMoon size={iconSize} />
+        <FiMoon className="text-xl sm:text-2xl" />
       ) : (
-        <FiSun size={iconSize} />
+        <FiSun className="text-xl sm:text-2xl" />
       )}
     </button>
   );

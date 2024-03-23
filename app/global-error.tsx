@@ -15,10 +15,7 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <div
-      className={cn(
-        "flex h-screen items-center justify-center bg-white p-4 dark:bg-jet"
-      )}>
+    <div className={cn("flex h-screen items-center justify-center  p-4")}>
       <div className={cn("max-w-md rounded-lg p-6 shadow-lg")}>
         <h2
           className={cn(

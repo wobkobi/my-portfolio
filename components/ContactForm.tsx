@@ -1,7 +1,6 @@
 "use client";
 import cn from "@/utils/cn"; // Make sure this utility path is correct
 import sendEmail from "@/utils/sendEmail";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export type FormData = {
@@ -18,20 +17,19 @@ export default function ContactForm() {
     reset,
     formState: { errors, isSubmitting },
   } = useForm<FormData>();
-  const [submitting, setSubmitting] = useState(false);
 
   async function onSubmit(data: FormData) {
-    setSubmitting(true);
     try {
       const response = await sendEmail(data);
-      alert(response.message);
       if (response.message === "Email sent") {
+        alert("Message sent successfully!");
         reset();
+      } else {
+        alert("Failed to send the message. Please try again.");
       }
     } catch (error) {
-      alert(error);
+      alert("An error occurred. Please try again.");
     }
-    setSubmitting(false);
   }
 
   return (
@@ -87,11 +85,9 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className={cn(
-          "mt-2 w-full rounded border border-transparent bg-indigo_dye px-4 py-2 text-white hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye",
-          isSubmitting && "cursor-not-allowed opacity-50"
-        )}>
-        {submitting ? "Sending..." : "Submit"}
+        className={`mt-2 w-full rounded bg-indigo_dye px-4 py-2 text-white hover:bg-caribbean_current
+        dark:bg-caribbean_current dark:hover:bg-indigo_dye ${isSubmitting ? "cursor-not-allowed opacity-50" : ""}`}>
+        {isSubmitting ? "Sending..." : "Submit"}
       </button>
     </form>
   );

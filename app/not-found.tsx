@@ -7,7 +7,7 @@ export default function NotFound() {
       className={cn(
         "flex min-h-screen items-center justify-center bg-white dark:bg-jet"
       )}>
-      <div className={cn("p-4 text-center")}>
+      <div className="p-4 text-center">
         <h2
           className={cn(
             "text-4xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-5xl"

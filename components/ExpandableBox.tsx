@@ -27,9 +27,9 @@ function ExpandableBox({
       className={cn(
         "m-2 flex h-full w-full cursor-pointer flex-col items-center justify-center rounded p-4 shadow-lg transition-all duration-300",
         isExpanded
-          ? "ring-2 ring-indigo_dye dark:ring-caribbean_current"
-          : "bg-white",
-        "dark:bg-jet-400"
+          ? "ring-2 ring-indigo_dye hover:bg-platinum-700 hover:text-white dark:ring-caribbean_current dark:hover:bg-jet-300 dark:hover:text-jet-400"
+          : "bg-platinum-900 hover:bg-platinum-700 hover:text-white dark:bg-jet-400 dark:hover:bg-jet-300",
+        "dark:hover:text-white"
       )}
       onClick={() => onToggle(id)}
       onTouchEnd={handleTouchEnd}
@@ -53,5 +53,4 @@ function ExpandableBox({
     </div>
   );
 }
-
 export default forwardRef<HTMLDivElement, ExpandableBoxProps>(ExpandableBox);
