@@ -1,20 +1,27 @@
-import { FormData } from "@/components/ContactForm";
+import { FormData } from "@/components/contact/ContactForm";
 
 export default function sendEmail(data: FormData) {
   const apiEndpoint = "/api/email";
 
-  // Return the fetch promise
   return fetch(apiEndpoint, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  }).then((res) => {
-    if (!res.ok) {
-      // If the response is not 2xx, throw an error
-      throw new Error("Network response was not ok");
-    }
-    return res.json();
-  });
+  })
+    .then((res) => {
+      if (!res.ok) {
+        return res.json().then((errorData) => {
+          const errorMessage =
+            errorData.error || "An error occurred while sending the email";
+          throw new Error(errorMessage);
+        });
+      }
+      return res.json();
+    })
+    .catch((error) => {
+      console.error("Error sending email:", error.message);
+      throw error;
+    });
 }
