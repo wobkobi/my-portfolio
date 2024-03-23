@@ -63,6 +63,7 @@ export const Projects = [
     summary: "02/2023 - 11/2023",
     details: [
       "Engaged in a comprehensive project to design and implement a chatbot, as a key part of my degree's coursework, in collaboration with Counties Manukau.",
+      "We used Bot Framework Composer to create the bot since it meets the requirements of running in Microsoft Teams. There wasn't much coding involved in creating this chatbot; it was more of a digital services project than a software development or networks project, which was unfortunate, but we still got the project done.",
     ],
 
     link: {
@@ -77,6 +78,7 @@ export const Projects = [
     subtitle: "Social Media Manager",
     details: [
       "Oversaw and curated content for the company's Twitter and Instagram pages, focusing on exploring WEB3 technologies and the digital art landscape.",
+      "RamenNFT was a project my friend from university, and I wanted to do. We started to get on the NFT craze, but we didn't get far into completing it because we didn't particularly like NFTs, so the project lost momentum.",
     ],
   },
   {
@@ -99,7 +101,7 @@ export const Projects = [
     summary: "",
     subtitle: "My Personal Projects",
     details: [
-      "Currently maintaining a compact yet impactful collection of projects on GitHub. Actively planning to expand this repository with diverse and innovative future projects.",
+      "Currently maintaining a compact yet impactful collection of projects on GitHub. Actively planning to expand this repository with diverse and innovative future projects. My current project is reactionBot, a discord bot made in Python, which I'm moving over to typescript. And this website: ",
     ],
     link: {
       url: "https://github.com/wobkobi",

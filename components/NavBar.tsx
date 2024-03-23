@@ -36,13 +36,12 @@ export default function NavBar() {
         "fixed inset-x-0 top-0 z-10 mx-auto max-w-xl rounded-full px-5 py-3 shadow-lg transition-opacity duration-300",
         isVisible ? "opacity-100" : "opacity-0 hover:opacity-100",
         "flex items-center justify-center",
-        "bg-platinum dark:bg-gray-700"
+        "bg-platinum-900 dark:bg-gray-700"
       )}
       onMouseEnter={() => setIsVisible(true)} // Use onMouseEnter instead of onMouseOver
       onMouseLeave={() => setIsVisible(window.scrollY > 100 ? false : true)} // Hide nav if scrolled down on mouse leave
     >
       <div className={cn("flex w-full items-center justify-evenly")}>
-        {/* Make text size reactive */}
         <Link
           href="/"
           className={cn(

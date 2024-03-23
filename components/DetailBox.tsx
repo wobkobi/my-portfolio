@@ -20,10 +20,7 @@ export default function DetailBox({
   const renderDetails = () => {
     if (details.length === 1) {
       return (
-        <p
-          className={cn(
-            "text-base text-gray-700 dark:text-platinum sm:text-lg"
-          )}>
+        <p className={cn("text-base text-jet dark:text-platinum sm:text-lg")}>
           {details[0]}
         </p>
       );
@@ -33,7 +30,7 @@ export default function DetailBox({
           {details.map((detail, index) => (
             <li
               key={`${id}-detail-${index}`}
-              className={cn("text-gray-700 dark:text-platinum")}>
+              className={cn("text-jet dark:text-platinum")}>
               {detail}
             </li>
           ))}
