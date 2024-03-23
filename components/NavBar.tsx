@@ -30,7 +30,7 @@ export default function NavBar() {
 
   const linkClass = cn(
     "hover:text-indigo_dye dark:text-platinum dark:hover:text-caribbean_current",
-    "text-lg sm:text-base md:text-lg"
+    "text-xl sm:text-lg md:text-xl lg:text-2xl"
   );
 
   return (
