@@ -1,4 +1,4 @@
-import ContactForm from "@/components/ContactForm";
+import ContactForm from "@/components/contact/ContactForm";
 import cn from "@/utils/cn";
 import { FiMail } from "react-icons/fi";
 
@@ -11,7 +11,7 @@ export default function ContactPage() {
       )}>
       <div
         className={cn(
-          "mt-20 rounded p-4 shadow-md dark:bg-jet-400 sm:w-5/6 md:w-3/4 lg:w-2/3 xl:w-4/5 2xl:w-3/4"
+          "mt-20 rounded bg-platinum-900 p-4 shadow-md dark:bg-jet-400 sm:w-5/6 md:w-3/4 lg:w-2/3 xl:w-4/5 2xl:w-3/4"
         )}>
         <h1
           className={cn(

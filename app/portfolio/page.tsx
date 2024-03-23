@@ -1,6 +1,6 @@
 "use client";
-import DetailBox from "@/components/DetailBox";
-import ExpandableBox from "@/components/ExpandableBox";
+import DetailBox from "@/components/portfolio/DetailBox";
+import ExpandableBox from "@/components/portfolio/ExpandableBox";
 import {
   Education,
   Projects,
@@ -68,7 +68,7 @@ export default function PortfolioPage() {
         <section className={cn(" mb-8")}>
           <h2
             className={cn(
-              "mb-4 mt-8 text-center text-2xl font-semibold text-indigo_dye dark:text-caribbean_current"
+              "mb-4 mt-8 text-center text-2xl font-semibold text-indigo_dye dark:text-caribbean_current "
             )}>
             {title}
           </h2>
@@ -114,10 +114,12 @@ export default function PortfolioPage() {
     <div className={cn("min-h-screen bg-white dark:bg-jet")}>
       <main className={cn("p-4 pt-20 text-center sm:pt-28")}>
         <div
-          className={cn("sm:w-95% md:w-90% lg:w-85% xl:w-80% mx-auto w-11/12")}>
+          className={cn(
+            "sm:w-95% md:w-90% lg:w-85% xl:w-80% mx-auto w-11/12 p-4"
+          )}>
           <h1
             className={cn(
-              "mb-6 text-3xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-4xl md:text-5xl"
+              "mb-6 text-3xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-4xl md:text-5xl "
             )}>
             Portfolio
           </h1>
@@ -173,9 +175,7 @@ export default function PortfolioPage() {
           <a
             href="/files/HarrisonRaynesResume.pdf"
             download="HarrisonRaynesResume.pdf"
-            className={cn(
-              "mt-6 inline-block rounded-md bg-indigo_dye px-4 py-2 text-sm font-medium text-white shadow-lg transition duration-300 ease-in-out hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye md:px-6 md:py-3 md:text-lg"
-            )}>
+            className="inline-block rounded-md bg-indigo_dye px-4 py-2 text-sm font-medium text-white shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:bg-caribbean_current focus:outline-none focus:ring-2 focus:ring-indigo_dye focus:ring-opacity-50 dark:bg-caribbean_current dark:hover:bg-indigo_dye md:px-6 md:py-3 md:text-lg">
             Download CV
           </a>
         </div>
