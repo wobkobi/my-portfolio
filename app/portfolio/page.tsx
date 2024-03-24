@@ -19,6 +19,8 @@ export default function PortfolioPage() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const detailsRef = useRef<HTMLDivElement>(null);
 
+  const linkedInUrl = "https://www.linkedin.com/in/harrisonraynes"; // Replace with your actual LinkedIn profile URL
+
   const toggleEducation = (id: string) => {
     setExpandedEduId(expandedEduId === id ? null : id);
   };

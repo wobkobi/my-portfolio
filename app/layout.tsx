@@ -1,4 +1,5 @@
 import Providers from "@/app/providers";
+import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import cn from "@/utils/cn";
 import { Roboto } from "next/font/google";
@@ -39,7 +40,8 @@ export default function RootLayout({
       <body className={cn("min-h-screen bg-white dark:bg-jet")}>
         <Providers>
           <NavBar />
-          {children}
+          <main className="flex-grow">{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>
