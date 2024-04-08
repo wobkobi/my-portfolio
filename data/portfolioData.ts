@@ -4,7 +4,10 @@ export const Education = [
     id: "edu1",
     title: "Bachelor of Computer and Information Sciences",
     summary: "2021 - 2023",
-    details: ["Majored in Software Development & Networks and Security"],
+    details: [
+      "Majored in Software Development & Networks and Security",
+      "Achieved a GPA of 5.5, which is a B+ average.",
+    ],
   },
 ];
 export const WorkExperience = [
