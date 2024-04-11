@@ -1,4 +1,4 @@
-import { Background, Goals, Interests, Introduction } from "@/data/AboutMeData";
+import { Background, Goals, Interests, Introduction } from "@/data/aboutMeData";
 import cn from "@/utils/cn";
 
 const AboutPage = () => {

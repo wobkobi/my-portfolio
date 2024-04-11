@@ -1,13 +1,13 @@
 "use client";
-import DetailBox from "@/components/portfolio/DetailBox";
-import ExpandableBox from "@/components/portfolio/ExpandableBox";
+import DetailBox from "@/components/portfolio/detailBox";
+import ExpandableBox from "@/components/portfolio/expandableBox";
 import {
   Education,
   Projects,
   WorkExperience,
   sortedSkills,
-} from "@/data/PortfolioData";
-import { DataBox } from "@/types/BoxTypes";
+} from "@/data/portfolioData";
+import { DataBox } from "@/types/boxTypes";
 import cn from "@/utils/cn";
 import { useEffect, useRef, useState } from "react";
 

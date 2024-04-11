@@ -2,7 +2,7 @@
 import cn from "@/utils/cn";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import ThemeSwitch from "./ThemeSwitch";
+import ThemeSwitch from "./themeSwitch";
 
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(true);

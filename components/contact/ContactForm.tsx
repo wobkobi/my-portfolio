@@ -3,7 +3,7 @@ import cn from "@/utils/cn";
 import sendEmail from "@/utils/sendEmail";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import EmailModal from "./EmailModal";
+import EmailModal from "./emailModal";
 
 export type FormData = {
   name: string;

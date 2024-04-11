@@ -1,6 +1,6 @@
 import Providers from "@/app/providers";
-import Footer from "@/components/Footer";
-import NavBar from "@/components/NavBar";
+import Footer from "@/components/footer";
+import NavBar from "@/components/navBar";
 import cn from "@/utils/cn";
 import { Roboto } from "next/font/google";
 import "./globals.css";
