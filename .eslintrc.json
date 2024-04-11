@@ -19,10 +19,6 @@
   "parserOptions": {
     "sourceType": "module"
   },
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
   "settings": {
     "import/resolver": {
       "node": {
