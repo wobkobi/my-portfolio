@@ -2,8 +2,7 @@ import cn from "@/utils/cn";
 import Link from "next/link";
 export default function HomePage() {
   return (
-    <div
-      className={cn("flex min-h-screen flex-col items-center justify-center")}>
+    <div className={cn("flex flex-grow flex-col items-center justify-center")}>
       <h1
         className={cn(
           "mb-4 text-center text-3xl font-bold text-indigo_dye dark:text-caribbean_current md:text-4xl lg:text-5xl xl:text-6xl"

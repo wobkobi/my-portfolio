@@ -5,10 +5,7 @@ import { FiMail } from "react-icons/fi";
 export default function ContactPage() {
   const yourEmail = "harrisonraynes8@gmail.com";
   return (
-    <div
-      className={cn(
-        "flex min-h-screen flex-col items-center justify-center bg-white p-4 dark:bg-jet"
-      )}>
+    <div className={cn("flex flex-grow flex-col items-center justify-center")}>
       <div
         className={cn(
           "mt-20 rounded bg-platinum-900 p-4 shadow-md dark:bg-jet-400 sm:w-5/6 md:w-3/4 lg:w-2/3 xl:w-4/5 2xl:w-3/4"

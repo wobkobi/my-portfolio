@@ -1,22 +1,11 @@
+import { ExpandableBoxProps } from "@/types/BoxTypes";
 import cn from "@/utils/cn";
-import React, { forwardRef } from "react";
+import React, { forwardRef, Ref } from "react";
 
-interface ExpandableBoxProps {
-  id: string;
-  title: string;
-  summary?: string;
-  isExpanded: boolean;
-  onToggle: (id: string) => void;
-  assignRef?: (el: HTMLDivElement) => void;
-}
-
-function ExpandableBox({
-  id,
-  title,
-  summary,
-  isExpanded,
-  onToggle,
-}: ExpandableBoxProps) {
+function ExpandableBoxFunction(
+  { id, title, summary, isExpanded, onToggle }: ExpandableBoxProps,
+  ref: Ref<HTMLDivElement>
+) {
   const handleTouchEnd = (event: React.TouchEvent) => {
     event.preventDefault();
     onToggle(id);
@@ -24,6 +13,7 @@ function ExpandableBox({
 
   return (
     <div
+      ref={ref}
       className={cn(
         "m-2 flex h-full w-full cursor-pointer flex-col items-center justify-center rounded p-4 shadow-lg transition-all duration-300",
         isExpanded
@@ -53,4 +43,8 @@ function ExpandableBox({
     </div>
   );
 }
-export default forwardRef<HTMLDivElement, ExpandableBoxProps>(ExpandableBox);
+const ExpandableBox = forwardRef<HTMLDivElement, ExpandableBoxProps>(
+  ExpandableBoxFunction
+);
+
+export default ExpandableBox;
