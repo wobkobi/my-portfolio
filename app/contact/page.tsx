@@ -1,4 +1,4 @@
-import ContactForm from "@/components/contact/contactForm";
+import ContactForm from "@/components/contact/ContactForm";
 import cn from "@/utils/cn";
 import { FiMail } from "react-icons/fi";
 

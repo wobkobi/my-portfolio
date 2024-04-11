@@ -1,9 +1,9 @@
 "use client";
+import EmailModal from "@/components/contact/EmailModal";
+import SendEmail from "@/utils/SendEmail";
 import cn from "@/utils/cn";
-import sendEmail from "@/utils/sendEmail";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import EmailModal from "./emailModal";
 
 export type FormData = {
   name: string;
@@ -24,7 +24,7 @@ export default function ContactForm() {
 
   async function onSubmit(data: FormData) {
     try {
-      const response = await sendEmail(data);
+      const response = await SendEmail(data);
       if (response.message === "Email sent") {
         setModalMessage("Email sent!");
       } else {

@@ -1,4 +1,4 @@
-import { ProvidersProps } from "@/types/boxTypes";
+import { ProvidersProps } from "@/types/BoxTypes";
 import { ThemeProvider } from "next-themes";
 
 export default function Providers({ children }: ProvidersProps) {

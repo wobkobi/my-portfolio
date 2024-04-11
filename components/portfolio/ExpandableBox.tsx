@@ -1,4 +1,4 @@
-import { ExpandableBoxProps } from "@/types/boxTypes";
+import { ExpandableBoxProps } from "@/types/BoxTypes";
 import cn from "@/utils/cn";
 import React, { forwardRef, Ref } from "react";
 

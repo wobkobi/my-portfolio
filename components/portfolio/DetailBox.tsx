@@ -1,4 +1,4 @@
-import { DetailBoxProps } from "@/types/boxTypes";
+import { DetailBoxProps } from "@/types/BoxTypes";
 import cn from "@/utils/cn";
 
 export default function DetailBox({
