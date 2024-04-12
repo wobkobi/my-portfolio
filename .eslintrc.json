@@ -3,6 +3,9 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@next/next/recommended",
+    "eslint:recommended",
+    "next",
     "prettier"
   ],
   "plugins": ["@typescript-eslint", "prettier"],
@@ -15,9 +18,6 @@
       }
     ],
     "@typescript-eslint/consistent-type-definitions": ["error", "type"]
-  },
-  "parserOptions": {
-    "sourceType": "module"
   },
   "settings": {
     "import/resolver": {
