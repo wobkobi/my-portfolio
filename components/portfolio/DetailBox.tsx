@@ -1,12 +1,5 @@
+import { DetailBoxProps } from "@/types/BoxTypes";
 import cn from "@/utils/cn";
-
-interface DetailBoxProps {
-  id: string;
-  subtitle: string;
-  details: string[];
-  isVisible: boolean;
-  link?: { url: string; text: string };
-}
 
 export default function DetailBox({
   id,

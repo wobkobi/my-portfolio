@@ -1,8 +1,6 @@
 import cn from "@/utils/cn";
 import { FiGithub, FiGlobe, FiLinkedin } from "react-icons/fi";
 
-const iconSize = "w-6 h-6 sm:w-8 sm:h-8";
-
 export default function Footer() {
   return (
     <footer
@@ -14,7 +12,9 @@ export default function Footer() {
         className={cn(
           "text-indigo_dye hover:text-caribbean_current dark:text-platinum dark:hover:text-caribbean_current "
         )}
-        title="My Website">
+        title="My Website"
+        target="_blank"
+        rel="noopener noreferrer">
         <FiGlobe className={cn("h-6 w-6 sm:h-8 sm:w-8")} />
       </a>
       <a
@@ -22,7 +22,9 @@ export default function Footer() {
         className={cn(
           "text-indigo_dye hover:text-caribbean_current dark:text-platinum dark:hover:text-caribbean_current "
         )}
-        title="GitHub">
+        title="GitHub"
+        target="_blank"
+        rel="noopener noreferrer">
         <FiGithub className={cn("h-6 w-6 sm:h-8 sm:w-8")} />
       </a>
       <a
@@ -30,7 +32,9 @@ export default function Footer() {
         className={cn(
           "text-indigo_dye hover:text-caribbean_current dark:text-platinum dark:hover:text-caribbean_current "
         )}
-        title="LinkedIn">
+        title="LinkedIn"
+        target="_blank"
+        rel="noopener noreferrer">
         <FiLinkedin className={cn("h-6 w-6 sm:h-8 sm:w-8")} />
       </a>
     </footer>

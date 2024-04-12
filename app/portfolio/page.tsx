@@ -6,7 +6,8 @@ import {
   Projects,
   WorkExperience,
   sortedSkills,
-} from "@/data/portfolioData";
+} from "@/data/PortfolioData";
+import { DataBox } from "@/types/BoxTypes";
 import cn from "@/utils/cn";
 import { useEffect, useRef, useState } from "react";
 
@@ -18,8 +19,6 @@ export default function PortfolioPage() {
   );
   const [hasScrolled, setHasScrolled] = useState(false);
   const detailsRef = useRef<HTMLDivElement>(null);
-
-  const linkedInUrl = "https://www.linkedin.com/in/harrisonraynes"; // Replace with your actual LinkedIn profile URL
 
   const toggleEducation = (id: string) => {
     setExpandedEduId(expandedEduId === id ? null : id);
@@ -59,7 +58,7 @@ export default function PortfolioPage() {
   }, [expandedEduId, expandedWorkId, expandedProjectsId]);
 
   const renderSectionWithDetailBox = (
-    data: any[],
+    data: DataBox[],
     title: string,
     itemID: string | null,
     handleToggle: (id: string) => void,
@@ -101,7 +100,7 @@ export default function PortfolioPage() {
                     id={item.id}
                     details={item.details}
                     isVisible={true}
-                    subtitle={item.subtitle}
+                    subtitle={item.subtitle || ""}
                     link={item.link}
                   />
                 ))}
@@ -113,7 +112,7 @@ export default function PortfolioPage() {
   };
 
   return (
-    <div className={cn("min-h-screen bg-white dark:bg-jet")}>
+    <div className={cn("flex flex-grow flex-col items-center justify-center")}>
       <main className={cn("p-4 pt-20 text-center sm:pt-28")}>
         <div
           className={cn(

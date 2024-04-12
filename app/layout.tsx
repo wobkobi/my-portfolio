@@ -36,11 +36,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn(roboto.className)} suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-white dark:bg-jet")}>
+    <html
+      lang="en"
+      className={cn(roboto.className, "h-full")}
+      suppressHydrationWarning>
+      <body className={cn("flex min-h-screen flex-col")}>
         <Providers>
           <NavBar />
-          <main className="flex-grow">{children}</main>
+          <main className={cn("flex flex-grow items-center justify-center")}>
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>
