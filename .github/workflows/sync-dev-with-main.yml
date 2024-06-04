@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3 # Updated to use the latest version
 
       - name: Set up Git
         run: |
@@ -27,9 +27,14 @@ jobs:
         run: git checkout dev
 
       - name: Merge main into dev
-        run: git merge origin/main
+        run: git merge origin/main || echo "Merge conflict detected, aborting." && git merge --abort
 
       - name: Push changes
-        run: git push origin dev
+        run: |
+          if [ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]; then
+            git push origin dev
+          else
+            echo "No changes to push."
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
