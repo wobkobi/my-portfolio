@@ -1,24 +1,23 @@
-name: Sync dev with main
+name: Update Dev Branch
 
 on:
-  schedule:
-    - cron: '0 0 * * *' # This runs every day at midnight, adjust as needed
   push:
     branches:
       - main
 
 jobs:
-  sync:
+  update-dev:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3 # Updated to use the latest version
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
 
-      - name: Set up Git
+      - name: Configure git
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Fetch all branches
         run: git fetch --all
@@ -27,14 +26,9 @@ jobs:
         run: git checkout dev
 
       - name: Merge main into dev
-        run: git merge origin/main || echo "Merge conflict detected, aborting." && git merge --abort
+        run: git merge main
 
-      - name: Push changes
-        run: |
-          if [ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]; then
-            git push origin dev
-          else
-            echo "No changes to push."
-          fi
+      - name: Push changes to dev
+        run: git push origin dev
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
