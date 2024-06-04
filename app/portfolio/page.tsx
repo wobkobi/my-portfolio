@@ -9,7 +9,7 @@ import {
 } from "@/data/PortfolioData";
 import { DataBox } from "@/types/BoxTypes";
 import cn from "@/utils/cn";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function PortfolioPage() {
   const [expandedEduId, setExpandedEduId] = useState<string | null>(null);

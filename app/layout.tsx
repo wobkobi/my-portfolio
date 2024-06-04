@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import cn from "@/utils/cn";
 import { Roboto } from "next/font/google";
+import React from "react";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -21,11 +22,13 @@ export const metadata = {
     "Harrison",
     "Raynes",
     "Software Developer",
+
     "Portfolio",
     "Technology",
     "Programming",
     "Projects",
     "Resume",
+    "CV",
   ],
   author: "Harrison Raynes",
 };

@@ -1,6 +1,6 @@
 "use client";
 export const Introduction = [
-  "My name is Harrison Raynes. I have a Bachelor of Computer and Information Sciences degree from Auckland University of Technology. I majored in Software Development and Networks & Cyber Security and graduated in 2023. I am a passionate software developer and technologist, always looking for new opportunities to learn and grow.",
+  "My name is Harrison Raynes. I have a Bachelor of Computer and Information Sciences degree from Auckland University of Technology. I majored in Software Development and Networks & Cyber Security and graduated in 2023. In early 2024 I started an AWS course through Unitec and as of the time of write, I am still doing it I am a passionate software developer and technologist, always looking for new opportunities to learn and grow.",
 ];
 export const Background = [
   "I grew up in Auckland, New Zealand, and have been interested in computers and technology since a young age. I have always been fascinated by how technology works and how it can be used to solve real-world problems. I have always been interested in learning new things and challenging myself to become a better software developer.",

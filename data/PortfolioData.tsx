@@ -1,7 +1,18 @@
 "use client";
+
 export const Education = [
   {
     id: "edu1",
+    title: "AWS re/Start",
+    summary: "2024 - present",
+    details: [
+      "Hands-on experience with core AWS services and cloud computing concepts.",
+      "Developed skills in Python, Linux, and networking for cloud support.",
+      "Completed projects demonstrating proficiency in cloud solutions.",
+    ],
+  },
+  {
+    id: "edu2",
     title: "Bachelor of Computer and Information Sciences",
     summary: "2021 - 2023",
     details: [
@@ -13,26 +24,28 @@ export const Education = [
 export const WorkExperience = [
   {
     id: "work1",
-    title: "Lifeguard at Mt Albert Aquatic Centre",
-    summary: "10/2019 - 05/2023",
+    title: "Night ﬁll Long Life Assistant for Woolworths",
+    summary: "11/2022 - 06/2023",
     details: [
-      "Ensured strong safety measures, preventing the need for water rescues during my time.",
-      "Consistently maintained a safe swimming area for all guests.",
-      "Quickly and effectively handled emergencies, ensuring everyone's safety.",
-      "Regularly checked and kept the facility safe for visitors.",
-      "Took care of end-of-day cleaning, keeping the facility neat and tidy.",
-      "Provided helpful and friendly service, responding to visitors' needs and questions.",
+      "Worked night shifts, contributing to 24/7 store operation.",
+      "Efficiently stocked shelves, ensuring product availability.",
+      "Prepared the store for 7 am opening, ensuring a smooth start.",
+      "Supported daytime shifts as needed.",
+      "Collaborated with a team of 4-5 members.",
     ],
   },
   {
     id: "work2",
-    title: "Lifeguard for Waitakere Water Polo",
-    summary: "06/2020 - 09/2020",
+    title: "Lifeguard at Mt Albert Aquatic Centre",
+    summary: "10/2019 - 05/2023",
     details: [
-      "Assisted my former water polo club with lifeguard duties.",
-      "Worked at West Wave Aquatic Center due to a shortage of lifeguards.",
+      "Ensured strong safety measures, preventing water rescues.",
+      "Maintained a safe swimming area and quickly handled emergencies.",
+      "Regularly checked and kept the facility safe and clean.",
+      "Provided helpful and friendly service to visitors.",
     ],
   },
+
   {
     id: "work3",
     title: "Coach for Point Chevalier School",
@@ -45,14 +58,11 @@ export const WorkExperience = [
   },
   {
     id: "work4",
-    title: "Night ﬁll Long Life Assistant for Woolworths",
-    summary: "11/2022 - 06/2023",
+    title: "Lifeguard for Waitakere Water Polo",
+    summary: "06/2020 - 09/2020",
     details: [
-      "Regularly worked night shifts, contributing to the store's 24/7 operation.",
-      "Handled heavy pallets and efficiently stocked shelves, ensuring product availability.",
-      "Diligently prepared the store for its 7 am opening, ensuring a smooth start to the day.",
-      "Occasionally supported the team during daytime shifts as needed.",
-      "Worked reliably every Friday and Saturday night, collaborating effectively with a team of 4 to 5 members.",
+      "Assisted my former water polo club with lifeguard duties.",
+      "Worked at West Wave Aquatic Center due to a shortage of lifeguards.",
     ],
   },
 ];
@@ -62,8 +72,9 @@ export const Projects = [
     title: "Chat Bot Platform",
     summary: "02/2023 - 11/2023",
     details: [
-      "Engaged in a comprehensive project to design and implement a chatbot, as a key part of my degree's coursework, in collaboration with Counties Manukau.",
-      "We used Bot Framework Composer to create the bot since it meets the requirements of running in Microsoft Teams. There wasn't much coding involved in creating this chatbot; it was more of a digital services project than a software development or networks project, which was unfortunate, but we still got the project done.",
+      "Designed and implemented a chatbot for Counties Manukau as part of degree coursework.",
+      "Used Bot Framework Composer for compatibility with Microsoft Teams.",
+      "Focused on digital services, with minimal coding involved, completing the project successfully.",
     ],
 
     link: {
@@ -77,8 +88,8 @@ export const Projects = [
     summary: "12/2021 - 02/2022",
     subtitle: "Social Media Manager",
     details: [
-      "Oversaw and curated content for the company's Twitter and Instagram pages, focusing on exploring WEB3 technologies and the digital art landscape.",
-      "RamenNFT was a project my friend from university, and I wanted to do. We started to get on the NFT craze, but we didn't get far into completing it because we didn't particularly like NFTs, so the project lost momentum.",
+      "Managed content for the Twitter and Instagram, exploring WEB3 and digital art.",
+      "Achieved initial launch of RamenNFT project, initially enthusiastic but halted due to loss of interest in NFTs.",
     ],
   },
   {
@@ -87,7 +98,7 @@ export const Projects = [
     summary: "07/2022 - 11/2022",
     subtitle: "Backend Developer",
     details: [
-      "Spearheaded the development of backend solutions and executed comprehensive web scraping for top supermarkets, significantly enhancing data collection and analysis capabilities.",
+      "Enhanced data collection and analysis for the top supermarkets by leading backend development and web scraping.",
     ],
 
     link: {
@@ -101,8 +112,7 @@ export const Projects = [
     summary: "",
     subtitle: "My Personal Projects",
     details: [
-      "Currently maintaining a compact yet impactful collection of projects on GitHub. Actively planning to expand this repository with diverse and innovative future projects.",
-      " My current projects are: reactionBot, a discord bot made for personal use in Python, which I'm moving over to typescript. And this website: ",
+      "Managed a GitHub project collection, expanding to over 10+ diverse future projects.",
     ],
     link: {
       url: "https://github.com/wobkobi",
@@ -111,39 +121,41 @@ export const Projects = [
   },
 ];
 const skills = [
+  "AWS",
   "Adaptability",
   "Attentive Listening",
-  "C Programming",
+  "C",
   "Communication Skills",
   "CSS",
   "Customer Service",
+  "Excel",
   "Flexible Attitude",
   "Git",
   "Gmail",
   "HTML",
-  "Information Technology Services",
-  "Java Programming",
+  "IT Services",
+  "Java",
   "Linux",
-  "Microsoft Excel",
-  "Microsoft Office 365",
-  "Microsoft Windows Server",
-  "Microsoft Word",
+  "Windows Server",
   "Multitasking",
+  "sNext.JS",
+  "Node.JS",
+  "Office 365",
   "OneDrive",
-  "PHP Programming",
-  "Powershell Scripting",
+  "PHP",
   "Proactive Attitude",
   "Problem Solving",
-  "Python Programming",
+  "Python",
+  "React.JS",
   "Resilience",
   "SQL",
-  "Task management",
+  "Tailwind CSS",
+  "Task Management",
   "Team Work",
   "Troubleshooting",
-  "TypeScript Programming",
+  "TypeScript",
   "Virtualisation",
-  "React.JS",
-  "Next.JS",
+  "Word",
 ];
 // Sort the skills array alphabetically
 export const sortedSkills = skills.sort((a, b) => a.localeCompare(b));

@@ -16,7 +16,7 @@ export default function NotFound() {
         </h2>
         <p
           className={cn("mt-4 text-lg text-jet dark:text-platinum sm:text-xl")}>
-          It seems the page you were looking for doesn't exist.
+          {`It seems the page you were looking for doesn't exist.`}
         </p>
         <p
           className={cn("mt-4 text-lg text-jet dark:text-platinum sm:text-xl")}>
