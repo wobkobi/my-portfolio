@@ -9,7 +9,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@next/eslint-plugin-next": "^14.2.3",
+    "@next/eslint-plugin-next": "^14.2.4",
     "@types/nodemailer": "^6.4.15",
     "clsx": "^2.1.1",
     "eslint-config-next": "^14.2.4",
