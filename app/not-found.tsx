@@ -3,10 +3,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div
-      className={cn(
-        "flex min-h-screen items-center justify-center bg-white dark:bg-jet"
-      )}>
+    <div className={cn("flex min-h-screen items-center justify-center")}>
       <div className="p-4 text-center">
         <h2
           className={cn(
