@@ -18,13 +18,13 @@ export default function ThemeSwitch() {
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       className={cn(
-        "rounded-md p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50",
+        "focus-visible:ring-opacity-50 rounded-md p-2 focus:outline-hidden focus-visible:ring-2",
         "transition-colors duration-300 ease-in-out",
         "flex items-center justify-center",
         theme === "light"
-          ? "text-gray-900 hover:text-indigo_dye"
-          : "text-white hover:text-caribbean_current",
-        "dark:text-white dark:hover:text-caribbean_current"
+          ? "hover:text-indigo_dye text-gray-900"
+          : "hover:text-caribbean_current text-white",
+        "dark:hover:text-caribbean_current dark:text-white"
       )}
       aria-label="Toggle Dark Mode"
       title="Toggle Dark Mode"

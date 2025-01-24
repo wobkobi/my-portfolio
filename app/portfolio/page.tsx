@@ -62,14 +62,14 @@ export default function PortfolioPage() {
     title: string,
     itemID: string | null,
     handleToggle: (id: string) => void,
-    ref: React.RefObject<HTMLDivElement>
+    ref: React.RefObject<HTMLDivElement | null>
   ) => {
     return (
       <>
-        <section className={cn(" mb-8")}>
+        <section className={cn("mb-8")}>
           <h2
             className={cn(
-              "mb-4 mt-8 text-center text-2xl font-semibold text-indigo_dye dark:text-caribbean_current "
+              "text-indigo_dye dark:text-caribbean_current mt-8 mb-4 text-center text-2xl font-semibold"
             )}>
             {title}
           </h2>
@@ -91,7 +91,7 @@ export default function PortfolioPage() {
           {itemID && (
             <div
               ref={ref}
-              className="xl:max-w-2/3 mx-auto w-full p-4 sm:w-3/4 md:w-2/3 lg:w-3/5">
+              className="mx-auto w-full p-4 sm:w-3/4 md:w-2/3 lg:w-3/5 xl:max-w-2/3">
               {data
                 .filter((item) => item.id === itemID)
                 .map((item, index) => (
@@ -112,7 +112,7 @@ export default function PortfolioPage() {
   };
 
   return (
-    <div className={cn("flex flex-grow flex-col items-center justify-center")}>
+    <div className={cn("flex grow flex-col items-center justify-center")}>
       <main className={cn("p-4 pt-20 text-center sm:pt-28")}>
         <div
           className={cn(
@@ -120,11 +120,11 @@ export default function PortfolioPage() {
           )}>
           <h1
             className={cn(
-              "mb-6 text-3xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-4xl md:text-5xl "
+              "text-indigo_dye dark:text-caribbean_current mb-6 text-3xl font-bold sm:text-4xl md:text-5xl"
             )}>
             Portfolio
           </h1>
-          <section className={cn(" mb-8")}>
+          <section className={cn("mb-8")}>
             {renderSectionWithDetailBox(
               Education,
               "Education",
@@ -133,7 +133,7 @@ export default function PortfolioPage() {
               detailsRef
             )}
           </section>
-          <section className={cn(" mb-8")}>
+          <section className={cn("mb-8")}>
             {renderSectionWithDetailBox(
               WorkExperience,
               "Work Experience",
@@ -142,7 +142,7 @@ export default function PortfolioPage() {
               detailsRef
             )}
           </section>
-          <section className={cn(" mb-8 ")}>
+          <section className={cn("mb-8")}>
             {renderSectionWithDetailBox(
               Projects,
               "Projects",
@@ -151,10 +151,10 @@ export default function PortfolioPage() {
               detailsRef
             )}
           </section>
-          <section className={cn(" mb-8 ")}>
+          <section className={cn("mb-8")}>
             <h2
               className={cn(
-                "mb-6 text-2xl font-semibold text-indigo_dye dark:text-caribbean_current"
+                "text-indigo_dye dark:text-caribbean_current mb-6 text-2xl font-semibold"
               )}>
               Skills
             </h2>
@@ -166,7 +166,7 @@ export default function PortfolioPage() {
                 <span
                   key={skill}
                   className={cn(
-                    "mb-2 rounded bg-indigo_dye px-3 py-1 text-xs font-medium text-white dark:bg-caribbean_current-500 md:text-sm"
+                    "bg-indigo_dye dark:bg-caribbean_current-500 mb-2 rounded-sm px-3 py-1 text-xs font-medium text-white md:text-sm"
                   )}>
                   {skill}
                 </span>
@@ -176,7 +176,7 @@ export default function PortfolioPage() {
           <a
             href="/files/HarrisonRaynesResume.pdf"
             download="HarrisonRaynesResume.pdf"
-            className="inline-block rounded-md bg-indigo_dye px-4 py-2 text-sm font-medium text-white shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:bg-caribbean_current focus:outline-none focus:ring-2 focus:ring-indigo_dye focus:ring-opacity-50 dark:bg-caribbean_current dark:hover:bg-indigo_dye md:px-6 md:py-3 md:text-lg">
+            className="bg-indigo_dye hover:bg-caribbean_current focus:ring-indigo_dye focus:ring-opacity-50 dark:bg-caribbean_current dark:hover:bg-indigo_dye inline-block rounded-md px-4 py-2 text-sm font-medium text-white shadow-lg transition duration-300 ease-in-out hover:scale-105 focus:ring-2 focus:outline-hidden md:px-6 md:py-3 md:text-lg">
             Download CV
           </a>
         </div>

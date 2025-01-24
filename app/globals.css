@@ -1,7 +1,90 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import "tailwindcss";
+
+@layer utilities;
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-*: initial;
+  --font-sans: Roboto, ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --color-jet-100: #080909;
+  --color-jet-200: #101212;
+  --color-jet-300: #181a1c;
+  --color-jet-400: #212325;
+  --color-jet-500: #282b2d;
+  --color-jet-600: #51575b;
+  --color-jet-700: #788288;
+  --color-jet-800: #a5abaf;
+  --color-jet-900: #d2d5d7;
+  --color-jet: #282b2d;
+
+  --color-caribbean_current-100: #0c1617;
+  --color-caribbean_current-200: #182c2d;
+  --color-caribbean_current-300: #244344;
+  --color-caribbean_current-400: #30595b;
+  --color-caribbean_current-500: #3c6e71;
+  --color-caribbean_current-600: #539a9e;
+  --color-caribbean_current-700: #7bb6b9;
+  --color-caribbean_current-800: #a7ced1;
+  --color-caribbean_current-900: #d3e7e8;
+  --color-caribbean_current: #539a9e;
+
+  --color-white-100: #333333;
+  --color-white-200: #666666;
+  --color-white-300: #999999;
+  --color-white-400: #cccccc;
+  --color-white-500: #ffffff;
+  --color-white-600: #ffffff;
+  --color-white-700: #ffffff;
+  --color-white-800: #ffffff;
+  --color-white-900: #ffffff;
+  --color-white: #ffffff;
+
+  --color-platinum-100: #2b2b2b;
+  --color-platinum-200: #575757;
+  --color-platinum-300: #828282;
+  --color-platinum-400: #adadad;
+  --color-platinum-500: #d9d9d9;
+  --color-platinum-600: #e0e0e0;
+  --color-platinum-700: #e8e8e8;
+  --color-platinum-800: #f0f0f0;
+  --color-platinum-900: #f7f7f7;
+  --color-platinum: #d9d9d9;
+
+  --color-indigo_dye-100: #080f14;
+  --color-indigo_dye-200: #101e27;
+  --color-indigo_dye-300: #182d3b;
+  --color-indigo_dye-400: #203c4e;
+  --color-indigo_dye-500: #284b63;
+  --color-indigo_dye-600: #3e7397;
+  --color-indigo_dye-700: #6099be;
+  --color-indigo_dye-800: #95bbd4;
+  --color-indigo_dye-900: #cadde9;
+  --color-indigo_dye: #284b63;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 h1,
 h2,
