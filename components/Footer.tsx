@@ -5,12 +5,12 @@ export default function Footer() {
   return (
     <footer
       className={cn(
-        "flex justify-center  gap-2 bg-platinum-900 p-4 dark:bg-jet-400 sm:gap-4 md:gap-6 lg:gap-8"
+        "bg-platinum-900 dark:bg-jet-400 flex justify-center gap-2 p-4 sm:gap-4 md:gap-6 lg:gap-8"
       )}>
       <a
         href="https://harrisonraynes.com"
         className={cn(
-          "text-indigo_dye hover:text-caribbean_current dark:text-platinum dark:hover:text-caribbean_current "
+          "text-indigo_dye hover:text-caribbean_current dark:text-platinum dark:hover:text-caribbean_current"
         )}
         title="My Website"
         target="_blank"
@@ -20,7 +20,7 @@ export default function Footer() {
       <a
         href="https://github.com/wobkobi"
         className={cn(
-          "text-indigo_dye hover:text-caribbean_current dark:text-platinum dark:hover:text-caribbean_current "
+          "text-indigo_dye hover:text-caribbean_current dark:text-platinum dark:hover:text-caribbean_current"
         )}
         title="GitHub"
         target="_blank"
@@ -30,7 +30,7 @@ export default function Footer() {
       <a
         href="https://linkedin.com/in/harrisonraynes"
         className={cn(
-          "text-indigo_dye hover:text-caribbean_current dark:text-platinum dark:hover:text-caribbean_current "
+          "text-indigo_dye hover:text-caribbean_current dark:text-platinum dark:hover:text-caribbean_current"
         )}
         title="LinkedIn"
         target="_blank"

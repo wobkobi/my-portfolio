@@ -46,7 +46,7 @@ export default function RootLayout({
       <body className={cn("flex min-h-screen flex-col")}>
         <Providers>
           <NavBar />
-          <main className={cn("flex flex-grow items-center justify-center")}>
+          <main className={cn("flex grow items-center justify-center")}>
             {children}
           </main>
           <Footer />

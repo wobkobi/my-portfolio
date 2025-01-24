@@ -5,14 +5,14 @@ import { FiMail } from "react-icons/fi";
 export default function ContactPage() {
   const yourEmail = "harrisonraynes8@gmail.com";
   return (
-    <div className={cn("flex flex-grow flex-col items-center justify-center")}>
+    <div className={cn("flex grow flex-col items-center justify-center")}>
       <div
         className={cn(
-          "mt-20 rounded bg-platinum-900 p-4 shadow-md dark:bg-jet-400 sm:w-5/6 md:w-3/4 lg:w-2/3 xl:w-4/5 2xl:w-3/4"
+          "bg-platinum-900 dark:bg-jet-400 mt-20 rounded-sm p-4 shadow-md sm:w-5/6 md:w-3/4 lg:w-2/3 xl:w-4/5 2xl:w-3/4"
         )}>
         <h1
           className={cn(
-            "mb-6 text-center text-3xl font-bold text-indigo_dye dark:text-caribbean_current sm:text-4xl md:text-5xl"
+            "text-indigo_dye dark:text-caribbean_current mb-6 text-center text-3xl font-bold sm:text-4xl md:text-5xl"
           )}>
           Contact me
         </h1>
@@ -24,7 +24,7 @@ export default function ContactPage() {
             )}>
             <FiMail
               className={cn(
-                "inline text-2xl text-indigo_dye dark:text-caribbean_current md:text-3xl"
+                "text-indigo_dye dark:text-caribbean_current inline text-2xl md:text-3xl"
               )}
             />
             <a

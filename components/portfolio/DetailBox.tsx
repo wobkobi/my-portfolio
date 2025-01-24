@@ -13,7 +13,7 @@ export default function DetailBox({
   const renderDetails = () => {
     if (details.length === 1) {
       return (
-        <p className={cn("text-base text-jet dark:text-platinum sm:text-lg")}>
+        <p className={cn("text-jet dark:text-platinum text-base sm:text-lg")}>
           {details[0]}
         </p>
       );
@@ -35,11 +35,11 @@ export default function DetailBox({
   return (
     <div
       className={cn(
-        "xl:max-w-2/3 m-2 mx-auto max-w-full rounded bg-platinum-900 p-4 shadow-lg dark:bg-jet-400 sm:max-w-md md:max-w-lg"
+        "bg-platinum-900 dark:bg-jet-400 m-2 mx-auto max-w-full rounded-sm p-4 shadow-lg sm:max-w-md md:max-w-lg xl:max-w-2/3"
       )}>
       <h3
         className={cn(
-          "mb-2 text-center text-sm font-semibold text-indigo_dye dark:text-caribbean_current sm:text-base md:text-lg"
+          "text-indigo_dye dark:text-caribbean_current mb-2 text-center text-sm font-semibold sm:text-base md:text-lg"
         )}>
         {subtitle}
       </h3>
@@ -48,7 +48,7 @@ export default function DetailBox({
         <a
           href={link.url}
           className={cn(
-            "mt-4 block text-center text-sm text-indigo_dye hover:underline dark:text-caribbean_current sm:text-base md:text-lg"
+            "text-indigo_dye dark:text-caribbean_current mt-4 block text-center text-sm hover:underline sm:text-base md:text-lg"
           )}>
           {link.text}
         </a>

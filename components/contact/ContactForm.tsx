@@ -43,7 +43,7 @@ export default function ContactForm() {
         <input
           type="text"
           className={cn(
-            "w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum",
+            "text-jet dark:bg-jet dark:text-platinum w-full rounded-sm border bg-white p-3 dark:border-transparent",
             errors.name && "border-red-500"
           )}
           placeholder="Full Name or Company Name"
@@ -53,7 +53,7 @@ export default function ContactForm() {
         <input
           type="email"
           className={cn(
-            "w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum",
+            "text-jet dark:bg-jet dark:text-platinum w-full rounded-sm border bg-white p-3 dark:border-transparent",
             errors.email && "border-red-500"
           )}
           placeholder="Email"
@@ -63,7 +63,7 @@ export default function ContactForm() {
         <input
           type="text"
           className={cn(
-            "w-full rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum",
+            "text-jet dark:bg-jet dark:text-platinum w-full rounded-sm border bg-white p-3 dark:border-transparent",
             errors.subject && "border-red-500"
           )}
           placeholder="Subject"
@@ -74,7 +74,7 @@ export default function ContactForm() {
         )}
         <textarea
           className={cn(
-            "w-full resize-none rounded border bg-white p-3 text-jet dark:border-transparent dark:bg-jet dark:text-platinum",
+            "text-jet dark:bg-jet dark:text-platinum w-full resize-none rounded-sm border bg-white p-3 dark:border-transparent",
             errors.message && "border-red-500"
           )}
           placeholder="Message"
@@ -87,8 +87,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`mt-2 w-full rounded bg-indigo_dye px-4 py-2 text-white hover:bg-caribbean_current
-        dark:bg-caribbean_current dark:hover:bg-indigo_dye ${isSubmitting ? "cursor-not-allowed opacity-50" : ""}`}>
+          className={`bg-indigo_dye hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye mt-2 w-full rounded px-4 py-2 text-white ${isSubmitting ? "cursor-not-allowed opacity-50" : ""}`}>
           {isSubmitting ? "Sending..." : "Submit"}
         </button>
       </form>

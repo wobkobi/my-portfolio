@@ -14,20 +14,20 @@ export default function EmailModal({
   return (
     <div
       className={cn(
-        "fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 "
+        "bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black"
       )}>
       <div
         className={cn(
-          "mx-auto max-w-md rounded-lg bg-white p-5 shadow dark:bg-jet"
+          "dark:bg-jet mx-auto max-w-md rounded-lg bg-white p-5 shadow-sm"
         )}>
-        <p className={cn("mb-6 text-center text-jet dark:text-platinum")}>
+        <p className={cn("text-jet dark:text-platinum mb-6 text-center")}>
           {message}
         </p>
         <div className="flex justify-center">
           <button
             onClick={onClose}
             className={cn(
-              "rounded bg-indigo_dye px-4 py-2 font-medium text-white transition duration-300 ease-in-out hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye"
+              "bg-indigo_dye hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye rounded-sm px-4 py-2 font-medium text-white transition duration-300 ease-in-out"
             )}>
             Close
           </button>
