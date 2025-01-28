@@ -1,12 +1,12 @@
-import { DetailBoxProps } from "@/types/BoxTypes";
+import { DetailBoxProps } from "@/types/Types";
 import cn from "@/utils/cn";
 
 export default function DetailBox({
-  id,
   subtitle,
   details,
   isVisible,
   link,
+  ...props // Spread remaining props, including id
 }: DetailBoxProps) {
   if (!isVisible) return null;
 
@@ -22,7 +22,7 @@ export default function DetailBox({
         <ul className={cn("list-disc pl-5 text-left text-base sm:text-lg")}>
           {details.map((detail, index) => (
             <li
-              key={`${id}-detail-${index}`}
+              key={`${props.id}-detail-${index}`} // Use id here if necessary
               className={cn("text-jet dark:text-platinum")}>
               {detail}
             </li>

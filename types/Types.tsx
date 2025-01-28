@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { ReactNode } from "react";
 
 export type DataBox = {
@@ -28,4 +29,13 @@ export type ExpandableBoxProps = {
 
 export type ProvidersProps = {
   children: ReactNode;
+};
+
+export type Project = {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  links: string | string[]; // Links can be a string or an array of strings
+  skills: string[];
 };

@@ -103,7 +103,7 @@ export const Projects = [
 
     link: {
       url: "https://github.com/TheIFridge",
-      text: "iFridge GitHub",
+      text: "GitHub Repo",
     },
   },
   {
@@ -116,11 +116,11 @@ export const Projects = [
     ],
     link: {
       url: "https://github.com/wobkobi",
-      text: "My GitHub",
+      text: "GitHub Repo",
     },
   },
 ];
-const skills = [
+export const skills = [
   "AWS",
   "Adaptability",
   "Attentive Listening",
@@ -157,5 +157,3 @@ const skills = [
   "Virtualisation",
   "Word",
 ];
-// Sort the skills array alphabetically
-export const sortedSkills = skills.sort((a, b) => a.localeCompare(b));

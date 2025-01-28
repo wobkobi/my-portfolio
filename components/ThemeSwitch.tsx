@@ -20,7 +20,7 @@ export default function ThemeSwitch() {
       className={cn(
         "focus-visible:ring-opacity-50 rounded-md p-2 focus:outline-hidden focus-visible:ring-2",
         "transition-colors duration-300 ease-in-out",
-        "flex items-center justify-center",
+        "flex cursor-pointer items-center justify-center", // Added cursor-pointer
         theme === "light"
           ? "hover:text-indigo_dye text-gray-900"
           : "hover:text-caribbean_current text-white",
