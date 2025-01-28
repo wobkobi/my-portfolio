@@ -2,6 +2,7 @@ import Providers from "@/app/providers";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import cn from "@/utils/cn";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Roboto } from "next/font/google";
 import React from "react";
@@ -49,10 +50,11 @@ export default function RootLayout({
           <NavBar />
           <main className={cn("flex grow items-center justify-center")}>
             {children}
-            <SpeedInsights />
           </main>
           <Footer />
         </Providers>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
