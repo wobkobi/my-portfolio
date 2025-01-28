@@ -36,7 +36,7 @@ const ProjectsPage = () => {
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="flex flex-col items-center rounded-lg bg-gray-100 p-4 shadow dark:bg-gray-800">
+                className="dark:bg-jet-400 flex flex-col items-center rounded-lg bg-gray-100 p-4 shadow">
                 {/* Conditionally render the image element */}
                 {project.image && (
                   <div
