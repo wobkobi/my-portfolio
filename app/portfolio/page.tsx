@@ -5,10 +5,11 @@ import {
   Education,
   Projects,
   WorkExperience,
-  sortedSkills,
+  skills,
 } from "@/data/PortfolioData";
-import { DataBox } from "@/types/BoxTypes";
+import { DataBox } from "@/types/Types";
 import cn from "@/utils/cn";
+import { getSortedUniqueSkills } from "@/utils/sortSkills";
 import React, { useEffect, useRef, useState } from "react";
 
 export default function PortfolioPage() {
@@ -19,6 +20,8 @@ export default function PortfolioPage() {
   );
   const [hasScrolled, setHasScrolled] = useState(false);
   const detailsRef = useRef<HTMLDivElement>(null);
+
+  const sortedSkills = getSortedUniqueSkills(skills);
 
   const toggleEducation = (id: string) => {
     setExpandedEduId(expandedEduId === id ? null : id);
@@ -61,6 +64,7 @@ export default function PortfolioPage() {
     data: DataBox[],
     title: string,
     itemID: string | null,
+    // eslint-disable-next-line no-unused-vars
     handleToggle: (id: string) => void,
     ref: React.RefObject<HTMLDivElement | null>
   ) => {
@@ -99,7 +103,7 @@ export default function PortfolioPage() {
                     key={`${item.id}-${index}`}
                     id={item.id}
                     details={item.details}
-                    isVisible={true}
+                    isVisible={itemID === item.id} // Explicitly set `isVisible`
                     subtitle={item.subtitle || ""}
                     link={item.link}
                   />

@@ -30,7 +30,7 @@ export default function NavBar() {
 
   const linkClass = cn(
     "hover:text-indigo_dye dark:text-platinum dark:hover:text-caribbean_current",
-    "text-xl sm:text-lg md:text-xl lg:text-2xl"
+    "text-xl sm:text-lg md:text-xl lg:text-2xl font-semibold"
   );
 
   return (
@@ -48,6 +48,9 @@ export default function NavBar() {
         </Link>
         <Link href="/portfolio" className={linkClass}>
           Portfolio
+        </Link>
+        <Link href="/projects" className={linkClass}>
+          Projects
         </Link>
         <Link href="/about" className={linkClass}>
           About
