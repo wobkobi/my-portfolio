@@ -25,32 +25,20 @@ const eslintConfig = [
     "prettier"
   ),
   {
-    plugins: {
-      "@typescript-eslint": typescriptEslint,
-      prettier,
-    },
+    plugins: { "@typescript-eslint": typescriptEslint, prettier },
 
-    languageOptions: {
-      parser: tsParser,
-    },
+    languageOptions: { parser: tsParser },
 
     settings: {
       "import/resolver": {
-        node: {
-          extensions: [".js", ".jsx", ".ts", ".tsx"],
-        },
+        node: { extensions: [".js", ".jsx", ".ts", ".tsx"] },
       },
     },
 
     rules: {
       "@typescript-eslint/no-unused-vars": "error",
 
-      "prettier/prettier": [
-        "error",
-        {
-          endOfLine: "auto",
-        },
-      ],
+      "prettier/prettier": ["error", { endOfLine: "auto" }],
 
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     },
