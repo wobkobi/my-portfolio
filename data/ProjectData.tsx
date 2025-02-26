@@ -24,12 +24,19 @@ export const projects: Project[] = [
   },
   {
     id: "3",
-    name: "YouTube Downloader",
+    name: "Sorting Algorithms Benchmark",
     description:
-      "I didn't like any of the online YouTube downloaders, so I made my own. It's a simple Python script that downloads YouTube videos and playlists. It's a command-line tool that uses the yt-dlp library. But with recent changes to the YouTube API, it's not working as expected. I plan to update it soon.",
-    image: "/files/youtube-downloader.jpg",
-    links: "https://github.com/wobkobi/youtube-downloader",
-    skills: ["python", "yt-dlp", "command-line"],
+      "A comprehensive Python-based benchmarking tool designed to evaluate the performance of various sorting algorithms across multiple array sizes. It executes iterations concurrently, generates CSV reports, and produces detailed markdown summaries along with an updated README. The project supports a wide variety of sorting algorithms, making it ideal for performance comparisons and algorithm analysis.",
+    image: "/files/sorting-algorithms.jpg",
+    links: "https://github.com/wobkobi/Sorting-Algorithms",
+    skills: [
+      "python",
+      "multiprocessing",
+      "benchmarking",
+      "csv",
+      "markdown",
+      "algorithms",
+    ],
   },
   {
     id: "4",
@@ -42,6 +49,15 @@ export const projects: Project[] = [
   },
   {
     id: "5",
+    name: "YouTube Downloader",
+    description:
+      "I didn't like any of the online YouTube downloaders, so I made my own. It's a simple Python script that downloads YouTube videos and playlists. It's a command-line tool that uses the yt-dlp library. But with recent changes to the YouTube API, it's not working as expected. I plan to update it soon.",
+    image: "/files/youtube-downloader.jpg",
+    links: "https://github.com/wobkobi/youtube-downloader",
+    skills: ["python", "yt-dlp", "command-line"],
+  },
+  {
+    id: "6",
     name: "Reaction Bot",
     description:
       'This is a Python-based Discord bot that allows users to set up specific words for the bot to react to. It also includes functionality where certain words will trigger the bot to "scream" at the user. Additionally, it features a leaderboard that tracks and displays which user has said a particular word the most.',
