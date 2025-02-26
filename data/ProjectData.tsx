@@ -27,7 +27,7 @@ export const projects: Project[] = [
     name: "Sorting Algorithms Benchmark",
     description:
       "A comprehensive Python-based benchmarking tool designed to evaluate the performance of various sorting algorithms across multiple array sizes. It executes iterations concurrently, generates CSV reports, and produces detailed markdown summaries along with an updated README. The project supports a wide variety of sorting algorithms, making it ideal for performance comparisons and algorithm analysis.",
-    image: "",
+    image: "/files/sorting-algorithms.jpg",
     links: "https://github.com/wobkobi/Sorting-Algorithms",
     skills: [
       "python",
