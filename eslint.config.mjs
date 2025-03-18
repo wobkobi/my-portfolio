@@ -15,19 +15,31 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  {
+    ignores: [
+      "**/node_modules/**",
+      "**/.next/**",
+      "**/dist/**",
+      "**/coverage/**",
+      "**/.turbo/**",
+    ],
+  },
   ...compat.extends(
-    "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@next/next/recommended",
     "next/core-web-vitals",
-    "eslint:recommended",
-    "next",
     "prettier"
   ),
   {
     plugins: { "@typescript-eslint": typescriptEslint, prettier },
 
-    languageOptions: { parser: tsParser },
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        sourceType: "module",
+        ecmaVersion: "latest",
+      },
+    },
 
     settings: {
       "import/resolver": {
@@ -37,12 +49,10 @@ const eslintConfig = [
 
     rules: {
       "@typescript-eslint/no-unused-vars": "error",
-
       "prettier/prettier": ["error", { endOfLine: "auto" }],
-
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     },
   },
 ];
 
-export default eslintConfig;
+export default eslintConfig; // Now assigned before export
