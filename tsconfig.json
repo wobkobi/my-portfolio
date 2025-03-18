@@ -25,10 +25,14 @@
   },
   "include": [
     "next-env.d.ts",
+    "src",
+    "pages",
+    "components",
+    "app",
+    "server",
+    "utils",
     "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "app/_app.js"
+    "**/*.tsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".next", "dist", "coverage", ".turbo"]
 }

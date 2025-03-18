@@ -31,6 +31,7 @@ export default function ContactForm() {
         setModalMessage("Failed to send the message. Please try again.");
       }
     } catch (error) {
+      console.error("Email sending error:", error);
       setModalMessage("An error occurred. Please try again.");
     }
     setModalOpen(true);
