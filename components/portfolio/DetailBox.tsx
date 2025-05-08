@@ -1,16 +1,17 @@
 import { DetailBoxProps } from "@/types/Types";
 import cn from "@/utils/cn";
+import { JSX } from "react";
 
-export default function DetailBox({
+function DetailBox({
   subtitle,
   details,
   isVisible,
   link,
   ...props // Spread remaining props, including id
-}: DetailBoxProps) {
+}: DetailBoxProps): JSX.Element | null {
   if (!isVisible) return null;
 
-  const renderDetails = () => {
+  const renderDetails = (): JSX.Element => {
     if (details.length === 1) {
       return (
         <p className={cn("text-jet dark:text-platinum text-base sm:text-lg")}>
@@ -56,3 +57,5 @@ export default function DetailBox({
     </div>
   );
 }
+
+export default DetailBox;

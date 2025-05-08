@@ -1,7 +1,8 @@
 import cn from "@/utils/cn";
+import { JSX } from "react";
 import { FiGithub, FiGlobe, FiLinkedin } from "react-icons/fi";
 
-export default function Footer() {
+function Footer(): JSX.Element {
   return (
     <footer
       className={cn(
@@ -40,3 +41,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

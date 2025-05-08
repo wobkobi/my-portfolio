@@ -1,7 +1,8 @@
 import cn from "@/utils/cn";
 import Link from "next/link";
+import { JSX } from "react";
 
-export default function NotFound() {
+function notFound(): JSX.Element {
   return (
     <div
       className={cn(
@@ -34,3 +35,5 @@ export default function NotFound() {
     </div>
   );
 }
+
+export default notFound;

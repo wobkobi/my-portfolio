@@ -1,10 +1,13 @@
 import { ProvidersProps } from "@/types/Types";
 import { ThemeProvider } from "next-themes";
+import { JSX } from "react";
 
-export default function Providers({ children }: ProvidersProps) {
+function Providers({ children }: ProvidersProps): JSX.Element {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       {children}
     </ThemeProvider>
   );
 }
+
+export default Providers;

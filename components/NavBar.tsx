@@ -2,30 +2,41 @@
 import ThemeSwitch from "@/components/ThemeSwitch";
 import cn from "@/utils/cn";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 
-export default function NavBar() {
+function NavBar(): JSX.Element {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
 
-    const updateVisibility = () => {
+    const updateVisibility = (): void => {
       setIsVisible(window.scrollY <= lastScrollY || window.scrollY <= 0);
       lastScrollY = window.scrollY;
       ticking = false;
     };
 
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       if (!ticking) {
         window.requestAnimationFrame(updateVisibility);
         ticking = true;
       }
     };
 
+    // reveal when pointer is very close to top (20px)
+    const REVEAL_ZONE = 50;
+    const handleMouseMove = (e: MouseEvent): void => {
+      if (e.clientY < REVEAL_ZONE) setIsVisible(true);
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   const linkClass = cn(
@@ -72,3 +83,5 @@ export default function NavBar() {
     </nav>
   );
 }
+
+export default NavBar;

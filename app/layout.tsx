@@ -5,7 +5,7 @@ import cn from "@/utils/cn";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Roboto } from "next/font/google";
-import React from "react";
+import React, { JSX } from "react";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -24,7 +24,6 @@ export const metadata = {
     "Harrison",
     "Raynes",
     "Software Developer",
-
     "Portfolio",
     "Technology",
     "Programming",
@@ -39,7 +38,7 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}) {
+}): JSX.Element {
   return (
     <html
       lang="en"

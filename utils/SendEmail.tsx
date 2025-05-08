@@ -1,13 +1,17 @@
-import { FormData } from "@/components/contact/ContactForm";
+import { FormData } from "@/types/Types";
 
-export default function SendEmail(data: FormData) {
+async function sendEmail(
+  data: FormData
+): Promise<{ message: string } | { err: string }> {
   const apiEndpoint = "/api/email";
 
   return fetch(apiEndpoint, {
     method: "POST",
+
     headers: {
       "Content-Type": "application/json",
     },
+
     body: JSON.stringify(data),
   })
     .then((res) => {
@@ -15,13 +19,19 @@ export default function SendEmail(data: FormData) {
         return res.json().then((errorData) => {
           const errorMessage =
             errorData.error || "An error occurred while sending the email";
+
           throw new Error(errorMessage);
         });
       }
+
       return res.json();
     })
-    .catch((error) => {
-      console.error("Error sending email:", error.message);
-      throw error;
+
+    .catch((err) => {
+      console.error("Error sending email:", err.message);
+
+      throw err;
     });
 }
+
+export default sendEmail;

@@ -1,7 +1,13 @@
-import { Background, Goals, Interests, Introduction } from "@/data/AboutMeData";
+import { AboutPageProps } from "@/types/Types";
 import cn from "@/utils/cn";
+import { JSX } from "react";
 
-const AboutPage = () => {
+const AboutPage: React.FC<AboutPageProps> = ({
+  Introduction,
+  Background,
+  Interests,
+  Goals,
+}): JSX.Element => {
   return (
     <div
       className={cn(

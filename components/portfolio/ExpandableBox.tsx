@@ -1,12 +1,14 @@
+"use client";
+
 import { ExpandableBoxProps } from "@/types/Types";
 import cn from "@/utils/cn";
-import React, { forwardRef, Ref } from "react";
+import React, { forwardRef, JSX, Ref } from "react";
 
 function ExpandableBoxFunction(
   { id, title, summary, isExpanded, onToggle }: ExpandableBoxProps,
   ref: Ref<HTMLDivElement>
-) {
-  const handleTouchEnd = (event: React.TouchEvent) => {
+): JSX.Element {
+  const handleTouchEnd = (event: React.TouchEvent): void => {
     event.preventDefault();
     onToggle(id);
   };
@@ -21,7 +23,7 @@ function ExpandableBoxFunction(
           : "bg-platinum-900 hover:bg-platinum-700 dark:bg-jet-400 dark:hover:bg-jet-300 hover:text-white",
         "dark:hover:text-white"
       )}
-      onClick={() => onToggle(id)}
+      onClick={(): void => onToggle(id)}
       onTouchEnd={handleTouchEnd}
       role="button"
       tabIndex={0}
@@ -43,8 +45,10 @@ function ExpandableBoxFunction(
     </div>
   );
 }
+
 const ExpandableBox = forwardRef<HTMLDivElement, ExpandableBoxProps>(
   ExpandableBoxFunction
 );
+ExpandableBox.displayName = "ExpandableBox";
 
 export default ExpandableBox;

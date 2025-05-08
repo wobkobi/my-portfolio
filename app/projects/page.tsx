@@ -4,14 +4,14 @@ import { projects } from "@/data/ProjectData";
 import cn from "@/utils/cn";
 import { getSortedUniqueSkills } from "@/utils/sortSkills";
 import Image from "next/image";
-import { useState } from "react";
+import { JSX, useState } from "react";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 
-const ProjectsPage = () => {
+const ProjectsPage = (): JSX.Element => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const handleImageClick = (image: string) => {
+  const handleImageClick = (image: string): void => {
     if (selectedImage === image) {
       setIsPopupOpen(false);
       setSelectedImage(null);
@@ -21,7 +21,7 @@ const ProjectsPage = () => {
     }
   };
 
-  const closePopup = () => {
+  const closePopup = (): void => {
     setIsPopupOpen(false);
     setSelectedImage(null);
   };
@@ -65,9 +65,8 @@ const ProjectsPage = () => {
                     <Image
                       src={project.image}
                       alt={project.name}
-                      layout="fill"
-                      objectFit="contain"
-                      className={cn("bg-transparent")}
+                      fill
+                      className={cn("bg-transparent, object-contain")}
                     />
                   </div>
                 )}
@@ -152,9 +151,8 @@ const ProjectsPage = () => {
             <Image
               src={selectedImage}
               alt="Project Fullscreen"
-              layout="fill"
-              objectFit="contain"
-              className={cn("cursor-pointer bg-transparent")}
+              fill
+              className={cn("bg-transparent, cursor-pointer object-contain")}
             />
           </div>
         </div>

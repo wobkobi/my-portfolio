@@ -10,9 +10,9 @@ import {
 import { DataBox } from "@/types/Types";
 import cn from "@/utils/cn";
 import { getSortedUniqueSkills } from "@/utils/sortSkills";
-import React, { useEffect, useRef, useState } from "react";
+import React, { JSX, useEffect, useRef, useState } from "react";
 
-export default function PortfolioPage() {
+function PortfolioPage(): JSX.Element {
   const [expandedEduId, setExpandedEduId] = useState<string | null>(null);
   const [expandedWorkId, setExpandedWorkId] = useState<string | null>(null);
   const [expandedProjectsId, setExpandedProjectsId] = useState<string | null>(
@@ -23,15 +23,15 @@ export default function PortfolioPage() {
 
   const sortedSkills = getSortedUniqueSkills(skills);
 
-  const toggleEducation = (id: string) => {
+  const toggleEducation = (id: string): void => {
     setExpandedEduId(expandedEduId === id ? null : id);
   };
 
-  const toggleWorkExperience = (id: string) => {
+  const toggleWorkExperience = (id: string): void => {
     setExpandedWorkId(expandedWorkId === id ? null : id);
   };
 
-  const toggleProjects = (id: string) => {
+  const toggleProjects = (id: string): void => {
     setExpandedProjectsId(expandedProjectsId === id ? null : id);
   };
 
@@ -67,7 +67,7 @@ export default function PortfolioPage() {
     // eslint-disable-next-line no-unused-vars
     handleToggle: (id: string) => void,
     ref: React.RefObject<HTMLDivElement | null>
-  ) => {
+  ): JSX.Element => {
     return (
       <>
         <section className={cn("mb-8")}>
@@ -188,3 +188,5 @@ export default function PortfolioPage() {
     </div>
   );
 }
+
+export default PortfolioPage;

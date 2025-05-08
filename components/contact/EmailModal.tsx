@@ -1,20 +1,26 @@
+"use client";
+
 import cn from "@/utils/cn";
+import { JSX } from "react";
+
+interface EmailModalProps {
+  isOpen: boolean;
+  message: string;
+  onClose: () => void;
+}
 
 export default function EmailModal({
   isOpen,
   message,
   onClose,
-}: {
-  isOpen: boolean;
-  message: string;
-  onClose: () => void;
-}) {
+}: EmailModalProps): JSX.Element | null {
   if (!isOpen) return null;
 
   return (
     <div
       className={cn(
-        "bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black"
+        // lighter overlay, add optional blur
+        "fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm"
       )}>
       <div
         className={cn(

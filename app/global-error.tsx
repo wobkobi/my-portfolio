@@ -1,18 +1,13 @@
 "use client";
+import { GlobalErrorProps } from "@/types/Types";
 import cn from "@/utils/cn";
-import { useEffect } from "react";
+import { JSX, useEffect } from "react";
 
-export default function GlobalError({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
+function GlobalError({ error: err, reset }: GlobalErrorProps): JSX.Element {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
+    console.error(err);
+  }, [err]);
 
   return (
     <div className={cn("flex h-screen items-center justify-center p-4")}>
@@ -37,3 +32,5 @@ export default function GlobalError({
     </div>
   );
 }
+
+export default GlobalError;

@@ -1,14 +1,15 @@
 "use client";
+
 import cn from "@/utils/cn";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 
-export default function ThemeSwitch() {
+function ThemeSwitch(): JSX.Element | null {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
-  useEffect(() => {
+  useEffect((): void => {
     setMounted(true);
   }, []);
 
@@ -16,11 +17,11 @@ export default function ThemeSwitch() {
 
   return (
     <button
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={(): void => setTheme(theme === "light" ? "dark" : "light")}
       className={cn(
         "focus-visible:ring-opacity-50 rounded-md p-2 focus:outline-hidden focus-visible:ring-2",
         "transition-colors duration-300 ease-in-out",
-        "flex cursor-pointer items-center justify-center", // Added cursor-pointer
+        "flex cursor-pointer items-center justify-center",
         theme === "light"
           ? "hover:text-indigo_dye text-gray-900"
           : "hover:text-caribbean_current text-white",
@@ -38,3 +39,5 @@ export default function ThemeSwitch() {
     </button>
   );
 }
+
+export default ThemeSwitch;

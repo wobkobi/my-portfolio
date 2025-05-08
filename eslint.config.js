@@ -27,7 +27,7 @@ export default [
       "dist/**",
       "coverage/**",
       "build/**",
-      "next.config.mjs",
+      "next.config.js",
       "postcss.config.js",
       "eslint.config.js",
     ],
@@ -76,7 +76,7 @@ export default [
       "@typescript-eslint/no-unused-vars": "error",
 
       // Prettier formatting
-      "prettier/prettier": ["error", { endOfLine: "auto" }],
+      "prettier/prettier": ["error", { endOfLine: "crlf" }],
 
       // Consistent type definitions
       "@typescript-eslint/consistent-type-definitions": "error",
@@ -88,7 +88,7 @@ export default [
       ],
 
       // Linebreak style matches OS
-      "linebreak-style": ["error", "unix"],
+      "linebreak-style": ["error", "windows"],
     },
   },
 ];

@@ -1,9 +1,10 @@
 import ContactForm from "@/components/contact/ContactForm";
 import cn from "@/utils/cn";
+import { JSX } from "react";
 import { FiMail } from "react-icons/fi";
 
-export default function ContactPage() {
-  const yourEmail = "harrisonraynes8@gmail.com";
+function ContactPage(): JSX.Element {
+  const myEmail = "harrisonraynes8@gmail.com";
   return (
     <div className={cn("flex grow flex-col items-center justify-center")}>
       <div
@@ -28,11 +29,11 @@ export default function ContactPage() {
               )}
             />
             <a
-              href={`mailto:${yourEmail}`}
+              href={`mailto:${myEmail}`}
               className={cn(
                 "text-indigo_dye hover:text-caribbean_current dark:text-caribbean_current dark:hover:text-indigo_dye"
               )}>
-              {yourEmail}
+              {myEmail}
             </a>
           </div>
         </div>
@@ -42,3 +43,5 @@ export default function ContactPage() {
     </div>
   );
 }
+
+export default ContactPage;

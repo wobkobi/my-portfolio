@@ -1,18 +1,12 @@
 "use client";
-import EmailModal from "@/components/contact/EmailModal";
-import SendEmail from "@/utils/SendEmail";
+import { FormData } from "@/types/Types";
+import sendEmail from "@/utils/SendEmail";
 import cn from "@/utils/cn";
-import { useState } from "react";
+import { JSX, useState } from "react";
 import { useForm } from "react-hook-form";
+import EmailModal from "./EmailModal";
 
-export type FormData = {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-};
-
-export default function ContactForm() {
+function ContactForm(): JSX.Element {
   const {
     register,
     handleSubmit,
@@ -22,16 +16,17 @@ export default function ContactForm() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
 
-  async function onSubmit(data: FormData) {
+  async function onSubmit(data: FormData): Promise<void> {
     try {
-      const response = await SendEmail(data);
-      if (response.message === "Email sent") {
+      const response = await sendEmail(data);
+      if ("message" in response) {
+        // any message means success
         setModalMessage("Email sent!");
       } else {
-        setModalMessage("Failed to send the message. Please try again.");
+        setModalMessage(response.err);
       }
-    } catch (error) {
-      console.error("Email sending error:", error);
+    } catch (err) {
+      console.error("Email sending error:", err);
       setModalMessage("An error occurred. Please try again.");
     }
     setModalOpen(true);
@@ -100,3 +95,5 @@ export default function ContactForm() {
     </>
   );
 }
+
+export default ContactForm;

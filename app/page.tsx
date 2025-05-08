@@ -1,17 +1,20 @@
 import cn from "@/utils/cn";
 import Link from "next/link";
-export default function HomePage() {
+import { JSX } from "react";
+
+function HomePage(): JSX.Element {
   return (
     <div className={cn("flex grow flex-col items-center justify-center")}>
       <h1
         className={cn(
-          "text-indigo_dye dark:text-caribbean_current mb-4 text-center text-3xl font-bold md:text-4xl lg:text-5xl xl:text-6xl"
+          "text-indigo_dye dark:text-caribbean_current mb-8 text-center text-3xl font-bold md:text-4xl lg:text-5xl xl:text-6xl"
         )}>
         Harrison Raynes
       </h1>
       <div
         className={cn(
-          "flex flex-col items-center justify-center gap-4 sm:flex-row"
+          "flex flex-col items-center justify-center gap-4 sm:flex-row",
+          "mt-8"
         )}>
         <Link
           href="/portfolio"
@@ -36,3 +39,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default HomePage;
