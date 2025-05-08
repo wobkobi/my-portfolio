@@ -1,3 +1,11 @@
+/**
+ * @file ProjectsPage.tsx
+ * @description
+ * Displays a grid of project cards with images, descriptions, skills and links.
+ * Supports clicking an image to view a fullscreen popup. Uses the `cn` helper for
+ * Tailwind CSS class composition and React state for popup control.
+ */
+
 "use client";
 
 import { projects } from "@/data/ProjectData";
@@ -7,10 +15,25 @@ import Image from "next/image";
 import { JSX, useState } from "react";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 
+/**
+ * ProjectsPage component.
+ *
+ * Renders all projects in a responsive grid. Each project shows an image,
+ * title, description, skills list, and links to source and live preview. Clicking
+ * the image toggles a fullscreen popup view.
+ *
+ * @returns {JSX.Element} The projects page layout.
+ */
 const ProjectsPage = (): JSX.Element => {
+  // Popup open state and selected image URL
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+  /**
+   * Handle click on a project image: open or close the fullscreen popup.
+   *
+   * @param {string} image - The image URL to display in the popup.
+   */
   const handleImageClick = (image: string): void => {
     if (selectedImage === image) {
       setIsPopupOpen(false);
@@ -21,16 +44,20 @@ const ProjectsPage = (): JSX.Element => {
     }
   };
 
+  /**
+   * Close the image popup and clear selection.
+   */
   const closePopup = (): void => {
     setIsPopupOpen(false);
     setSelectedImage(null);
   };
 
+  /**
+   * CSS classes for action buttons (GitHub, Live Preview).
+   */
   const buttonClass = cn(
     "flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition",
-    // light / dark backgrounds
     "dark:bg-indigo_dye bg-caribbean_current text-white",
-    // hover: in light mode use dark-mode bg, in dark mode use light-mode bg
     "dark:hover:bg-caribbean_current hover:bg-indigo_dye"
   );
 
@@ -48,6 +75,7 @@ const ProjectsPage = (): JSX.Element => {
             )}>
             My Projects
           </h1>
+
           <div className={cn("grid gap-6 sm:grid-cols-2 lg:grid-cols-3")}>
             {projects.map((project) => (
               <div
@@ -66,10 +94,11 @@ const ProjectsPage = (): JSX.Element => {
                       src={project.image}
                       alt={project.name}
                       fill
-                      className={cn("bg-transparent, object-contain")}
+                      className={cn("bg-transparent object-contain")}
                     />
                   </div>
                 )}
+
                 <h2
                   className={cn(
                     "text-indigo_dye dark:text-caribbean_current mb-2",
@@ -80,6 +109,7 @@ const ProjectsPage = (): JSX.Element => {
                 <p className={cn("mb-4 text-gray-700 dark:text-gray-300")}>
                   {project.description}
                 </p>
+
                 <div className={cn("mt-auto mb-4")}>
                   <h3
                     className={cn(
@@ -116,7 +146,7 @@ const ProjectsPage = (): JSX.Element => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={buttonClass}>
-                    <FiGithub className={cn("h-4 w-4")} />
+                    <FiGithub className={cn("h-4 w-4")} aria-hidden="true" />
                     <span>GitHub Repo</span>
                   </a>
                   {Array.isArray(project.links) && (
@@ -125,7 +155,10 @@ const ProjectsPage = (): JSX.Element => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={buttonClass}>
-                      <FiExternalLink className={cn("h-4 w-4")} />
+                      <FiExternalLink
+                        className={cn("h-4 w-4")}
+                        aria-hidden="true"
+                      />
                       <span>Live Preview</span>
                     </a>
                   )}
@@ -152,7 +185,7 @@ const ProjectsPage = (): JSX.Element => {
               src={selectedImage}
               alt="Project Fullscreen"
               fill
-              className={cn("bg-transparent, cursor-pointer object-contain")}
+              className={cn("cursor-pointer bg-transparent object-contain")}
             />
           </div>
         </div>
