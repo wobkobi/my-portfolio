@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer
       className={cn(
-        "bg-platinum-900 dark:bg-jet-400 flex justify-center gap-2 p-4 sm:gap-4 md:gap-6 lg:gap-8"
+        "bg-platinum-900 dark:bg-jet-400 flex justify-center gap-4 p-4 sm:gap-6 md:gap-8 lg:gap-10"
       )}>
       <a
         href="https://harrisonraynes.com"

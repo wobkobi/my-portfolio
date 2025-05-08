@@ -30,19 +30,26 @@ export default function NavBar() {
 
   const linkClass = cn(
     "hover:text-indigo_dye dark:text-platinum dark:hover:text-caribbean_current",
-    "text-xl sm:text-lg md:text-xl lg:text-2xl font-semibold"
+    "text-base sm:text-lg md:text-xl lg:text-2xl font-semibold",
+    "px-2 py-1"
   );
 
   return (
     <nav
       className={cn(
-        "fixed inset-x-0 top-0 z-10 mx-auto max-w-xl rounded-full px-5 py-3 shadow-lg transition-opacity duration-300",
+        "fixed inset-x-0 top-0 z-10 mx-auto w-full max-w-full rounded-full px-1 py-1 shadow-lg transition-all duration-300 sm:max-w-xl sm:px-2 sm:py-1",
         isVisible ? "opacity-100" : "opacity-0 hover:opacity-100",
-        "bg-platinum-900 dark:bg-jet-400 flex items-center justify-center"
+        "bg-platinum-900 dark:bg-jet-400",
+        "min-h-14"
       )}
       onMouseEnter={() => setIsVisible(true)}
-      onMouseLeave={() => setIsVisible(window.scrollY > 100 ? false : true)}>
-      <div className="flex w-full items-center justify-evenly">
+      onMouseLeave={() => setIsVisible(window.scrollY > 100)}>
+      <div
+        className={cn(
+          // flex layout: wrap on small, no-wrap on sm+; even spacing between items on each row
+          "flex flex-wrap items-center justify-evenly sm:flex-nowrap",
+          "w-full"
+        )}>
         <Link href="/" className={linkClass}>
           Home
         </Link>
@@ -58,7 +65,9 @@ export default function NavBar() {
         <Link href="/contact" className={linkClass}>
           Contact
         </Link>
-        <ThemeSwitch />
+        <div className="px-2 py-1">
+          <ThemeSwitch />
+        </div>
       </div>
     </nav>
   );
