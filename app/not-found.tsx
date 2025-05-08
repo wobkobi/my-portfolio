@@ -1,7 +1,21 @@
+/**
+ * @file not-found.tsx
+ * @description
+ * Renders a custom 404 page when a route is not found. Provides a message and
+ * a link to return to the home page. Utilises the `cn` helper for Tailwind CSS
+ * class composition, supporting light and dark modes.
+ */
+
 import cn from "@/utils/cn";
 import Link from "next/link";
+import { JSX } from "react";
 
-export default function NotFound() {
+/**
+ * NotFound component.
+ *
+ * @returns {JSX.Element} A full-screen 404 error page with navigation back home.
+ */
+function NotFound(): JSX.Element {
   return (
     <div
       className={cn(
@@ -16,7 +30,7 @@ export default function NotFound() {
         </h2>
         <p
           className={cn("text-jet dark:text-platinum mt-4 text-lg sm:text-xl")}>
-          {`It seems the page you were looking for doesn't exist.`}
+          It seems the page you were looking for doesn&apos;t exist.
         </p>
         <p
           className={cn("text-jet dark:text-platinum mt-4 text-lg sm:text-xl")}>
@@ -34,3 +48,5 @@ export default function NotFound() {
     </div>
   );
 }
+
+export default NotFound;

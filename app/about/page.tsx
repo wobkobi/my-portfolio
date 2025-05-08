@@ -1,7 +1,44 @@
-import { Background, Goals, Interests, Introduction } from "@/data/AboutMeData";
-import cn from "@/utils/cn";
+/**
+ * @file AboutPage.tsx
+ * @description
+ * A responsive "About Me" page component that displays the user's introduction,
+ * background, interests, and goals in a styled layout. Utilises utility-first
+ * classes via the `cn` helper for conditional Tailwind CSS class composition.
+ *
+ */
 
-const AboutPage = () => {
+import { AboutPageProps } from "@/types/Types";
+import cn from "@/utils/cn";
+import { JSX } from "react";
+
+/**
+ * Renders the "About Me" page sections: Introduction, Background, Interests, and Goals.
+ *
+ * @param {AboutPageProps} props - Props containing content for each section.
+ * @param {string} props.Introduction - Introduction text shown under the Introduction heading.
+ * @param {string} props.Background   - Background text shown under the Background heading.
+ * @param {string} props.Interests    - Interests text shown under the Interests heading.
+ * @param {string} props.Goals        - Goals text shown under the Goals heading.
+ * @returns {JSX.Element} A styled page layout with four content sections.
+ */
+const AboutPage: React.FC<AboutPageProps> = ({
+  Introduction,
+  Background,
+  Interests,
+  Goals,
+}: AboutPageProps): JSX.Element => {
+  // Common CSS classes for section headings
+  const headingClasses = cn(
+    "text-indigo_dye dark:text-caribbean_current mb-4 text-center text-xl font-semibold",
+    "sm:text-2xl md:text-3xl"
+  );
+
+  // Common CSS classes for paragraph text
+  const paragraphClasses = cn(
+    "dark:text-platinum text-center text-base text-gray-600",
+    "sm:text-lg md:text-xl"
+  );
+
   return (
     <div
       className={cn(
@@ -9,69 +46,39 @@ const AboutPage = () => {
       )}>
       <div
         className={cn(
-          "bg-platinum-900 dark:bg-jet-400 mt-20 w-11/12 rounded-sm p-4 shadow-md sm:w-4/5 md:w-3/4 lg:w-11/12 xl:w-5/6 2xl:w-4/5"
+          "bg-platinum-900 dark:bg-jet-400 mt-20 w-11/12 rounded-sm p-4 shadow-md",
+          "sm:w-4/5 md:w-3/4 lg:w-11/12 xl:w-5/6 2xl:w-4/5"
         )}>
         <h1
           className={cn(
-            "text-indigo_dye dark:text-caribbean_current mb-6 text-center text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl"
+            "text-indigo_dye dark:text-caribbean_current mb-6 text-center text-2xl font-bold",
+            "sm:text-3xl md:text-4xl lg:text-5xl"
           )}>
           About Me
         </h1>
+
+        {/* Introduction Section */}
         <section className={cn("mt-8")}>
-          <h2
-            className={cn(
-              "text-indigo_dye dark:text-caribbean_current mb-4 text-center text-xl font-semibold sm:text-2xl md:text-3xl"
-            )}>
-            Introduction
-          </h2>
-          <p
-            className={cn(
-              "dark:text-platinum text-center text-base text-gray-600 sm:text-lg md:text-xl"
-            )}>
-            {Introduction}
-          </p>
+          <h2 className={headingClasses}>Introduction</h2>
+          <p className={paragraphClasses}>{Introduction}</p>
         </section>
+
+        {/* Background Section */}
         <section className={cn("mt-6")}>
-          <h2
-            className={cn(
-              "text-indigo_dye dark:text-caribbean_current mb-4 text-center text-xl font-semibold sm:text-2xl md:text-3xl"
-            )}>
-            Background
-          </h2>
-          <p
-            className={cn(
-              "dark:text-platinum text-center text-base text-gray-600 sm:text-lg md:text-xl"
-            )}>
-            {Background}
-          </p>
+          <h2 className={headingClasses}>Background</h2>
+          <p className={paragraphClasses}>{Background}</p>
         </section>
+
+        {/* Interests Section */}
         <section className={cn("mt-6")}>
-          <h2
-            className={cn(
-              "text-indigo_dye dark:text-caribbean_current mb-4 text-center text-xl font-semibold sm:text-2xl md:text-3xl"
-            )}>
-            Interests
-          </h2>
-          <p
-            className={cn(
-              "dark:text-platinum text-center text-base text-gray-600 sm:text-lg md:text-xl"
-            )}>
-            {Interests}
-          </p>
+          <h2 className={headingClasses}>Interests</h2>
+          <p className={paragraphClasses}>{Interests}</p>
         </section>
+
+        {/* Goals Section */}
         <section className={cn("mt-6")}>
-          <h2
-            className={cn(
-              "text-indigo_dye dark:text-caribbean_current mb-4 text-center text-xl font-semibold sm:text-2xl md:text-3xl"
-            )}>
-            Goals
-          </h2>
-          <p
-            className={cn(
-              "dark:text-platinum text-center text-base text-gray-600 sm:text-lg md:text-xl"
-            )}>
-            {Goals}
-          </p>
+          <h2 className={headingClasses}>Goals</h2>
+          <p className={paragraphClasses}>{Goals}</p>
         </section>
       </div>
     </div>

@@ -1,3 +1,9 @@
+/**
+ * @file PortfolioPage.tsx
+ * @description
+ * Renders the portfolio page, including sections for Education, Work Experience,
+ * Projects and Skills. Allows expansion of detail boxes with smooth scrolling into view.
+ */
 "use client";
 import DetailBox from "@/components/portfolio/DetailBox";
 import ExpandableBox from "@/components/portfolio/ExpandableBox";
@@ -10,9 +16,14 @@ import {
 import { DataBox } from "@/types/Types";
 import cn from "@/utils/cn";
 import { getSortedUniqueSkills } from "@/utils/sortSkills";
-import React, { useEffect, useRef, useState } from "react";
+import React, { JSX, useEffect, useRef, useState } from "react";
 
-export default function PortfolioPage() {
+/**
+ * PortfolioPage component state and render logic.
+ *
+ * @returns {JSX.Element} The portfolio page layout.
+ */
+function PortfolioPage(): JSX.Element {
   const [expandedEduId, setExpandedEduId] = useState<string | null>(null);
   const [expandedWorkId, setExpandedWorkId] = useState<string | null>(null);
   const [expandedProjectsId, setExpandedProjectsId] = useState<string | null>(
@@ -23,32 +34,44 @@ export default function PortfolioPage() {
 
   const sortedSkills = getSortedUniqueSkills(skills);
 
-  const toggleEducation = (id: string) => {
+  /**
+   * Toggle expansion of an education item.
+   * @param {string} id - The ID of the education item.
+   */
+  const toggleEducation = (id: string): void => {
     setExpandedEduId(expandedEduId === id ? null : id);
   };
 
-  const toggleWorkExperience = (id: string) => {
+  /**
+   * Toggle expansion of a work experience item.
+   * @param {string} id - The ID of the work experience item.
+   */
+  const toggleWorkExperience = (id: string): void => {
     setExpandedWorkId(expandedWorkId === id ? null : id);
   };
 
-  const toggleProjects = (id: string) => {
+  /**
+   * Toggle expansion of a project item.
+   * @param {string} id - The ID of the project item.
+   */
+  const toggleProjects = (id: string): void => {
     setExpandedProjectsId(expandedProjectsId === id ? null : id);
   };
 
+  // Scroll into view when a detail box is expanded
   useEffect(() => {
     if (
       (expandedEduId || expandedWorkId || expandedProjectsId) &&
       !hasScrolled
     ) {
-      if (detailsRef.current) {
-        const element = detailsRef.current;
+      const element = detailsRef.current;
+      if (element) {
         const rect = element.getBoundingClientRect();
-        const isFullyVisible =
+        const withinViewport =
           rect.top >= 0 &&
           rect.bottom <=
             (window.innerHeight || document.documentElement.clientHeight);
-
-        if (!isFullyVisible) {
+        if (!withinViewport) {
           element.scrollIntoView({ behavior: "smooth", block: "nearest" });
           setHasScrolled(true);
         }
@@ -56,64 +79,70 @@ export default function PortfolioPage() {
     }
   }, [expandedEduId, expandedWorkId, expandedProjectsId, hasScrolled]);
 
+  // Reset scroll flag when toggles change
   useEffect(() => {
     setHasScrolled(false);
   }, [expandedEduId, expandedWorkId, expandedProjectsId]);
 
+  /**
+   * Render a section with expandable summary boxes and a detail view.
+   *
+   * @param {DataBox[]} data - Array of items to render.
+   * @param {string} title - Section heading.
+   * @param {string|null} itemID - Currently expanded item ID.
+   * @param {(id: string) => void} handleToggle - Toggle handler function.
+   * @param {React.RefObject<HTMLDivElement>} ref - Ref for scrolling.
+   * @returns {JSX.Element} The rendered section.
+   */
   const renderSectionWithDetailBox = (
     data: DataBox[],
     title: string,
     itemID: string | null,
-    // eslint-disable-next-line no-unused-vars
     handleToggle: (id: string) => void,
     ref: React.RefObject<HTMLDivElement | null>
-  ) => {
-    return (
-      <>
-        <section className={cn("mb-8")}>
-          <h2
-            className={cn(
-              "text-indigo_dye dark:text-caribbean_current mt-8 mb-4 text-center text-2xl font-semibold"
-            )}>
-            {title}
-          </h2>
-          <div className="flex flex-wrap justify-center">
-            {data.map((item) => (
-              <div
-                key={item.id}
-                className="w-full p-4 sm:max-w-sm md:w-1/2 lg:w-1/4">
-                <ExpandableBox
-                  id={item.id}
-                  title={item.title}
-                  summary={item.summary}
-                  isExpanded={itemID === item.id}
-                  onToggle={handleToggle}
-                />
-              </div>
-            ))}
+  ): JSX.Element => (
+    <>
+      <h2
+        className={cn(
+          "text-indigo_dye dark:text-caribbean_current mt-8 mb-4 text-center text-2xl font-semibold"
+        )}>
+        {title}
+      </h2>
+      <div className="flex flex-wrap justify-center">
+        {data.map((item) => (
+          <div
+            key={item.id}
+            className="w-full p-4 sm:max-w-sm md:w-1/2 lg:w-1/4">
+            <ExpandableBox
+              id={item.id}
+              title={item.title}
+              summary={item.summary}
+              isExpanded={itemID === item.id}
+              onToggle={handleToggle}
+            />
           </div>
-          {itemID && (
-            <div
-              ref={ref}
-              className="mx-auto w-full p-4 sm:w-3/4 md:w-2/3 lg:w-3/5 xl:max-w-2/3">
-              {data
-                .filter((item) => item.id === itemID)
-                .map((item, index) => (
-                  <DetailBox
-                    key={`${item.id}-${index}`}
-                    id={item.id}
-                    details={item.details}
-                    isVisible={itemID === item.id} // Explicitly set `isVisible`
-                    subtitle={item.subtitle || ""}
-                    link={item.link}
-                  />
-                ))}
-            </div>
-          )}
-        </section>
-      </>
-    );
-  };
+        ))}
+      </div>
+      {itemID && (
+        <div
+          ref={ref}
+          className="mx-auto w-full p-4 sm:w-3/4 md:w-2/3 lg:w-3/5 xl:max-w-2/3">
+          {data
+            .filter((item) => item.id === itemID)
+            .map((item, idx) => (
+              <DetailBox
+                key={`${item.id}-${idx}`}
+                id={item.id}
+                details={item.details}
+                isVisible={itemID === item.id}
+                subtitle={item.subtitle || ""}
+                link={item.link}
+              />
+            ))}
+        </div>
+      )}
+    </>
+  );
 
   return (
     <div className={cn("flex grow flex-col items-center justify-center")}>
@@ -128,33 +157,29 @@ export default function PortfolioPage() {
             )}>
             Portfolio
           </h1>
-          <section className={cn("mb-8")}>
-            {renderSectionWithDetailBox(
-              Education,
-              "Education",
-              expandedEduId,
-              toggleEducation,
-              detailsRef
-            )}
-          </section>
-          <section className={cn("mb-8")}>
-            {renderSectionWithDetailBox(
-              WorkExperience,
-              "Work Experience",
-              expandedWorkId,
-              toggleWorkExperience,
-              detailsRef
-            )}
-          </section>
-          <section className={cn("mb-8")}>
-            {renderSectionWithDetailBox(
-              Projects,
-              "Projects",
-              expandedProjectsId,
-              toggleProjects,
-              detailsRef
-            )}
-          </section>
+
+          {renderSectionWithDetailBox(
+            Education,
+            "Education",
+            expandedEduId,
+            toggleEducation,
+            detailsRef
+          )}
+          {renderSectionWithDetailBox(
+            WorkExperience,
+            "Work Experience",
+            expandedWorkId,
+            toggleWorkExperience,
+            detailsRef
+          )}
+          {renderSectionWithDetailBox(
+            Projects,
+            "Projects",
+            expandedProjectsId,
+            toggleProjects,
+            detailsRef
+          )}
+
           <section className={cn("mb-8")}>
             <h2
               className={cn(
@@ -177,6 +202,7 @@ export default function PortfolioPage() {
               ))}
             </div>
           </section>
+
           <a
             href="/files/HarrisonRaynesResume.pdf"
             download="HarrisonRaynesResume.pdf"
@@ -188,3 +214,5 @@ export default function PortfolioPage() {
     </div>
   );
 }
+
+export default PortfolioPage;

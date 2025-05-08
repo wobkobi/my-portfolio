@@ -1,18 +1,30 @@
-"use client";
-import cn from "@/utils/cn";
-import { useEffect } from "react";
+/**
+ * @file GlobalError.tsx
+ * @description
+ * Renders a full-screen error fallback UI when an unexpected error occurs in the app.
+ * Displays an error message, logs the error, and provides a retry button.
+ */
 
-export default function GlobalError({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
+"use client";
+
+import { GlobalErrorProps } from "@/types/Types";
+import cn from "@/utils/cn";
+import { JSX, useEffect } from "react";
+
+/**
+ * Fallback UI for unhandled errors in client-side rendering.
+ * Logs the error to the console and shows a retry button.
+ *
+ * @param {GlobalErrorProps} props - The error and reset callback.
+ * @param {Error} props.error - The thrown error object.
+ * @param {Function} props.reset - Function to reset error boundary state.
+ * @returns {JSX.Element} A full-screen error message with retry.
+ */
+function GlobalError({ error: err, reset }: GlobalErrorProps): JSX.Element {
   useEffect(() => {
-    // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
+    // Log error for debugging or reporting
+    console.error(err);
+  }, [err]);
 
   return (
     <div className={cn("flex h-screen items-center justify-center p-4")}>
@@ -37,3 +49,5 @@ export default function GlobalError({
     </div>
   );
 }
+
+export default GlobalError;

@@ -24,15 +24,16 @@
     "target": "ES2017"
   },
   "include": [
-    "next-env.d.ts",
-    "src",
-    "pages",
-    "components",
-    "app",
-    "server",
-    "utils",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "app",
+    "components",
+    "pages",
+    "src",
+    "utils",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "eslint.config.js"
   ],
   "exclude": ["node_modules", ".next", "dist", "coverage", ".turbo"]
 }
