@@ -6,8 +6,6 @@
  * the Roboto font, meta viewport for responsive scaling, and utility classes via the `cn` helper.
  */
 
-"use client";
-
 import Providers from "@/app/providers";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
