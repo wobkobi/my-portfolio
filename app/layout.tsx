@@ -3,8 +3,10 @@
  * @description
  * Defines the root HTML layout for the Next.js application, including global
  * providers, navigation, footer, analytics, and performance insights. Applies
- * the Roboto font and utility classes via the `cn` helper.
+ * the Roboto font, meta viewport for responsive scaling, and utility classes via the `cn` helper.
  */
+
+"use client";
 
 import Providers from "@/app/providers";
 import Footer from "@/components/Footer";
@@ -55,6 +57,7 @@ export const metadata = {
  *
  * Wraps all pages with HTML structure, global providers, navigation bar,
  * footer, and integrates analytics and performance insights.
+ * Includes a meta viewport tag for mobile responsiveness.
  *
  * @param {{ children: React.ReactNode }} props - The page content to render.
  * @param {React.ReactNode} props.children - The nested page elements.
@@ -70,6 +73,9 @@ export default function RootLayout({
       lang="en"
       className={cn(roboto.className, "h-full")}
       suppressHydrationWarning>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body className={cn("flex min-h-screen flex-col")}>
         <Providers>
           <NavBar />
