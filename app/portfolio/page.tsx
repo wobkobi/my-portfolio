@@ -20,8 +20,7 @@ import React, { JSX, useEffect, useRef, useState } from "react";
 
 /**
  * PortfolioPage component state and render logic.
- *
- * @returns {JSX.Element} The portfolio page layout.
+ * @returns The portfolio page layout.
  */
 function PortfolioPage(): JSX.Element {
   const [expandedEduId, setExpandedEduId] = useState<string | null>(null);
@@ -36,7 +35,7 @@ function PortfolioPage(): JSX.Element {
 
   /**
    * Toggle expansion of an education item.
-   * @param {string} id - The ID of the education item.
+   * @param id - The ID of the education item.
    */
   const toggleEducation = (id: string): void => {
     setExpandedEduId(expandedEduId === id ? null : id);
@@ -44,7 +43,7 @@ function PortfolioPage(): JSX.Element {
 
   /**
    * Toggle expansion of a work experience item.
-   * @param {string} id - The ID of the work experience item.
+   * @param id - The ID of the work experience item.
    */
   const toggleWorkExperience = (id: string): void => {
     setExpandedWorkId(expandedWorkId === id ? null : id);
@@ -52,7 +51,7 @@ function PortfolioPage(): JSX.Element {
 
   /**
    * Toggle expansion of a project item.
-   * @param {string} id - The ID of the project item.
+   * @param id - The ID of the project item.
    */
   const toggleProjects = (id: string): void => {
     setExpandedProjectsId(expandedProjectsId === id ? null : id);
@@ -86,13 +85,12 @@ function PortfolioPage(): JSX.Element {
 
   /**
    * Render a section with expandable summary boxes and a detail view.
-   *
-   * @param {DataBox[]} data - Array of items to render.
-   * @param {string} title - Section heading.
-   * @param {string|null} itemID - Currently expanded item ID.
-   * @param {(id: string) => void} handleToggle - Toggle handler function.
-   * @param {React.RefObject<HTMLDivElement>} ref - Ref for scrolling.
-   * @returns {JSX.Element} The rendered section.
+   * @param data - Array of items to render.
+   * @param title - Section heading.
+   * @param itemID - Currently expanded item ID.
+   * @param handleToggle - Toggle handler function.
+   * @param ref - Ref for scrolling.
+   * @returns The rendered section.
    */
   const renderSectionWithDetailBox = (
     data: DataBox[],

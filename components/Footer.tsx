@@ -11,8 +11,7 @@ import { FiGithub, FiGlobe, FiLinkedin } from "react-icons/fi";
 
 /**
  * Footer component.
- *
- * @returns {JSX.Element} A footer bar with icon links opening in a new tab.
+ * @returns A footer bar with icon links opening in a new tab.
  */
 function Footer(): JSX.Element {
   // Common classes for each icon link

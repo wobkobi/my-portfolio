@@ -3,7 +3,6 @@
  * @description
  * Renders the contact page with a mailto link and embedded contact form.
  * Utilises Tailwind CSS via the `cn` helper for responsive, dark‑mode friendly styling.
- *
  */
 
 import ContactForm from "@/components/contact/ContactForm";
@@ -15,13 +14,11 @@ import { FiMail } from "react-icons/fi";
  * ContactPage component.
  *
  * Displays a heading, an email link with iconography, and the contact form.
- *
- * @returns {JSX.Element} The contact page layout.
+ * @returns The contact page layout.
  */
 function ContactPage(): JSX.Element {
   /**
    * The site owner's email address for contact.
-   * @constant {string}
    */
   const myEmail = "harrisonraynes8@gmail.com";
 

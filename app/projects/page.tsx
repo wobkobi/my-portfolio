@@ -21,8 +21,7 @@ import { FiExternalLink, FiGithub } from "react-icons/fi";
  * Renders all projects in a responsive grid. Each project shows an image,
  * title, description, skills list, and links to source and live preview. Clicking
  * the image toggles a fullscreen popup view.
- *
- * @returns {JSX.Element} The projects page layout.
+ * @returns The projects page layout.
  */
 const ProjectsPage = (): JSX.Element => {
   // Popup open state and selected image URL
@@ -31,8 +30,7 @@ const ProjectsPage = (): JSX.Element => {
 
   /**
    * Handle click on a project image: open or close the fullscreen popup.
-   *
-   * @param {string} image - The image URL to display in the popup.
+   * @param image - The image URL to display in the popup.
    */
   const handleImageClick = (image: string): void => {
     if (selectedImage === image) {

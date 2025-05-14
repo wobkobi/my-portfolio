@@ -14,11 +14,10 @@ import { JSX, useEffect } from "react";
 /**
  * Fallback UI for unhandled errors in client-side rendering.
  * Logs the error to the console and shows a retry button.
- *
- * @param {GlobalErrorProps} props - The error and reset callback.
- * @param {Error} props.error - The thrown error object.
- * @param {Function} props.reset - Function to reset error boundary state.
- * @returns {JSX.Element} A full-screen error message with retry.
+ * @param props - The error and reset callback.
+ * @param props.error - The thrown error object.
+ * @param props.reset - Function to reset error boundary state.
+ * @returns A full-screen error message with retry.
  */
 function GlobalError({ error: err, reset }: GlobalErrorProps): JSX.Element {
   useEffect(() => {

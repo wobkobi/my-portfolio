@@ -14,9 +14,11 @@ import { JSX } from "react";
 
 /**
  * EmailModal component.
- *
- * @param {EmailModalProps} props - Modal visibility, message, and close handler.
- * @returns {JSX.Element | null} The modal overlay and content, or null if closed.
+ * @param props - Component properties.
+ * @param props.isOpen - Whether the modal is visible.
+ * @param props.message - The message text to display.
+ * @param props.onClose - Handler to call when closing the modal.
+ * @returns The modal overlay and content, or null if closed.
  */
 function EmailModal({
   isOpen,

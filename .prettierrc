@@ -9,5 +9,5 @@
   "trailingComma": "es5",
   "semi": true,
   "singleQuote": false,
-  "endOfLine": "auto"
+  "endOfLine": "crlf"
 }

@@ -15,8 +15,7 @@ import { JSX } from "react";
  *
  * Displays the main heading and action buttons for navigating the portfolio,
  * projects page, and downloading the CV.
- *
- * @returns {JSX.Element} The home page layout.
+ * @returns The home page layout.
  */
 function HomePage(): JSX.Element {
   // Common CSS classes for all action buttons

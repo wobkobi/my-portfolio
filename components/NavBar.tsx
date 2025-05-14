@@ -14,8 +14,7 @@ import { JSX, useEffect, useState } from "react";
 
 /**
  * NavBar component.
- *
- * @returns {JSX.Element} A fixed top navigation bar with links and theme toggle.
+ * @returns A fixed top navigation bar with links and theme toggle.
  */
 function NavBar(): JSX.Element {
   // Visibility state for auto-hide on scroll

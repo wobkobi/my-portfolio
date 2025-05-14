@@ -12,8 +12,7 @@ import { JSX } from "react";
 
 /**
  * NotFound component.
- *
- * @returns {JSX.Element} A full-screen 404 error page with navigation back home.
+ * @returns A full-screen 404 error page with navigation back home.
  */
 function NotFound(): JSX.Element {
   return (

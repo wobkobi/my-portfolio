@@ -11,14 +11,13 @@ import { JSX } from "react";
 
 /**
  * DetailBox component.
- *
- * @param {DetailBoxProps} props - Props including visibility, content and link.
- * @param {string} props.id - Unique identifier (used for list keys).
- * @param {string} props.subtitle - Heading text displayed above details.
- * @param {string[]} props.details - Array of detail strings; renders as paragraph or list.
- * @param {boolean} props.isVisible - Controls whether the box is shown.
- * @param {{ url: string; text: string }} [props.link] - Optional link object for further action.
- * @returns {JSX.Element | null} The detail box UI or null if not visible.
+ * @param props - Props including visibility, content and link.
+ * @param props.id - Unique identifier (used for list keys).
+ * @param props.subtitle - Heading text displayed above details.
+ * @param props.details - Array of detail strings; renders as paragraph or list.
+ * @param props.isVisible - Controls whether the box is shown.
+ * @param [props.link] - Optional link object for further action.
+ * @returns The detail box UI or null if not visible.
  */
 function DetailBox({
   subtitle,
@@ -54,8 +53,7 @@ function DetailBox({
 
   /**
    * Render details as either a single paragraph or a bulleted list.
-   *
-   * @returns {JSX.Element} The details content.
+   * @returns The details content.
    */
   const renderDetails = (): JSX.Element =>
     details.length > 1 ? (

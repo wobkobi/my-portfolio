@@ -20,8 +20,7 @@ import EmailModal from "./EmailModal";
  * Renders inputs for name, email, subject and message with validation,
  * and handles form submission to send an email. Shows a modal with the
  * result message upon completion.
- *
- * @returns {JSX.Element} The contact form and confirmation modal.
+ * @returns The contact form and confirmation modal.
  */
 function ContactForm(): JSX.Element {
   const {
@@ -38,7 +37,7 @@ function ContactForm(): JSX.Element {
   /**
    * Handle form submission.
    * Sends form data via sendEmail util and displays result in modal.
-   * @param {FormData} data - The validated form data.
+   * @param data - The validated form data.
    */
   async function onSubmit(data: FormData): Promise<void> {
     try {

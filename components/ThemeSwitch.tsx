@@ -17,8 +17,7 @@ import { FiMoon, FiSun } from "react-icons/fi";
  *
  * Renders a button that toggles the site theme between light and dark.
  * It only appears after the component has mounted to prevent SSR mismatch.
- *
- * @returns {JSX.Element | null} The theme toggle button or null during SSR.
+ * @returns The theme toggle button or null during SSR.
  */
 function ThemeSwitch(): JSX.Element | null {
   const { theme, setTheme } = useTheme();

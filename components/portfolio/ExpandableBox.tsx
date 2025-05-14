@@ -14,15 +14,14 @@ import React, { forwardRef, JSX, Ref } from "react";
 /**
  * ExpandableBox component.
  * Wraps a summary title and optional summary text in a clickable/tappable box.
- *
- * @param {ExpandableBoxProps} props - Props to configure the box.
- * @param {string} props.id - Unique identifier for this box.
- * @param {string} props.title - Title text displayed prominently.
- * @param {string} [props.summary] - Optional summary text when collapsed.
- * @param {boolean} props.isExpanded - Whether the box is currently expanded.
- * @param {(id: string) => void} props.onToggle - Callback when the box is toggled.
- * @param {Ref<HTMLDivElement>} ref - Forwarded ref to the container div.
- * @returns {JSX.Element} The expandable box element.
+ * @param props - Props to configure the box.
+ * @param props.id - Unique identifier for this box.
+ * @param props.title - Title text displayed prominently.
+ * @param [props.summary] - Optional summary text when collapsed.
+ * @param props.isExpanded - Whether the box is currently expanded.
+ * @param props.onToggle - Callback when the box is toggled.
+ * @param ref - Forwarded ref to the container div.
+ * @returns The expandable box element.
  */
 function ExpandableBoxFunction(
   { id, title, summary, isExpanded, onToggle }: ExpandableBoxProps,
@@ -63,6 +62,7 @@ function ExpandableBoxFunction(
 
   /**
    * Handle touch end events to toggle expansion without triggering click twice.
+   * @param event – The touch event that ended on the element.
    */
   const handleTouchEnd = (event: React.TouchEvent): void => {
     event.preventDefault();

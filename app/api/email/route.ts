@@ -4,7 +4,6 @@
  * Serverless API route to accept contact form submissions and queue emails via
  * a pooled Nodemailer transport. Uses Gmail SMTP with connection pooling for
  * efficient delivery. Returns an immediate JSON acknowledgement.
- *
  */
 
 import { NextResponse, type NextRequest } from "next/server";
@@ -14,9 +13,6 @@ import Mail from "nodemailer/lib/mailer";
 /**
  * Nodemailer transport configuration using SMTP pooling.
  * Pooling reuses connections for multiple messages, improving performance.
- *
- * @constant transport
- * @type {nodemailer.Transporter}
  */
 const transport: nodemailer.Transporter = nodemailer.createTransport({
   pool: true, // enable connection pooling
@@ -33,10 +29,9 @@ const transport: nodemailer.Transporter = nodemailer.createTransport({
 
 /**
  * POST handler for the email API.
- *
  * @async
- * @param {NextRequest} request - The incoming Next.js API request.
- * @returns {Promise<NextResponse>} JSON response acknowledging queuing.
+ * @param request - The incoming Next.js API request.
+ * @returns JSON response acknowledging queuing.
  */
 export async function POST(request: NextRequest): Promise<NextResponse> {
   // Parse JSON body from the request
@@ -44,8 +39,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
   /**
    * Mail options for Nodemailer.
-   *
-   * @type {Mail.Options}
    */
   const mailOptions: Mail.Options = {
     from: process.env.MY_EMAIL, // sender address

@@ -4,7 +4,6 @@
  * A responsive "About Me" page component that displays the user's introduction,
  * background, interests, and goals in a styled layout. Utilises utility-first
  * classes via the `cn` helper for conditional Tailwind CSS class composition.
- *
  */
 
 import { AboutPageProps } from "@/types/Types";
@@ -13,13 +12,12 @@ import { JSX } from "react";
 
 /**
  * Renders the "About Me" page sections: Introduction, Background, Interests, and Goals.
- *
- * @param {AboutPageProps} props - Props containing content for each section.
- * @param {string} props.Introduction - Introduction text shown under the Introduction heading.
- * @param {string} props.Background   - Background text shown under the Background heading.
- * @param {string} props.Interests    - Interests text shown under the Interests heading.
- * @param {string} props.Goals        - Goals text shown under the Goals heading.
- * @returns {JSX.Element} A styled page layout with four content sections.
+ * @param props - Props containing content for each section.
+ * @param props.Introduction - Introduction text shown under the Introduction heading.
+ * @param props.Background   - Background text shown under the Background heading.
+ * @param props.Interests    - Interests text shown under the Interests heading.
+ * @param props.Goals        - Goals text shown under the Goals heading.
+ * @returns A styled page layout with four content sections.
  */
 const AboutPage: React.FC<AboutPageProps> = ({
   Introduction,
