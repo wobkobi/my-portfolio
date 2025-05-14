@@ -1,3 +1,5 @@
+"use client";
+
 import { Project } from "@/types/Types";
 
 export const projects: Project[] = [
@@ -5,57 +7,83 @@ export const projects: Project[] = [
     id: "1",
     name: "ChatGPT Discord Bot",
     description:
-      'A sophisticated Discord bot powered by OpenAI’s GPT, featuring thread-aware memory with automated summarisation, persona-based and fine-tuned modes, rate-limiting cooldowns, emoji-shortcode replacement, inline LaTeX-to-image rendering, comprehensive image/file input parsing, rotating logs, and a Build & Test CI pipeline. Built with TypeScript, Discord.js and Node.js. I made this to make "clones" of my friends but with exaggerated personalities, and they love it, especially the fine-tuned models.',
+      "A sophisticated and feature-rich Discord bot powered by OpenAI's GPT technology. It supports thread-aware memory with automatic summarisation, persona-based interactions, fine-tuned conversational models, rate-limiting cooldowns, emoji shortcode conversions, inline LaTeX rendering, robust image and file parsing, comprehensive logging, and a streamlined Build & Test CI pipeline. Developed with TypeScript, Discord.js, Node.js, and OpenAI API. I created this bot to generate entertaining 'clones' of friends with exaggerated personalities, earning enthusiastic feedback from users.",
     image: "/images/chatgpt-discord-bot.jpg",
     links: "https://github.com/wobkobi/ChatGPT-Discord-Bot",
-    skills: ["TypeScript", "Discord.js", "OpenAI API", "Node.js"],
+    skills: [
+      "TypeScript",
+      "Discord.js",
+      "OpenAI API",
+      "Node.js",
+      "CI/CD",
+      "GitHub Actions",
+    ],
   },
   {
     id: "2",
-    name: '"project triangle"',
+    name: "Project Triangle",
     description:
-      'This project was created to determine the most central location for a group to go bowling. Since we lived in different areas, I wanted a tool that could identify the technically most central location for us to meet. It shows both the geographical centre of the group and the "most central" location based on the distances of each person. I plan to work on a version 2 of this project soon, which will include travel times using various transportation methods.',
+      "A web application designed to identify the optimal central location for group meetings, such as bowling events. It calculates both geographical centres and the most convenient location based on individual user distances. Future improvements will incorporate travel times using different transportation modes, further enhancing its utility.",
     image: "/images/project-triangle.jpg",
     links: [
       "https://github.com/wobkobi/project-triangle",
-      "https://project-triangle.vercel.app/", // Second link for preview
+      "https://project-triangle.vercel.app/",
     ],
-    skills: ["TypeScript", "Google Maps API", "Next.js", "Vercel"],
+    skills: [
+      "TypeScript",
+      "Next.js",
+      "Google Maps API",
+      "Vercel",
+      "Frontend Development",
+    ],
   },
   {
     id: "3",
     name: "Sorting Algorithms Benchmark",
     description:
-      "A comprehensive Python-based benchmarking tool designed to evaluate the performance of various sorting algorithms across multiple array sizes. It executes iterations concurrently, generates CSV reports, and produces detailed markdown summaries along with an updated README. The project supports a wide variety of sorting algorithms, making it ideal for performance comparisons and algorithm analysis.",
+      "A detailed Python benchmarking tool designed to evaluate and compare the performance of various sorting algorithms. The tool executes tests concurrently on different array sizes, generating comprehensive CSV reports, detailed markdown summaries, and automatic README updates. Ideal for performance analysis and algorithmic studies.",
     image: "/images/sorting-algorithms.jpg",
     links: "https://github.com/wobkobi/Sorting-Algorithms",
-    skills: ["Python", "Multiprocessing", "Benchmarking", "CSV", "Algorithms"],
+    skills: [
+      "Python",
+      "Multiprocessing",
+      "Benchmarking",
+      "Data Analysis",
+      "CSV",
+      "Algorithm Analysis",
+    ],
   },
   {
     id: "4",
-    name: "This Portfolio Site",
+    name: "Personal Portfolio Site",
     description:
-      "It's this site (Crazy). I built it with Next.js and Tailwind CSS. I wanted to have a place where I could showcase my projects and skills. I also wanted to learn Next.js and Tailwind CSS, so I built this site to do just that.",
+      "This is my personal portfolio site (yes, the one you're viewing right now!). Built using Next.js and Tailwind CSS, this website serves as a showcase for my professional projects and skills. It was developed as a hands-on project to enhance my understanding and proficiency in modern web technologies.",
     image: "/images/portfolio.jpg",
-    links: ["https://github.com/wobkobi/my-portfolio", "/"], // Second link for preview
-    skills: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel"],
+    links: ["https://github.com/wobkobi/my-portfolio", "/"],
+    skills: [
+      "Next.js",
+      "Tailwind CSS",
+      "TypeScript",
+      "Vercel",
+      "Web Development",
+    ],
   },
   {
     id: "5",
     name: "YouTube Downloader",
     description:
-      "I didn't like any of the online YouTube downloaders, so I made my own. It's a simple Python script that downloads YouTube videos and playlists. It's a command-line tool that uses the yt-dlp library. But with recent changes to the YouTube API, it's not working as expected. I plan to update it soon.",
+      "A user-friendly Python command-line tool designed for downloading YouTube videos and playlists effortlessly. It leverages the yt-dlp library, providing straightforward functionality for personal use. Due to recent YouTube API changes, some features need updates, which are planned for future revisions.",
     image: "/images/youtube-downloader.jpg",
     links: "https://github.com/wobkobi/youtube-downloader",
-    skills: ["Python", "YT-DLP", "Command-Line"],
+    skills: ["Python", "yt-dlp", "Command-Line Interface", "API Integration"],
   },
   {
     id: "6",
     name: "Reaction Bot",
     description:
-      'This is a Python-based Discord bot that allows users to set up specific words for the bot to react to. It also includes functionality where certain words will trigger the bot to "scream" at the user. Additionally, it features a leaderboard that tracks and displays which user has said a particular word the most.',
+      "A dynamic Python-based Discord bot that reacts to user-defined keywords and phrases. It humorously 'screams' at users based on specific triggers and maintains a leaderboard tracking word usage frequency among server members, adding a fun, competitive element.",
     image: "",
     links: "https://github.com/wobkobi/reactionBot",
-    skills: ["Python", "Discord.py"],
+    skills: ["Python", "Discord.py", "Bot Development", "Data Tracking"],
   },
 ];

@@ -1,199 +1,137 @@
+// app/portfolio/page.tsx
 /**
  * @file PortfolioPage.tsx
  * @description
- * Renders the portfolio page, including sections for Education, Work Experience,
- * Projects and Skills. Allows expansion of detail boxes with smooth scrolling into view.
+ * Renders the Portfolio page with Education, Work Experience, Projects, Skills, and CV,
+ * using a centered card container for the main content to match other site pages.
  */
+
 "use client";
+
 import DetailBox from "@/components/portfolio/DetailBox";
 import ExpandableBox from "@/components/portfolio/ExpandableBox";
 import {
   Education,
   Projects,
-  WorkExperience,
   skills,
+  WorkExperience,
 } from "@/data/PortfolioData";
 import { DataBox } from "@/types/Types";
 import cn from "@/utils/cn";
 import { getSortedUniqueSkills } from "@/utils/sortSkills";
-import React, { JSX, useEffect, useRef, useState } from "react";
+import { JSX, useEffect, useRef, useState } from "react";
 
 /**
- * PortfolioPage component state and render logic.
+ * PortfolioPage component.
  * @returns The portfolio page layout.
  */
-function PortfolioPage(): JSX.Element {
-  const [expandedEduId, setExpandedEduId] = useState<string | null>(null);
-  const [expandedWorkId, setExpandedWorkId] = useState<string | null>(null);
-  const [expandedProjectsId, setExpandedProjectsId] = useState<string | null>(
-    null
+export default function PortfolioPage(): JSX.Element {
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const detailRef = useRef<HTMLDivElement>(null);
+  const uniqueSkills = getSortedUniqueSkills(skills);
+
+  const containerClasses = cn("flex grow flex-col items-center justify-center");
+  const mainClasses = cn("p-4 pt-24 text-center sm:pt-28");
+  const contentWrapper = cn(
+    "mx-auto w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 p-4"
   );
-  const [hasScrolled, setHasScrolled] = useState(false);
-  const detailsRef = useRef<HTMLDivElement>(null);
 
-  const sortedSkills = getSortedUniqueSkills(skills);
+  const titleClasses = cn(
+    "text-indigo_dye dark:text-caribbean_current mb-6 text-center text-3xl font-bold",
+    "sm:text-4xl md:text-5xl"
+  );
+  const sectionHeading = cn(
+    "text-indigo_dye dark:text-caribbean_current mb-4 text-center text-2xl font-semibold",
+    "sm:text-3xl md:text-4xl"
+  );
+  const sectionWrapper = cn("mb-8");
+  const gridContainer = cn("flex flex-wrap justify-center gap-4");
 
-  /**
-   * Toggle expansion of an education item.
-   * @param id - The ID of the education item.
-   */
-  const toggleEducation = (id: string): void => {
-    setExpandedEduId(expandedEduId === id ? null : id);
-  };
-
-  /**
-   * Toggle expansion of a work experience item.
-   * @param id - The ID of the work experience item.
-   */
-  const toggleWorkExperience = (id: string): void => {
-    setExpandedWorkId(expandedWorkId === id ? null : id);
-  };
-
-  /**
-   * Toggle expansion of a project item.
-   * @param id - The ID of the project item.
-   */
-  const toggleProjects = (id: string): void => {
-    setExpandedProjectsId(expandedProjectsId === id ? null : id);
-  };
-
-  // Scroll into view when a detail box is expanded
-  useEffect(() => {
-    if (
-      (expandedEduId || expandedWorkId || expandedProjectsId) &&
-      !hasScrolled
-    ) {
-      const element = detailsRef.current;
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        const withinViewport =
-          rect.top >= 0 &&
-          rect.bottom <=
-            (window.innerHeight || document.documentElement.clientHeight);
-        if (!withinViewport) {
-          element.scrollIntoView({ behavior: "smooth", block: "nearest" });
-          setHasScrolled(true);
-        }
-      }
+  useEffect((): void => {
+    if (expandedId && detailRef.current) {
+      detailRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
     }
-  }, [expandedEduId, expandedWorkId, expandedProjectsId, hasScrolled]);
-
-  // Reset scroll flag when toggles change
-  useEffect(() => {
-    setHasScrolled(false);
-  }, [expandedEduId, expandedWorkId, expandedProjectsId]);
+  }, [expandedId]);
 
   /**
-   * Render a section with expandable summary boxes and a detail view.
-   * @param data - Array of items to render.
-   * @param title - Section heading.
-   * @param itemID - Currently expanded item ID.
-   * @param handleToggle - Toggle handler function.
-   * @param ref - Ref for scrolling.
-   * @returns The rendered section.
+   * Toggle which item is expanded.
+   * @param id - The id of the item to expand or collapse.
+   * @returns void
    */
-  const renderSectionWithDetailBox = (
-    data: DataBox[],
-    title: string,
-    itemID: string | null,
-    handleToggle: (id: string) => void,
-    ref: React.RefObject<HTMLDivElement | null>
-  ): JSX.Element => (
-    <>
-      <h2
-        className={cn(
-          "text-indigo_dye dark:text-caribbean_current mt-8 mb-4 text-center text-2xl font-semibold"
-        )}>
-        {title}
-      </h2>
-      <div className="flex flex-wrap justify-center">
-        {data.map((item) => (
+  const toggle = (id: string): void =>
+    setExpandedId((prev) => (prev === id ? null : id));
+
+  /**
+   * Render one of the portfolio sections.
+   * @param title - Section title.
+   * @param items - Array of DataBox items.
+   * @returns JSX.Element The rendered section.
+   */
+  const renderSection = (title: string, items: DataBox[]): JSX.Element => (
+    <section className={sectionWrapper} key={title}>
+      <h2 className={sectionHeading}>{title}</h2>
+      <div className={gridContainer}>
+        {items.map((item) => (
           <div
             key={item.id}
-            className="w-full p-4 sm:max-w-sm md:w-1/2 lg:w-1/4">
+            className={cn("w-full p-4 sm:max-w-sm md:w-1/2 lg:w-1/4")}>
             <ExpandableBox
               id={item.id}
               title={item.title}
               summary={item.summary}
-              isExpanded={itemID === item.id}
-              onToggle={handleToggle}
+              isExpanded={expandedId === item.id}
+              onToggle={toggle}
             />
           </div>
         ))}
       </div>
-      {itemID && (
-        <div
-          ref={ref}
-          className="mx-auto w-full p-4 sm:w-3/4 md:w-2/3 lg:w-3/5 xl:max-w-2/3">
-          {data
-            .filter((item) => item.id === itemID)
-            .map((item, idx) => (
+      {expandedId &&
+        items
+          .filter((it) => it.id === expandedId)
+          .map((it) => (
+            <div
+              key={it.id}
+              ref={detailRef}
+              className={cn(
+                "mx-auto w-full p-4 sm:w-3/4 md:w-2/3 lg:w-3/5 xl:max-w-2/3"
+              )}>
               <DetailBox
-                key={`${item.id}-${idx}`}
-                id={item.id}
-                details={item.details}
-                isVisible={itemID === item.id}
-                subtitle={item.subtitle || ""}
-                link={item.link}
+                id={it.id}
+                subtitle={it.subtitle || ""}
+                details={it.details}
+                isVisible
+                link={it.link}
               />
-            ))}
-        </div>
-      )}
-    </>
+            </div>
+          ))}
+    </section>
   );
 
   return (
-    <div className={cn("flex grow flex-col items-center justify-center")}>
-      <main className={cn("p-4 pt-20 text-center sm:pt-28")}>
-        <div
-          className={cn(
-            "sm:w-95% md:w-90% lg:w-85% xl:w-80% mx-auto w-11/12 p-4"
-          )}>
-          <h1
-            className={cn(
-              "text-indigo_dye dark:text-caribbean_current mb-6 text-3xl font-bold sm:text-4xl md:text-5xl"
-            )}>
-            Portfolio
-          </h1>
+    <div className={containerClasses}>
+      <main className={mainClasses}>
+        <h1 className={titleClasses}>Portfolio</h1>
+        <div className={cn(contentWrapper)}>
+          {renderSection("Education", Education as DataBox[])}
+          {renderSection("Work Experience", WorkExperience as DataBox[])}
+          {renderSection("Projects", Projects as DataBox[])}
 
-          {renderSectionWithDetailBox(
-            Education,
-            "Education",
-            expandedEduId,
-            toggleEducation,
-            detailsRef
-          )}
-          {renderSectionWithDetailBox(
-            WorkExperience,
-            "Work Experience",
-            expandedWorkId,
-            toggleWorkExperience,
-            detailsRef
-          )}
-          {renderSectionWithDetailBox(
-            Projects,
-            "Projects",
-            expandedProjectsId,
-            toggleProjects,
-            detailsRef
-          )}
-
-          <section className={cn("mb-8")}>
-            <h2
-              className={cn(
-                "text-indigo_dye dark:text-caribbean_current mb-6 text-2xl font-semibold"
-              )}>
-              Skills
-            </h2>
+          <section className={sectionWrapper}>
+            <h2 className={sectionHeading}>Skills</h2>
             <div
               className={cn(
-                "mx-auto flex w-[85%] flex-wrap justify-center gap-2"
+                "flex flex-wrap justify-center gap-1",
+                "mx-auto w-[85%]"
               )}>
-              {sortedSkills.map((skill) => (
+              {uniqueSkills.map((skill) => (
                 <span
                   key={skill}
                   className={cn(
-                    "bg-indigo_dye dark:bg-caribbean_current-500 mb-2 rounded-sm px-3 py-1 text-xs font-medium text-white md:text-sm"
+                    "bg-indigo_dye dark:bg-caribbean_current-500 mb-2 rounded-sm px-3 py-1 text-xs font-medium text-white",
+                    "md:text-sm"
                   )}>
                   {skill}
                 </span>
@@ -203,8 +141,14 @@ function PortfolioPage(): JSX.Element {
 
           <a
             href="/files/HarrisonRaynesResume.pdf"
-            download="HarrisonRaynesResume.pdf"
-            className="bg-indigo_dye hover:bg-caribbean_current focus:ring-indigo_dye focus:ring-opacity-50 dark:bg-caribbean_current dark:hover:bg-indigo_dye inline-block rounded-md px-4 py-2 text-sm font-medium text-white shadow-lg transition duration-300 ease-in-out hover:scale-105 focus:ring-2 focus:outline-hidden md:px-6 md:py-3 md:text-lg">
+            download
+            className={cn(
+              "bg-indigo_dye hover:bg-caribbean_current focus:ring-indigo_dye focus:ring-opacity-50",
+              "dark:bg-caribbean_current dark:hover:bg-indigo_dye inline-block",
+              "rounded-md px-4 py-2 text-sm font-medium text-white shadow-lg",
+              "transition duration-300 ease-in-out hover:scale-105 focus:ring-2 focus:outline-hidden",
+              "md:px-6 md:py-3 md:text-lg"
+            )}>
             Download CV
           </a>
         </div>
@@ -212,5 +156,3 @@ function PortfolioPage(): JSX.Element {
     </div>
   );
 }
-
-export default PortfolioPage;

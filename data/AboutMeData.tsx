@@ -1,13 +1,17 @@
 "use client";
+
 export const Introduction = [
-  "My name is Harrison Raynes. I have a Bachelor of Computer and Information Sciences degree from Auckland University of Technology. I majored in Software Development and Networks & Cyber Security and graduated in 2023. In early 2024, I started an AWS course through Unitec, and as of now, I am still doing it. I am a passionate software developer and technologist, always looking for new opportunities to learn and grow.",
+  "My name is Harrison Raynes. I'm a dedicated and motivated software developer based in Auckland, New Zealand. I hold a Bachelor of Computer and Information Sciences from Auckland University of Technology, with majors in Software Development and Networks & Cyber Security. Currently, I'm further enhancing my skills through an AWS certification course at Unitec. Passionate about technology and innovation, I'm continually seeking new challenges and opportunities to grow professionally and contribute effectively to meaningful projects.",
 ];
+
 export const Background = [
-  "I grew up in Auckland, New Zealand, and have been interested in computers and technology since a young age. I have always been fascinated by how technology works and how it can be used to solve real-world problems. I have always been interested in learning new things and challenging myself to become a better software developer.",
+  "I have always been deeply interested in technology, a passion that began early in my life growing up in Auckland. My fascination with computing, problem-solving, and innovation drives me to constantly improve my skills and expand my technical knowledge. My academic background, combined with practical experience, has equipped me with a strong foundation in software development, networking, and cyber security.",
 ];
+
 export const Interests = [
-  "I have multiple interests, such as gaming, PC building, and managing my server. I have always been interested in gaming and have been playing games since I was a child. I have also always been interested in building my PC and have built multiple PCs for myself and my friends. I have also been managing my server for a few years and have learned a lot about server management and networking. I have always been interested in learning new things and challenging myself to become a better software developer.",
+  "Beyond software development, I enjoy gaming, custom PC building, and server management. These hobbies have not only allowed me to pursue my interests but also enhanced my skills in troubleshooting, technical creativity, and systems management. Managing my own server infrastructure has deepened my understanding of networking and system administration, reinforcing my hands-on expertise in technology.",
 ];
+
 export const Goals = [
-  "My goal is to become a full-stack developer and work on projects that will help me grow as a developer and help me learn new technologies. I am always looking for new opportunities to learn and grow as a developer and am excited to see where my career will take me.",
+  "My professional goal is to excel as a full-stack developer, contributing to innovative projects that drive meaningful results. I'm enthusiastic about joining a forward-thinking team where I can apply my skills, continuously learn new technologies, and contribute positively to challenging and rewarding initiatives.",
 ];

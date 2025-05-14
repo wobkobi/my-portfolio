@@ -1,8 +1,10 @@
+// components/NavBar.tsx
 /**
  * @file NavBar.tsx
  * @description
- * A responsive, auto-hiding navigation bar that wraps on mobile into multiple rows
- * and remains a single centered row on desktop. Contains links and a theme toggle.
+ * A responsive, auto-hiding navigation bar that spans full width on mobile
+ * and becomes a curved inline pill on desktop. Hides on scroll-down, shows
+ * on scroll-up or hover, and auto-hides 30s after a hover.
  */
 
 "use client";
@@ -10,76 +12,93 @@
 import ThemeSwitch from "@/components/ThemeSwitch";
 import cn from "@/utils/cn";
 import Link from "next/link";
-import { JSX, useEffect, useState } from "react";
+import { JSX, useEffect, useRef, useState } from "react";
 
 /**
  * NavBar component.
- * @returns A fixed top navigation bar with links and a theme switch.
+ * @returns The navigation bar element.
  */
-function NavBar(): JSX.Element {
-  const [isVisible, setIsVisible] = useState(true);
+export default function NavBar(): JSX.Element {
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const hideTimer = useRef<number | null>(null);
+
+  /**
+   * Clears any existing hide timer and starts a new one
+   * to auto-hide the navbar after 30 seconds.
+   */
+  const resetHideTimer = (): void => {
+    if (hideTimer.current !== null) {
+      clearTimeout(hideTimer.current);
+    }
+    hideTimer.current = window.setTimeout(() => {
+      setVisible(false);
+      hideTimer.current = null;
+    }, 30_000);
+  };
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let ticking = false;
+    const threshold = 20;
 
-    /** Update visibility based on scroll direction. */
-    const updateVisibility = (): void => {
-      setIsVisible(window.scrollY <= lastScrollY || window.scrollY <= 0);
-      lastScrollY = window.scrollY;
-      ticking = false;
-    };
+    /**
+     * Shows or hides the navbar based on scroll direction.
+     */
+    const onScroll = (): void => {
+      const currentY = window.scrollY;
 
-    /** Throttled scroll handler. */
-    const handleScroll = (): void => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateVisibility);
-        ticking = true;
+      if (currentY < 50) {
+        setVisible(true);
+        resetHideTimer();
+      } else if (currentY > lastScrollY.current + threshold) {
+        setVisible(false);
+      } else if (currentY < lastScrollY.current - threshold) {
+        setVisible(true);
+        resetHideTimer();
       }
+
+      lastScrollY.current = currentY;
     };
 
-    /** Reveal nav when pointer is near the top. @param e MouseEvent */
-    const REVEAL_ZONE = 50;
-    const handleMouseMove = (e: MouseEvent): void => {
-      if (e.clientY < REVEAL_ZONE) setIsVisible(true);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", onScroll);
+      if (hideTimer.current !== null) {
+        clearTimeout(hideTimer.current);
+      }
     };
   }, []);
 
-  // Common classes for each link (reduced weight)
-  const linkClass = cn(
-    "px-2 py-1 font-medium transition-colors",
-    "text-base sm:text-lg md:text-xl lg:text-2xl",
-    "hover:text-indigo_dye dark:text-platinum dark:hover:text-caribbean_current"
+  // Outer nav container: mobile full-width, desktop inline pill
+  const navClasses = cn(
+    "fixed top-0 z-50",
+    "transition-transform transition-opacity duration-300 ease-out",
+    visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6",
+    "inset-x-0 py-1 bg-platinum-700 dark:bg-jet-500",
+    "sm:max-w-screen-md sm:left-1/2 sm:transform sm:-translate-x-1/2",
+    "sm:inline-block sm:rounded-full sm:px-4 sm:py-2 sm:bg-platinum-700 sm:dark:bg-jet-500"
   );
 
-  // Wrapper for all nav items: wrap on mobile, no-wrap on desktop
+  // Flex wrapper for links and theme switch
   const containerClasses = cn(
-    "flex items-center justify-center flex-wrap gap-4",
+    "flex flex-wrap items-center justify-center gap-4",
     "sm:flex-nowrap"
   );
 
-  // Navbar outer container: full width on mobile, constrained on desktop
-  const navClasses = cn(
-    "fixed inset-x-0 top-0 z-10 mx-auto w-full",
-    "sm:max-w-screen-md",
-    "bg-platinum-900 dark:bg-jet-400 px-2 py-1 shadow-lg",
-    "transition-opacity duration-300",
-    isVisible ? "opacity-100" : "opacity-0 hover:opacity-100",
-    "rounded-none sm:rounded-full"
+  // Link styling
+  const linkClass = cn(
+    "px-2 py-1 font-medium transition-colors",
+    "text-base sm:text-lg md:text-xl",
+    "text-jet-400 dark:text-platinum",
+    "hover:text-indigo_dye dark:hover:text-caribbean_current"
   );
 
   return (
     <nav
       className={navClasses}
-      onMouseEnter={() => setIsVisible(true)}
-      onMouseLeave={() => setIsVisible(window.scrollY > 100)}>
+      onMouseEnter={() => {
+        setVisible(true);
+        resetHideTimer();
+      }}>
       <div className={containerClasses}>
         <Link href="/" className={linkClass}>
           Home
@@ -101,5 +120,3 @@ function NavBar(): JSX.Element {
     </nav>
   );
 }
-
-export default NavBar;

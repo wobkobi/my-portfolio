@@ -28,18 +28,29 @@ const roboto = Roboto({
  * Metadata for the HTML document head.
  */
 export const metadata = {
-  title: "Harrison Raynes",
-  description: "Harrison Raynes, a Computer Science Graduate",
+  title: "Harrison Raynes | Software Developer Portfolio",
+  description:
+    "Portfolio website of Harrison Raynes, an Auckland-based Software Developer specialising in web development, cloud technologies, and innovative software solutions.",
+  viewport: "width=device-width, initial-scale=1",
   type: "website",
   url: "https://www.harrisonraynes.com",
   siteName: "Harrison Raynes Portfolio",
   keywords: [
     "Harrison Raynes",
     "Software Developer",
+    "Full Stack Developer",
     "Portfolio",
+    "AWS",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "Web Development",
+    "React",
     "Projects",
     "Resume",
     "CV",
+    "Auckland",
+    "New Zealand",
   ],
   author: "Harrison Raynes",
 };
@@ -66,7 +77,10 @@ export default function RootLayout({
       suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={cn("flex min-h-screen flex-col")}>
+        className={cn(
+          "flex min-h-screen flex-col",
+          "bg-platinum-900 dark:bg-jet-200"
+        )}>
         <Providers>
           <NavBar />
           <main className={cn("flex grow items-center justify-center")}>
