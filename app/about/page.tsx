@@ -1,30 +1,20 @@
 /**
  * @file AboutPage.tsx
  * @description
- * A responsive "About Me" page component that displays the user's introduction,
- * background, interests, and goals in a styled layout. Utilises utility-first
- * classes via the `cn` helper for conditional Tailwind CSS class composition.
+ * A responsive "About Me" page component that imports static content
+ * from AboutMeData and displays Introduction, Background, Interests, and Goals.
  */
 
-import { AboutPageProps } from "@/types/Types";
+import { Background, Goals, Interests, Introduction } from "@/data/AboutMeData";
 import cn from "@/utils/cn";
 import { JSX } from "react";
 
 /**
- * Renders the "About Me" page sections: Introduction, Background, Interests, and Goals.
- * @param props - Props containing content for each section.
- * @param props.Introduction - Introduction text shown under the Introduction heading.
- * @param props.Background   - Background text shown under the Background heading.
- * @param props.Interests    - Interests text shown under the Interests heading.
- * @param props.Goals        - Goals text shown under the Goals heading.
- * @returns A styled page layout with four content sections.
+ * AboutPage component.
+ * Renders the "About Me" content sections using imported data.
+ * @returns The styled About Me page layout.
  */
-const AboutPage: React.FC<AboutPageProps> = ({
-  Introduction,
-  Background,
-  Interests,
-  Goals,
-}: AboutPageProps): JSX.Element => {
+const AboutPage = (): JSX.Element => {
   // Common CSS classes for section headings
   const headingClasses = cn(
     "text-indigo_dye dark:text-caribbean_current mb-4 text-center text-xl font-semibold",

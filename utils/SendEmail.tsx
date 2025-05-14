@@ -9,10 +9,9 @@ import { FormData } from "@/types/Types";
 
 /**
  * Send email via the serverless API.
- *
  * @async
- * @param {FormData} data - The form payload containing name, email, subject, message.
- * @returns {Promise<{ message: string }>} Resolves with a message on success.
+ * @param data - The form payload containing name, email, subject, message.
+ * @returns Resolves with a message on success.
  * @throws {Error} Throws an error with a descriptive message on failure.
  */
 async function sendEmail(data: FormData): Promise<{ message: string }> {

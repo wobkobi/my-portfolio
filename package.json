@@ -7,7 +7,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint \"app/**/*.{js,ts,jsx,tsx}\" \"components/**/*.{js,ts,jsx,tsx}\" --fix"
+    "lint": "eslint \"app/**/*.{js,ts,jsx,tsx}\" \"components/**/*.{js,ts,jsx,tsx}\" \"utils/**/*.{js,ts,jsx,tsx}\" \"types/**/*.{js,ts,jsx,tsx}\" --fix"
   },
   "dependencies": {
     "@types/nodemailer": "^6.4.15",
