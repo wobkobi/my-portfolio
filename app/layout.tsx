@@ -65,11 +65,7 @@ export const metadata = {
  * @param props.children - The nested page elements.
  * @returns The root HTML layout.
  */
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}): JSX.Element {
+function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <html
       lang="en"
@@ -95,3 +91,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+export default RootLayout;

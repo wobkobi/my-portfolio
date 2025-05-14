@@ -13,7 +13,7 @@ import { JSX } from "react";
  * AboutPage component.
  * @returns The About Me page layout.
  */
-export default function AboutPage(): JSX.Element {
+function AboutPage(): JSX.Element {
   const containerClasses = cn("flex grow flex-col items-center justify-center");
   const mainClasses = cn("p-4 pt-24 text-center sm:pt-28");
   const contentWrapper = cn(
@@ -63,3 +63,5 @@ export default function AboutPage(): JSX.Element {
     </div>
   );
 }
+
+export default AboutPage;

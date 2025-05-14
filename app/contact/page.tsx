@@ -14,7 +14,7 @@ import { FiMail } from "react-icons/fi";
  * ContactPage component.
  * @returns The contact page layout.
  */
-export default function ContactPage(): JSX.Element {
+function ContactPage(): JSX.Element {
   const containerClasses = cn("flex grow flex-col items-center justify-center");
   const mainClasses = cn("p-4 pt-24 text-center sm:pt-28");
   const contentWrapper = cn(
@@ -60,3 +60,5 @@ export default function ContactPage(): JSX.Element {
     </div>
   );
 }
+
+export default ContactPage;

@@ -25,7 +25,7 @@ import { JSX, useEffect, useRef, useState } from "react";
  * PortfolioPage component.
  * @returns The portfolio page layout.
  */
-export default function PortfolioPage(): JSX.Element {
+function PortfolioPage(): JSX.Element {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const detailRef = useRef<HTMLDivElement>(null);
   const uniqueSkills = getSortedUniqueSkills(skills);
@@ -156,3 +156,4 @@ export default function PortfolioPage(): JSX.Element {
     </div>
   );
 }
+export default PortfolioPage;

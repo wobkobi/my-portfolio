@@ -18,7 +18,7 @@ import { JSX, useEffect, useRef, useState } from "react";
  * NavBar component.
  * @returns The navigation bar element.
  */
-export default function NavBar(): JSX.Element {
+function NavBar(): JSX.Element {
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
   const hideTimer = useRef<number | null>(null);
@@ -120,3 +120,5 @@ export default function NavBar(): JSX.Element {
     </nav>
   );
 }
+
+export default NavBar;

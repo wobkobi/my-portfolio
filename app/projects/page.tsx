@@ -18,7 +18,7 @@ import { FiExternalLink, FiGithub } from "react-icons/fi";
  * ProjectsPage component.
  * @returns The projects page layout.
  */
-export default function ProjectsPage(): JSX.Element {
+function ProjectsPage(): JSX.Element {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const containerClasses = cn("flex grow flex-col items-center justify-center");
@@ -158,3 +158,5 @@ export default function ProjectsPage(): JSX.Element {
     </div>
   );
 }
+
+export default ProjectsPage;

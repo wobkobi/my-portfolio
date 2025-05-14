@@ -15,7 +15,7 @@ import { JSX } from "react";
  * HomePage component.
  * @returns The home page layout.
  */
-export default function HomePage(): JSX.Element {
+function HomePage(): JSX.Element {
   const containerClasses = cn("flex grow flex-col items-center justify-center");
   const mainClasses = cn("p-4 pt-24 text-center sm:pt-28");
   const contentWrapper = cn(
@@ -68,3 +68,5 @@ export default function HomePage(): JSX.Element {
     </div>
   );
 }
+
+export default HomePage;
