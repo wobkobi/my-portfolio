@@ -1,12 +1,27 @@
+/* app/globals.css */
+
+/**
+ * 1) Google Font import
+ * 2) Tailwind CSS import (preflight, theme, components, utilities)
+ * 3) Custom theme variables (@theme) for design tokens
+ * 4) Custom dark-mode selector (@custom-variant)
+ * 5) Base-layer compatibility resets and typography
+ * 6) Custom scrollbar styling
+ */
+
+/* 1) Google Font */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* 2) Tailwind CSS (includes theme, preflight, components, utilities) */
 @import "tailwindcss";
 
-@layer utilities;
-
-@custom-variant dark (&:is(.dark *));
-
+/* 3) Define theme variables for design tokens */
 @theme {
+  /* Reset any existing custom namespaces */
   --font-*: initial;
+  --color-*: initial;
+
+  /* Font stacks */
   --font-sans:
     Roboto, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -14,6 +29,7 @@
     "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
 
+  /* Jet palette */
   --color-jet-100: #080909;
   --color-jet-200: #101212;
   --color-jet-300: #181a1c;
@@ -25,6 +41,7 @@
   --color-jet-900: #d2d5d7;
   --color-jet: #282b2d;
 
+  /* Caribbean Current palette */
   --color-caribbean_current-100: #0c1617;
   --color-caribbean_current-200: #182c2d;
   --color-caribbean_current-300: #244344;
@@ -36,17 +53,7 @@
   --color-caribbean_current-900: #d3e7e8;
   --color-caribbean_current: #539a9e;
 
-  --color-white-100: #333333;
-  --color-white-200: #666666;
-  --color-white-300: #999999;
-  --color-white-400: #cccccc;
-  --color-white-500: #ffffff;
-  --color-white-600: #ffffff;
-  --color-white-700: #ffffff;
-  --color-white-800: #ffffff;
-  --color-white-900: #ffffff;
-  --color-white: #ffffff;
-
+  /* Platinum (light) palette */
   --color-platinum-100: #2b2b2b;
   --color-platinum-200: #575757;
   --color-platinum-300: #828282;
@@ -58,6 +65,7 @@
   --color-platinum-900: #f7f7f7;
   --color-platinum: #d9d9d9;
 
+  /* Indigo Dye palette */
   --color-indigo_dye-100: #080f14;
   --color-indigo_dye-200: #101e27;
   --color-indigo_dye-300: #182d3b;
@@ -68,58 +76,63 @@
   --color-indigo_dye-800: #95bbd4;
   --color-indigo_dye-900: #cadde9;
   --color-indigo_dye: #284b63;
+
+  /* White shades */
+  --color-white-100: #333333;
+  --color-white-200: #666666;
+  --color-white-300: #999999;
+  --color-white-400: #cccccc;
+  --color-white-500: #ffffff;
+  --color-white-600: #ffffff;
+  --color-white: #ffffff;
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+/* 4) Custom dark mode variant (manual toggling via .dark) */
+@custom-variant dark (&:is(.dark *));
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+/* 5) Base-layer resets and typography enforcement */
 @layer base {
   *,
-  ::after,
   ::before,
+  ::after,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    /* ensure consistent default border color */
+    border-color: var(--color-platinum-300, currentColor);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+
+  body,
+  p,
+  a,
+  input,
+  textarea,
+  button,
+  select,
+  label {
+    font-weight: 400;
+  }
+
+  html {
+    overflow-y: scroll;
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 600;
-}
-
-body,
-p,
-a,
-input,
-textarea,
-button,
-select,
-label {
-  font-weight: 400;
-}
-
-html {
-  overflow-y: scroll;
-}
-
+/* 6) Custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 12px;
 }
-
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: #ddd;
   border-radius: 20px;

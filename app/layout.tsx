@@ -26,8 +26,6 @@ const roboto = Roboto({
 
 /**
  * Metadata for the HTML document head.
- *
- * @type {{ title: string; description: string; type: string; url: string; siteName: string; keywords: string[]; author: string }}
  */
 export const metadata = {
   title: "Harrison Raynes",
@@ -37,12 +35,8 @@ export const metadata = {
   siteName: "Harrison Raynes Portfolio",
   keywords: [
     "Harrison Raynes",
-    "Harrison",
-    "Raynes",
     "Software Developer",
     "Portfolio",
-    "Technology",
-    "Programming",
     "Projects",
     "Resume",
     "CV",
@@ -56,10 +50,9 @@ export const metadata = {
  * Wraps all pages with HTML structure, global providers, navigation bar,
  * footer, and integrates analytics and performance insights.
  * Includes a meta viewport tag for mobile responsiveness.
- *
- * @param {{ children: React.ReactNode }} props - The page content to render.
- * @param {React.ReactNode} props.children - The nested page elements.
- * @returns {JSX.Element} The root HTML layout.
+ * @param props - The page content to render.
+ * @param props.children - The nested page elements.
+ * @returns The root HTML layout.
  */
 export default function RootLayout({
   children,
@@ -71,10 +64,9 @@ export default function RootLayout({
       lang="en"
       className={cn(roboto.className, "h-full")}
       suppressHydrationWarning>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
-      <body className={cn("flex min-h-screen flex-col")}>
+      <body
+        suppressHydrationWarning
+        className={cn("flex min-h-screen flex-col")}>
         <Providers>
           <NavBar />
           <main className={cn("flex grow items-center justify-center")}>
