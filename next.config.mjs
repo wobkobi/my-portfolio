@@ -1,3 +1,7 @@
+// next.config.mjs
+
+import bundleAnalyzer from '@next/bundle-analyzer';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // — Opt in to React strict mode
@@ -28,16 +32,14 @@ const nextConfig = {
     ];
   },
 
-  // — Example permanent redirect
-  async redirects() {
-    return [
-      {
-        source: "/old-blog/:slug",
-        destination: "/blog/:slug",
-        permanent: true,
-      },
-    ];
+  experimental: {
+    optimizePackageImports: ["react-icons"],
   },
+  serverExternalPackages: ['nodemailer']
 };
 
-export default nextConfig;
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+export default withBundleAnalyzer(nextConfig);

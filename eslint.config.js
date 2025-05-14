@@ -28,7 +28,7 @@ export default [
       "dist/**",
       "coverage/**",
       "build/**",
-      "next.config.js",
+      "next.config.mjs",
       "postcss.config.js",
       "eslint.config.js",
     ],
