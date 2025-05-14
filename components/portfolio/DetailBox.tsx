@@ -1,8 +1,8 @@
 /**
  * @file DetailBox.tsx
  * @description
- * Displays detailed information for a selected DataBox item, including a subtitle,
- * list or paragraph of details, and an optional link. Only renders when visible.
+ * Renders detailed information for a DataBox item, showing either a
+ * single paragraph or a bulleted list, plus an optional action link.
  */
 
 import { DetailBoxProps } from "@/types/Types";
@@ -11,75 +11,69 @@ import { JSX } from "react";
 
 /**
  * DetailBox component.
- *
- * @param {DetailBoxProps} props - Props including visibility, content and link.
- * @param {string} props.id - Unique identifier (used for list keys).
- * @param {string} props.subtitle - Heading text displayed above details.
- * @param {string[]} props.details - Array of detail strings; renders as paragraph or list.
- * @param {boolean} props.isVisible - Controls whether the box is shown.
- * @param {{ url: string; text: string }} [props.link] - Optional link object for further action.
- * @returns {JSX.Element | null} The detail box UI or null if not visible.
+ * @param props - Props for rendering details.
+ * @param props.id - Unique identifier for list keys.
+ * @param props.subtitle - Heading text displayed above details.
+ * @param props.details - Array of detail lines.
+ * @param props.isVisible - Whether the box should render.
+ * @param [props.link] - Optional link.
+ * @returns The detail box or null if hidden.
  */
 function DetailBox({
+  id,
   subtitle,
   details,
   isVisible,
   link,
-  id,
 }: DetailBoxProps): JSX.Element | null {
   if (!isVisible) return null;
 
-  // Container classes
-  const containerClass = cn(
-    "bg-platinum-900 dark:bg-jet-400 m-2 mx-auto max-w-full rounded-sm p-4 shadow-lg",
+  const container = cn(
+    "m-2 mx-auto max-w-full rounded-sm p-4 shadow-lg",
+    "bg-platinum-800 dark:bg-jet-400",
     "sm:max-w-md md:max-w-lg xl:max-w-2/3"
   );
 
-  // Subtitle classes
-  const subtitleClass = cn(
-    "text-indigo_dye dark:text-caribbean_current mb-2 text-center",
+  const title = cn(
+    "mb-2 text-center",
+    "text-indigo_dye dark:text-caribbean_current",
     "text-sm font-semibold sm:text-base md:text-lg"
   );
 
-  // Detail text classes
-  const paragraphClass = cn("text-jet dark:text-platinum text-base sm:text-lg");
+  const paragraph = cn("text-jet dark:text-platinum", "text-base sm:text-lg");
 
-  const listClass = cn("list-disc pl-5 text-left text-base sm:text-lg");
-  const listItemClass = cn("text-jet dark:text-platinum");
+  const list = cn("list-disc pl-5 text-left", "text-base sm:text-lg");
+
+  const listItem = cn("text-jet dark:text-platinum");
 
   const linkClass = cn(
-    "text-indigo_dye dark:text-caribbean_current mt-4 block text-center",
-    "text-sm hover:underline sm:text-base md:text-lg"
+    "mt-4 block text-center hover:underline",
+    "text-indigo_dye dark:text-caribbean_current",
+    "text-sm sm:text-base md:text-lg"
   );
 
-  /**
-   * Render details as either a single paragraph or a bulleted list.
-   *
-   * @returns {JSX.Element} The details content.
-   */
-  const renderDetails = (): JSX.Element =>
-    details.length > 1 ? (
-      <ul className={listClass}>
-        {details.map((detail, idx) => (
-          <li key={`${id}-detail-${idx}`} className={listItemClass}>
-            {detail}
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p className={paragraphClass}>{details[0]}</p>
-    );
-
   return (
-    <div className={containerClass}>
-      <h3 className={subtitleClass}>{subtitle}</h3>
-      {renderDetails()}
+    <div className={container}>
+      <h3 className={title}>{subtitle}</h3>
+
+      {details.length > 1 ? (
+        <ul className={list}>
+          {details.map((detail, idx) => (
+            <li key={`${id}-detail-${idx}`} className={listItem}>
+              {detail}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className={paragraph}>{details[0]}</p>
+      )}
+
       {link && (
         <a
           href={link.url}
-          className={linkClass}
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+          className={linkClass}>
           {link.text}
         </a>
       )}

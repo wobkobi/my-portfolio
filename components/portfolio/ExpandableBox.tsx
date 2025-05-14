@@ -1,8 +1,8 @@
+// components/portfolio/ExpandableBox.tsx
 /**
  * @file ExpandableBox.tsx
  * @description
- * A clickable summary box that toggles expansion state. Supports keyboard and touch,
- * and applies distinct styles when expanded or collapsed.
+ * A card that can be toggled open or closed to show a title and optional summary.
  */
 
 "use client";
@@ -11,80 +11,73 @@ import { ExpandableBoxProps } from "@/types/Types";
 import cn from "@/utils/cn";
 import React, { forwardRef, JSX, Ref } from "react";
 
+// Shared container styles
+const containerClasses = cn(
+  "m-2 flex w-full h-full flex-col items-center justify-center",
+  "cursor-pointer rounded-sm p-4 shadow-lg transition-all duration-300",
+  "dark:hover:text-white"
+);
+
+// Styles when collapsed
+const collapsedClasses = cn(
+  "bg-platinum-800 hover:bg-platinum-600",
+  "dark:bg-jet-400 dark:hover:bg-jet-200",
+  "hover:text-white"
+);
+
+// Styles when expanded
+const expandedClasses = cn(
+  "bg-platinum-700 ring-2 ring-indigo_dye hover:bg-platinum-600",
+  "dark:bg-jet-300 dark:ring-caribbean_current dark:hover:bg-jet-200",
+  "hover:text-white"
+);
+
+// Title styling
+const titleClasses = cn(
+  "text-indigo_dye dark:text-caribbean_current",
+  "text-center text-lg font-bold"
+);
+
+// Summary styling
+const summaryClasses = cn(
+  "mt-2 text-center text-sm",
+  "text-indigo_dye dark:text-platinum"
+);
+
 /**
- * ExpandableBox component.
- * Wraps a summary title and optional summary text in a clickable/tappable box.
- *
- * @param {ExpandableBoxProps} props - Props to configure the box.
- * @param {string} props.id - Unique identifier for this box.
- * @param {string} props.title - Title text displayed prominently.
- * @param {string} [props.summary] - Optional summary text when collapsed.
- * @param {boolean} props.isExpanded - Whether the box is currently expanded.
- * @param {(id: string) => void} props.onToggle - Callback when the box is toggled.
- * @param {Ref<HTMLDivElement>} ref - Forwarded ref to the container div.
- * @returns {JSX.Element} The expandable box element.
+ * ExpandableBoxFunction component.
+ * @param props - Props containing id, title, summary, isExpanded, and onToggle.
+ * @param ref - Forwarded ref for the root div element.
+ * @returns The rendered expandable box.
  */
 function ExpandableBoxFunction(
-  { id, title, summary, isExpanded, onToggle }: ExpandableBoxProps,
+  props: ExpandableBoxProps,
   ref: Ref<HTMLDivElement>
 ): JSX.Element {
-  // Base container classes
-  const baseClass = cn(
-    "m-2 flex h-full w-full cursor-pointer flex-col items-center justify-center",
-    "rounded-sm p-4 shadow-lg transition-all duration-300",
-    "dark:hover:text-white"
-  );
-
-  // Classes applied when expanded
-  const expandedClass = cn(
-    "ring-2 ring-indigo_dye hover:bg-platinum-700",
-    "dark:ring-caribbean_current dark:hover:bg-jet-300",
-    "hover:text-white"
-  );
-
-  // Classes applied when collapsed
-  const collapsedClass = cn(
-    "bg-platinum-900 hover:bg-platinum-700",
-    "dark:bg-jet-400 dark:hover:bg-jet-300",
-    "hover:text-white"
-  );
-
-  // Title styling
-  const titleClass = cn(
-    "text-indigo_dye dark:text-caribbean_current",
-    "text-center text-lg font-bold"
-  );
-
-  // Summary styling
-  const summaryClass = cn(
-    "text-indigo_dye dark:text-platinum",
-    "mt-2 text-center text-sm"
-  );
-
-  /**
-   * Handle touch end events to toggle expansion without triggering click twice.
-   */
-  const handleTouchEnd = (event: React.TouchEvent): void => {
-    event.preventDefault();
+  const { id, title, summary, isExpanded, onToggle } = props;
+  const handleTouchEnd = (e: React.TouchEvent): void => {
+    e.preventDefault();
     onToggle(id);
   };
 
   return (
     <div
       ref={ref}
-      className={cn(baseClass, isExpanded ? expandedClass : collapsedClass)}
+      className={cn(
+        containerClasses,
+        isExpanded ? expandedClasses : collapsedClasses
+      )}
       onClick={(): void => onToggle(id)}
       onTouchEnd={handleTouchEnd}
       role="button"
       tabIndex={0}
       aria-pressed={isExpanded}>
-      <h2 className={titleClass}>{title}</h2>
-      {summary && <p className={summaryClass}>{summary}</p>}
+      <h2 className={titleClasses}>{title}</h2>
+      {summary && <p className={summaryClasses}>{summary}</p>}
     </div>
   );
 }
 
-// Forward ref for parent components to access the div DOM node
 const ExpandableBox = forwardRef<HTMLDivElement, ExpandableBoxProps>(
   ExpandableBoxFunction
 );

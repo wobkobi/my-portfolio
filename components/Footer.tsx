@@ -11,8 +11,7 @@ import { FiGithub, FiGlobe, FiLinkedin } from "react-icons/fi";
 
 /**
  * Footer component.
- *
- * @returns {JSX.Element} A footer bar with icon links opening in a new tab.
+ * @returns A footer bar with icon links opening in a new tab.
  */
 function Footer(): JSX.Element {
   // Common classes for each icon link
@@ -27,7 +26,7 @@ function Footer(): JSX.Element {
   return (
     <footer
       className={cn(
-        "bg-platinum-900 dark:bg-jet-400",
+        "bg-platinum-800 dark:bg-jet-400",
         "flex justify-center gap-4 p-4 sm:gap-6 md:gap-8 lg:gap-10"
       )}>
       <a

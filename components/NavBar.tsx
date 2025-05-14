@@ -1,8 +1,10 @@
+// components/NavBar.tsx
 /**
  * @file NavBar.tsx
  * @description
- * A responsive, auto-hiding navigation bar that reveals on scroll up or pointer proximity.
- * Contains links to main site sections and a theme switch control. Uses `cn` for styling.
+ * A responsive, auto-hiding navigation bar that spans full width on mobile
+ * and becomes a curved inline pill on desktop. Hides on scroll-down, shows
+ * on scroll-up or hover, and auto-hides 30s after a hover.
  */
 
 "use client";
@@ -10,85 +12,94 @@
 import ThemeSwitch from "@/components/ThemeSwitch";
 import cn from "@/utils/cn";
 import Link from "next/link";
-import { JSX, useEffect, useState } from "react";
+import { JSX, useEffect, useRef, useState } from "react";
 
 /**
  * NavBar component.
- *
- * @returns {JSX.Element} A fixed top navigation bar with links and theme toggle.
+ * @returns The navigation bar element.
  */
 function NavBar(): JSX.Element {
-  // Visibility state for auto-hide on scroll
-  const [isVisible, setIsVisible] = useState(true);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const hideTimer = useRef<number | null>(null);
+
+  /**
+   * Clears any existing hide timer and starts a new one
+   * to auto-hide the navbar after 30 seconds.
+   */
+  const resetHideTimer = (): void => {
+    if (hideTimer.current !== null) {
+      clearTimeout(hideTimer.current);
+    }
+    hideTimer.current = window.setTimeout(() => {
+      setVisible(false);
+      hideTimer.current = null;
+    }, 30_000);
+  };
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let ticking = false;
+    const threshold = 20;
 
     /**
-     * Update visibility based on scroll direction.
+     * Shows or hides the navbar based on scroll direction.
      */
-    const updateVisibility = (): void => {
-      setIsVisible(window.scrollY <= lastScrollY || window.scrollY <= 0);
-      lastScrollY = window.scrollY;
-      ticking = false;
-    };
+    const onScroll = (): void => {
+      const currentY = window.scrollY;
 
-    /**
-     * Throttled scroll handler using requestAnimationFrame.
-     */
-    const handleScroll = (): void => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateVisibility);
-        ticking = true;
+      if (currentY < 50) {
+        setVisible(true);
+        resetHideTimer();
+      } else if (currentY > lastScrollY.current + threshold) {
+        setVisible(false);
+      } else if (currentY < lastScrollY.current - threshold) {
+        setVisible(true);
+        resetHideTimer();
       }
+
+      lastScrollY.current = currentY;
     };
 
-    /**
-     * Reveal nav when pointer is near the top of the viewport.
-     * @param {MouseEvent} e - Mouse move event.
-     */
-    const REVEAL_ZONE = 50;
-    const handleMouseMove = (e: MouseEvent): void => {
-      if (e.clientY < REVEAL_ZONE) setIsVisible(true);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("mousemove", handleMouseMove);
-
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", onScroll);
+      if (hideTimer.current !== null) {
+        clearTimeout(hideTimer.current);
+      }
     };
   }, []);
 
-  // Common classes for nav links
-  const linkClass = cn(
-    "hover:text-indigo_dye",
-    "dark:text-platinum dark:hover:text-caribbean_current",
-    "text-base sm:text-lg md:text-xl lg:text-2xl font-semibold",
-    "px-2 py-1"
-  );
-
-  // Container classes with auto-hide behaviour
+  // Outer nav container: mobile full-width, desktop inline pill
   const navClasses = cn(
-    "fixed inset-x-0 top-0 z-10 mx-auto w-full max-w-full rounded-full",
-    "px-1 py-1 shadow-lg transition-all duration-300 sm:max-w-xl sm:px-2 sm:py-1",
-    isVisible ? "opacity-100" : "opacity-0 hover:opacity-100",
-    "bg-platinum-900 dark:bg-jet-400 min-h-14"
+    "fixed top-0 z-50",
+    "transition-transform transition-opacity duration-300 ease-out",
+    visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6",
+    "inset-x-0 py-1 bg-platinum-700 dark:bg-jet-500",
+    "sm:max-w-screen-md sm:left-1/2 sm:transform sm:-translate-x-1/2",
+    "sm:inline-block sm:rounded-full sm:px-4 sm:py-2 sm:bg-platinum-700 sm:dark:bg-jet-500"
   );
 
-  const wrapperClasses = cn(
-    "flex flex-wrap items-center justify-evenly sm:flex-nowrap",
-    "w-full"
+  // Flex wrapper for links and theme switch
+  const containerClasses = cn(
+    "flex flex-wrap items-center justify-center gap-4",
+    "sm:flex-nowrap"
+  );
+
+  // Link styling
+  const linkClass = cn(
+    "px-2 py-1 font-medium transition-colors",
+    "text-base sm:text-lg md:text-xl",
+    "text-jet-400 dark:text-platinum",
+    "hover:text-indigo_dye dark:hover:text-caribbean_current"
   );
 
   return (
     <nav
       className={navClasses}
-      onMouseEnter={() => setIsVisible(true)}
-      onMouseLeave={() => setIsVisible(window.scrollY > 100)}>
-      <div className={wrapperClasses}>
+      onMouseEnter={() => {
+        setVisible(true);
+        resetHideTimer();
+      }}>
+      <div className={containerClasses}>
         <Link href="/" className={linkClass}>
           Home
         </Link>
@@ -104,9 +115,7 @@ function NavBar(): JSX.Element {
         <Link href="/contact" className={linkClass}>
           Contact
         </Link>
-        <div className="px-2 py-1">
-          <ThemeSwitch />
-        </div>
+        <ThemeSwitch />
       </div>
     </nav>
   );

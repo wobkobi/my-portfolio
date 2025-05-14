@@ -6,9 +6,8 @@
 
 /**
  * Returns a sorted array of unique skills.
- *
- * @param {string[]} skills - Array of skill names (may contain duplicates).
- * @returns {string[]} Alphabetically sorted array of unique skill names.
+ * @param skills - Array of skill names (may contain duplicates).
+ * @returns Alphabetically sorted array of unique skill names.
  */
 export const getSortedUniqueSkills = (skills: string[]): string[] => {
   // Use Set to remove duplicates, then sort using localeCompare for correct ordering

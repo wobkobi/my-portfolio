@@ -3,6 +3,7 @@ import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
+import jsdoc from "eslint-plugin-jsdoc";
 import prettier from "eslint-plugin-prettier";
 import globals from "globals";
 import path from "node:path";
@@ -27,13 +28,16 @@ export default [
       "dist/**",
       "coverage/**",
       "build/**",
-      "next.config.js",
+      "next.config.mjs",
       "postcss.config.js",
       "eslint.config.js",
     ],
   },
 
-  // 2) Bring in ESLint, TypeScript‑ESLint, React/Next and Prettier recommended rules
+  // 2) JSDoc recommended rules for TypeScript (report as errors)
+  jsdoc.configs["flat/recommended-typescript-error"],
+
+  // 3) Bring in ESLint, TypeScript-ESLint, React/Next and Prettier recommended rules
   ...compat.extends(
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -42,7 +46,7 @@ export default [
     "prettier"
   ),
 
-  // 3) Project‑specific overrides
+  // 4) Project-specific overrides
   {
     languageOptions: {
       parser: tsParser,
@@ -61,6 +65,7 @@ export default [
     plugins: {
       "@typescript-eslint": typescriptEslint,
       prettier,
+      jsdoc,
     },
 
     settings: {
@@ -69,28 +74,37 @@ export default [
           extensions: [".js", ".jsx", ".ts", ".tsx", ".mjs"],
         },
       },
+      jsdoc: {
+        mode: "typescript",
+      },
     },
 
     rules: {
-      // Unused vars
+      // No unused variables
       "@typescript-eslint/no-unused-vars": "error",
 
-      // Prettier formatting
+      // Prettier formatting enforcement
       "prettier/prettier": ["error", { endOfLine: "crlf" }],
+      "linebreak-style": ["error", "windows"],
 
       // Consistent type definitions
       "@typescript-eslint/consistent-type-definitions": "error",
+
+      // JSDoc enforcement rules
+      "jsdoc/require-jsdoc": "error",
+      "jsdoc/require-param": "error",
+      "jsdoc/require-param-description": "error",
+      "jsdoc/require-returns": "error",
+      "jsdoc/require-returns-description": "error",
+      "jsdoc/check-param-names": "error",
+      "jsdoc/check-tag-names": "error",
+      "jsdoc/no-undefined-types": "error",
 
       // Explicit return types (warn)
       "@typescript-eslint/explicit-function-return-type": [
         "warn",
         { allowExpressions: true },
       ],
-
-      // Linebreak style matches OS
-      "linebreak-style": ["error", "windows"],
     },
   },
 ];
-
-// .prettierrc
