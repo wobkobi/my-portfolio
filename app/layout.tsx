@@ -12,6 +12,7 @@ import NavBar from "@/components/NavBar";
 import cn from "@/utils/cn";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Viewport } from "next";
 import { Roboto } from "next/font/google";
 import React, { JSX } from "react";
 import "./globals.css";
@@ -31,7 +32,6 @@ export const metadata = {
   title: "Harrison Raynes | Software Developer Portfolio",
   description:
     "Portfolio website of Harrison Raynes, an Auckland-based Software Developer specialising in web development, cloud technologies, and innovative software solutions.",
-  viewport: "width=device-width, initial-scale=1",
   type: "website",
   url: "https://www.harrisonraynes.com",
   siteName: "Harrison Raynes Portfolio",
@@ -53,6 +53,11 @@ export const metadata = {
     "New Zealand",
   ],
   author: "Harrison Raynes",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 /**
