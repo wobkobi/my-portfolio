@@ -1,8 +1,8 @@
 // next.config.mjs
 
-import bundleAnalyzer from '@next/bundle-analyzer';
+import bundleAnalyzer from "@next/bundle-analyzer";
 
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const nextConfig = {
   // — Opt in to React strict mode
   reactStrictMode: true,
@@ -35,11 +35,11 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["react-icons"],
   },
-  serverExternalPackages: ['nodemailer']
+  serverExternalPackages: ["nodemailer","tailwind-merge", ]
 };
 
 const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true',
+  enabled: process.env.ANALYZE === "true",
 });
 
 export default withBundleAnalyzer(nextConfig);
