@@ -26,7 +26,7 @@ export const Education: DataBox[] = [
   {
     id: "edu2",
     title: "Bachelor of Computer and Information Sciences",
-    summary: "2021 – 2023",
+    summary: "2021 - 2023",
     details: [
       "Majored in Software Development and Networks & Cyber Security.",
       "Graduated with a GPA of 5.5 (B+ average), highlighting consistent academic performance and understanding of key IT concepts.",
@@ -46,12 +46,12 @@ export const Education: DataBox[] = [
 export const WorkExperience: DataBox[] = [
   {
     id: "work1",
-    title: "Night Fill Long Life Assistant – Woolworths",
-    summary: "11/2022 – 06/2023",
+    title: "Night Fill Long Life Assistant - Woolworths",
+    summary: "11/2022 - 06/2023",
     details: [
       "Efficiently managed night-shift responsibilities, ensuring optimal product availability for customers.",
       "Prepared the store for morning operations, supporting seamless daytime activities.",
-      "Collaborated within a team of 4–5 members to maintain productivity and store presentation.",
+      "Collaborated within a team of 4-5 members to maintain productivity and store presentation.",
     ],
     skills: [
       "Inventory management",
@@ -62,8 +62,8 @@ export const WorkExperience: DataBox[] = [
   },
   {
     id: "work2",
-    title: "Lifeguard – Mt Albert Aquatic Centre",
-    summary: "10/2019 – 05/2023",
+    title: "Lifeguard - Mt Albert Aquatic Centre",
+    summary: "10/2019 - 05/2023",
     details: [
       "Maintained vigilant supervision to ensure visitor safety, significantly reducing incident risk.",
       "Performed routine facility checks and promptly addressed safety hazards.",
@@ -82,7 +82,7 @@ export const Projects: DataBox[] = [
   {
     id: "project1",
     title: "Chat Bot Platform for Counties Manukau Health",
-    summary: "02/2023 – 11/2023",
+    summary: "02/2023 - 11/2023",
     details: [
       "Developed a chatbot using Microsoft Bot Framework Composer to improve digital communications as a part of Team of 4",
       "Focused on accessibility and ease of use, receiving positive stakeholder feedback.",
@@ -102,7 +102,7 @@ export const Projects: DataBox[] = [
     id: "project2",
     title: "iFridge",
     subtitle: "Software Developer",
-    summary: "07/2022 – 11/2022",
+    summary: "07/2022 - 11/2022",
     details: [
       "Software as a Service that can generate 50+ recipes using items listed in their digital fridge with a Team of 4 of us",
     ],
@@ -110,7 +110,15 @@ export const Projects: DataBox[] = [
       url: "https://github.com/TheIFridge",
       text: "GitHub Repo",
     },
-    skills: ["Node.js backend", "Web scraping", "Data analysis", "API design"],
+    skills: [
+      "Node.js backend",
+      "Web scraping",
+      "Data analysis",
+      "API design",
+      "TypeScript",
+      "DataBase",
+      "Firebase",
+    ],
   },
   {
     id: "project3",
@@ -128,24 +136,23 @@ export const Projects: DataBox[] = [
       },
       { url: "/projects", text: "View on this Site" },
     ],
-    skills: ["Full-stack development", "Git workflow", "Rapid prototyping"],
   },
 ];
 
 export const Certifications: Certification[] = [
   {
     id: "cert1",
-    title: "CCNA – Enterprise Networking, Security, and Automation",
+    title: "CCNA - Enterprise Networking, Security, and Automation",
     year: "2023",
   },
   {
     id: "cert2",
-    title: "CCNA – Switching, Routing, and Wireless Essentials",
+    title: "CCNA - Switching, Routing, and Wireless Essentials",
     year: "2022",
   },
   {
     id: "cert3",
-    title: "CCNA – Introduction to Networks",
+    title: "CCNA - Introduction to Networks",
     year: "2021",
   },
 ];

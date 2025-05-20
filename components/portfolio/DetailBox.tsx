@@ -9,6 +9,7 @@
 
 import { DetailBoxProps } from "@/types/Types";
 import cn from "@/utils/cn";
+import { getSortedUniqueSkills } from "@/utils/sortSkills";
 import { JSX } from "react";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 
@@ -129,7 +130,7 @@ function DetailBox({
         <>
           <h4 className="mt-4 text-center font-semibold">Skills Gained:</h4>
           <ul className="flex flex-wrap justify-center gap-2 pt-2">
-            {skills.map((skill, i) => (
+            {getSortedUniqueSkills(skills).map((skill, i) => (
               <li
                 key={`${id}-skill-${i}`}
                 className="bg-indigo_dye dark:bg-caribbean_current rounded-sm px-2 py-1 text-xs text-white">
