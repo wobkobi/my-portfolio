@@ -86,7 +86,7 @@ function DetailBox({
                 target="_blank"
                 rel="noopener noreferrer"
                 className={buttonClass}>
-                {l.url.includes("github.com") ? (
+                {isGitHubUrl(l.url) ? (
                   <FiGithub className="h-4 w-4" aria-hidden="true" />
                 ) : (
                   <FiExternalLink className="h-4 w-4" aria-hidden="true" />
@@ -100,7 +100,7 @@ function DetailBox({
               target="_blank"
               rel="noopener noreferrer"
               className={buttonClass}>
-              {link.url.includes("github.com") ? (
+              {isGitHubUrl(link.url) ? (
                 <FiGithub className="h-4 w-4" aria-hidden="true" />
               ) : (
                 <FiExternalLink className="h-4 w-4" aria-hidden="true" />
