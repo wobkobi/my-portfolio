@@ -13,6 +13,21 @@ import { JSX } from "react";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 
 /**
+ * Safely detect if a URL is on the github.com host (including subdomains).
+ * @param urlString - The href you want to check.
+ * @returns true if the parsed hostname is exactly "github.com" or ends with ".github.com"
+ */
+function isGitHubUrl(urlString: string): boolean {
+  try {
+    const hostname = new URL(urlString).hostname.toLowerCase();
+    return hostname === "github.com" || hostname.endsWith(".github.com");
+  } catch {
+    // invalid URL, treat as non-GitHub
+    return false;
+  }
+}
+
+/**
  * DetailBox component.
  * @param props - Props for rendering details.
  * @param props.id - Unique identifier for list keys.
@@ -75,23 +90,22 @@ function DetailBox({
         <p className={paragraph}>{details[0]}</p>
       )}
 
-      {/* ==== new button bar ==== */}
       {link && (
         <div className="mt-4 flex flex-wrap justify-center gap-3">
           {Array.isArray(link) ? (
-            link.map((l, i) => (
+            link.map((link, i) => (
               <a
                 key={`link-${i}`}
-                href={l.url}
+                href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={buttonClass}>
-                {isGitHubUrl(l.url) ? (
+                {isGitHubUrl(link.url) ? (
                   <FiGithub className="h-4 w-4" aria-hidden="true" />
                 ) : (
                   <FiExternalLink className="h-4 w-4" aria-hidden="true" />
                 )}
-                <span>{l.text}</span>
+                <span>{link.text}</span>
               </a>
             ))
           ) : (
