@@ -20,7 +20,7 @@ import { JSX } from "react";
  */
 function AboutPage(): JSX.Element {
   const containerClasses = cn("flex grow flex-col items-center justify-center");
-  const mainClasses = cn("p-4 pt-6 text-center sm:pt-7");
+  const mainClasses = cn("p-4 pt-16 text-center sm:pt-7");
   const contentWrapper = cn(
     "mx-auto w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 p-4"
   );
