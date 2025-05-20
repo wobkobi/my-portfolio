@@ -7,6 +7,10 @@
 
 import { ReactNode } from "react";
 
+export interface LinkItem {
+  url: string;
+  text: string;
+}
 /**
  * Generic data structure for summary boxes in the portfolio.
  * id - Unique identifier for the box.
@@ -22,7 +26,8 @@ export interface DataBox {
   summary: string;
   subtitle?: string;
   details: string[];
-  link?: { url: string; text: string };
+  link?: LinkItem | LinkItem[];
+  skills?: string[];
 }
 
 /**
@@ -37,8 +42,9 @@ export interface DetailBoxProps {
   id: string;
   subtitle: string;
   details: string[];
+  skills?: string[];
   isVisible: boolean;
-  link?: { url: string; text: string };
+  link?: LinkItem | LinkItem[];
 }
 
 /**
@@ -119,4 +125,10 @@ export interface EmailModalProps {
   isOpen: boolean;
   message: string;
   onClose: () => void;
+}
+
+export interface Certification {
+  id: string;
+  title: string;
+  year: string;
 }
