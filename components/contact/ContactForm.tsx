@@ -72,7 +72,7 @@ function ContactForm(): JSX.Element {
       <form onSubmit={handleSubmit(onSubmit)} className={cn("space-y-6")}>
         <input
           type="text"
-          placeholder="Full Name or Company Name"
+          placeholder="Name or Company Name"
           className={cn(inputClass, errors.name && "border-red-500")}
           {...register("name", { required: "Name is required" })}
         />

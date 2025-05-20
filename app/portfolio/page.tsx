@@ -2,8 +2,9 @@
 /**
  * @file PortfolioPage.tsx
  * @description
- * Renders the Portfolio page with Education, Work Experience, Projects, Skills, and CV,
- * using a centered card container for the main content to match other site pages.
+ * Renders the Portfolio page with Education, Work Experience, Projects,
+ * Certifications, Skills, and CV, using a centered card container for the
+ * main content to match other site pages.
  */
 
 "use client";
@@ -11,6 +12,7 @@
 import DetailBox from "@/components/portfolio/DetailBox";
 import ExpandableBox from "@/components/portfolio/ExpandableBox";
 import {
+  Certifications,
   Education,
   Projects,
   skills,
@@ -31,23 +33,23 @@ function PortfolioPage(): JSX.Element {
   const uniqueSkills = getSortedUniqueSkills(skills);
 
   const containerClasses = cn("flex grow flex-col items-center justify-center");
-  const mainClasses = cn("p-4 pt-24 text-center sm:pt-28");
+  const mainClasses = cn("p-4 pt-6 text-center sm:pt-7");
   const contentWrapper = cn(
     "mx-auto w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 p-4"
   );
 
   const titleClasses = cn(
-    "text-indigo_dye dark:text-caribbean_current mb-6 text-center text-3xl font-bold",
-    "sm:text-4xl md:text-5xl"
+    "text-indigo_dye dark:text-caribbean_current mb-6",
+    "text-center text-3xl font-bold sm:text-4xl md:text-5xl"
   );
   const sectionHeading = cn(
-    "text-indigo_dye dark:text-caribbean_current mb-4 text-center text-2xl font-semibold",
-    "sm:text-3xl md:text-4xl"
+    "text-indigo_dye dark:text-caribbean_current mb-4",
+    "text-center text-2xl font-semibold sm:text-3xl md:text-4xl"
   );
   const sectionWrapper = cn("mb-8");
-  const gridContainer = cn("flex flex-wrap justify-center gap-4");
+  const gridWrapper = cn("flex flex-wrap justify-center gap-4");
 
-  useEffect((): void => {
+  useEffect(() => {
     if (expandedId && detailRef.current) {
       detailRef.current.scrollIntoView({
         behavior: "smooth",
@@ -65,15 +67,15 @@ function PortfolioPage(): JSX.Element {
     setExpandedId((prev) => (prev === id ? null : id));
 
   /**
-   * Render one of the portfolio sections.
-   * @param title - Section title.
-   * @param items - Array of DataBox items.
-   * @returns JSX.Element The rendered section.
+   * Render a section of ExpandableBoxes.
+   * @param title - The heading for the section.
+   * @param items - Array of DataBox items to render.
+   * @returns A JSX element containing that section.
    */
   const renderSection = (title: string, items: DataBox[]): JSX.Element => (
     <section className={sectionWrapper} key={title}>
       <h2 className={sectionHeading}>{title}</h2>
-      <div className={gridContainer}>
+      <div className={gridWrapper}>
         {items.map((item) => (
           <div
             key={item.id}
@@ -88,6 +90,7 @@ function PortfolioPage(): JSX.Element {
           </div>
         ))}
       </div>
+
       {expandedId &&
         items
           .filter((it) => it.id === expandedId)
@@ -102,6 +105,7 @@ function PortfolioPage(): JSX.Element {
                 id={it.id}
                 subtitle={it.subtitle || ""}
                 details={it.details}
+                skills={it.skills}
                 isVisible
                 link={it.link}
               />
@@ -114,10 +118,47 @@ function PortfolioPage(): JSX.Element {
     <div className={containerClasses}>
       <main className={mainClasses}>
         <h1 className={titleClasses}>Portfolio</h1>
-        <div className={cn(contentWrapper)}>
-          {renderSection("Education", Education as DataBox[])}
-          {renderSection("Work Experience", WorkExperience as DataBox[])}
-          {renderSection("Projects", Projects as DataBox[])}
+        <div className={contentWrapper}>
+          {renderSection("Education", Education)}
+          {renderSection("Work Experience", WorkExperience)}
+          {renderSection("Projects", Projects)}
+
+          <section className={sectionWrapper}>
+            <h2 className={sectionHeading}>Certifications</h2>
+            <div className={gridWrapper}>
+              {Certifications.map((cert) => (
+                <div
+                  key={cert.id}
+                  className="flex w-full items-center justify-center p-4 sm:max-w-sm md:w-1/2 lg:w-1/4">
+                  <div
+                    className={cn(
+                      "h-28 w-full",
+                      "bg-platinum-800",
+                      "dark:bg-jet-400",
+                      "rounded-sm p-3 shadow-md",
+                      "flex flex-col items-center justify-center",
+                      "transition-colors duration-200"
+                    )}>
+                    <h3
+                      className={cn(
+                        "text-indigo_dye dark:text-caribbean_current",
+                        "text-center text-base font-semibold",
+                        "break-words"
+                      )}>
+                      {cert.title}
+                    </h3>
+                    <p
+                      className={cn(
+                        "mt-1 text-sm text-gray-200 dark:text-gray-400",
+                        "text-center"
+                      )}>
+                      {cert.year}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
 
           <section className={sectionWrapper}>
             <h2 className={sectionHeading}>Skills</h2>
@@ -130,7 +171,8 @@ function PortfolioPage(): JSX.Element {
                 <span
                   key={skill}
                   className={cn(
-                    "bg-indigo_dye dark:bg-caribbean_current-500 mb-2 rounded-sm px-3 py-1 text-xs font-medium text-white",
+                    "bg-indigo_dye dark:bg-caribbean_current-500 mb-2",
+                    "rounded-sm px-3 py-1 text-xs font-medium text-white",
                     "md:text-sm"
                   )}>
                   {skill}
@@ -144,9 +186,9 @@ function PortfolioPage(): JSX.Element {
             download
             className={cn(
               "bg-indigo_dye hover:bg-caribbean_current focus:ring-indigo_dye focus:ring-opacity-50",
-              "dark:bg-caribbean_current dark:hover:bg-indigo_dye inline-block",
-              "rounded-md px-4 py-2 text-sm font-medium text-white shadow-lg",
-              "transition duration-300 ease-in-out hover:scale-105 focus:ring-2 focus:outline-hidden",
+              "dark:bg-caribbean_current dark:hover:bg-indigo_dye",
+              "inline-block rounded-md px-4 py-2 text-sm font-medium text-white shadow-lg",
+              "transition duration-300 ease-in-out hover:scale-105 focus:ring-2 focus:outline-none",
               "md:px-6 md:py-3 md:text-lg"
             )}>
             Download CV
@@ -156,4 +198,5 @@ function PortfolioPage(): JSX.Element {
     </div>
   );
 }
+
 export default PortfolioPage;
