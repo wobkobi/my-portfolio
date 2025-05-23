@@ -14,7 +14,7 @@ export const Education: DataBox[] = [
     details: [
       "Acquired practical skills and knowledge in core AWS services and foundational cloud computing concepts.",
       "Developed expertise in Python scripting, Linux administration, and network fundamentals essential for cloud support.",
-      "Successfully completed hands-on projects demonstrating effective application of AWS cloud solutions.",
+      "Completed hands-on projects demonstrating the practical application of AWS cloud solutions.",
     ],
     skills: [
       "AWS (EC2, S3, IAM)",
@@ -28,8 +28,8 @@ export const Education: DataBox[] = [
     title: "Bachelor of Computer and Information Sciences",
     summary: "2021 - 2023",
     details: [
-      "Majored in Software Development and Networks & Cyber Security.",
-      "Graduated with a GPA of 5.5 (B+ average), highlighting consistent academic performance and understanding of key IT concepts.",
+      "Majored in Software Development and Networks & Cybersecurity.",
+      "Graduated with a GPA of 5.5 (B+ average), demonstrating consistent academic performance and a solid understanding of key IT concepts.",
     ],
     skills: [
       "Software Development",
@@ -84,7 +84,7 @@ export const Projects: DataBox[] = [
     title: "Chat Bot Platform for Counties Manukau Health",
     summary: "02/2023 - 11/2023",
     details: [
-      "Developed a chatbot using Microsoft Bot Framework Composer to improve digital communications as a part of Team of 4",
+      "Developed a chatbot using Microsoft Bot Framework Composer to improve digital communications as a part of a team of 4",
       "Focused on accessibility and ease of use, receiving positive stakeholder feedback.",
     ],
     link: {
@@ -104,7 +104,7 @@ export const Projects: DataBox[] = [
     subtitle: "Software Developer",
     summary: "07/2022 - 11/2022",
     details: [
-      "Software as a Service that can generate 50+ recipes using items listed in their digital fridge with a Team of 4 of us",
+      "Software as a Service that can generate 50+ recipes using items listed in their digital fridge with a Team of 4 of us.",
     ],
     link: {
       url: "https://github.com/TheIFridge",
