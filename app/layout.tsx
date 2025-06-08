@@ -1,3 +1,4 @@
+// app/layout.tsx
 /**
  * @file RootLayout.tsx
  * @description
@@ -17,44 +18,48 @@ import { Roboto } from "next/font/google";
 import React, { JSX } from "react";
 import "./globals.css";
 
-/**
- * Load Roboto font with specified weights and subsets.
- */
+/** Load Roboto font weights for headings & body text */
 const roboto = Roboto({
   weight: ["300", "500"],
   subsets: ["latin-ext"],
 });
 
 /**
- * Metadata for the HTML document head.
+ * Primary metadata for all pages.
+ * - `openGraph` and `twitter` improve link previews on social platforms.
  */
 export const metadata = {
-  title: "Harrison Raynes | Software Developer Portfolio",
+  title: "Harrison Raynes | Full-Stack Developer",
   description:
-    "Portfolio website of Harrison Raynes, an Auckland-based Software Developer specialising in web development, cloud technologies, and innovative software solutions.",
-  type: "website",
-  url: "https://www.harrisonraynes.com",
-  siteName: "Harrison Raynes Portfolio",
+    "Portfolio of Harrison Raynes — an Auckland-based developer specializing in web development, cloud computing, and network architecture.",
+  authors: { name: "Harrison Raynes", url: "https://www.harrisonraynes.com" },
   keywords: [
     "Harrison Raynes",
     "Software Developer",
-    "Full Stack Developer",
-    "Portfolio",
-    "AWS",
+    "Full Stack",
     "Next.js",
-    "TypeScript",
-    "JavaScript",
-    "Web Development",
-    "React",
-    "Projects",
-    "Resume",
-    "CV",
+    "AWS",
+    "Networking",
+    "Portfolio",
     "Auckland",
-    "New Zealand",
   ],
-  author: "Harrison Raynes",
+  openGraph: {
+    type: "website",
+    locale: "en_NZ",
+    url: "https://www.harrisonraynes.com",
+    title: "Harrison Raynes | Full-Stack Developer",
+    description:
+      "Explore the projects, skills, and certifications of Harrison Raynes — a New Zealand-based developer.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Harrison Raynes | Full-Stack Developer",
+    description:
+      "Portfolio, projects, and certifications of Harrison Raynes — Auckland-based dev.",
+  },
 };
 
+/** Viewport settings for mobile responsiveness */
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -79,7 +84,9 @@ function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
       <body
         suppressHydrationWarning
         className={cn(
-          "flex min-h-screen flex-col",
+          // add padding-top so content isn't hidden behind the navbar on mobile
+          "flex min-h-screen flex-col pt-14",
+          "sm:pt-20",
           "bg-platinum-900 dark:bg-jet-200"
         )}>
         <Providers>
