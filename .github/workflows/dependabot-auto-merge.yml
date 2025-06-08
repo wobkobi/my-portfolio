@@ -1,0 +1,35 @@
+name: “Auto-merge Dependabot updates”
+on:
+  pull_request:
+    types: [opened, labeled, synchronize, ready_for_review]
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: >
+      github.actor == 'dependabot[bot]' &&
+      contains(github.event.pull_request.labels.*.name, 'automerge')
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            // ensure all required checks are green
+            const { data: statuses } = await github.rest.repos.listCommitStatusesForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: pr.head.sha
+            });
+            const pendingOrFailed = statuses.find(s => s.state !== 'success');
+            if (!pendingOrFailed) {
+              await github.rest.pulls.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pr.number,
+                merge_method: 'squash'    // or 'merge' / 'rebase'
+              });
+            }
