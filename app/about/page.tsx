@@ -5,7 +5,12 @@
  * Renders the About Me page to match site-wide layout conventions.
  */
 
-import { Background, Goals, Interests, Introduction } from "@/data/AboutMeData";
+import {
+  AboutMe,
+  FutureGoals,
+  MyJourney,
+  SkillsAndProjects,
+} from "@/data/AboutMeData";
 import cn from "@/utils/cn";
 import { JSX } from "react";
 
@@ -15,7 +20,7 @@ import { JSX } from "react";
  */
 function AboutPage(): JSX.Element {
   const containerClasses = cn("flex grow flex-col items-center justify-center");
-  const mainClasses = cn("p-4 pt-24 text-center sm:pt-28");
+  const mainClasses = cn("p-4 pt-16 text-center sm:pt-7");
   const contentWrapper = cn(
     "mx-auto w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 p-4"
   );
@@ -43,19 +48,19 @@ function AboutPage(): JSX.Element {
           <div className={cardClasses}>
             <section className="mt-6">
               <h2 className={sectionHeading}>Introduction</h2>
-              <p className={paragraphClasses}>{Introduction}</p>
+              <p className={paragraphClasses}>{AboutMe}</p>
             </section>
             <section className="mt-6">
-              <h2 className={sectionHeading}>Background</h2>
-              <p className={paragraphClasses}>{Background}</p>
+              <h2 className={sectionHeading}>My Journey</h2>
+              <p className={paragraphClasses}>{MyJourney}</p>
             </section>
             <section className="mt-6">
-              <h2 className={sectionHeading}>Interests</h2>
-              <p className={paragraphClasses}>{Interests}</p>
+              <h2 className={sectionHeading}>Skills and Projects</h2>
+              <p className={paragraphClasses}>{SkillsAndProjects}</p>
             </section>
             <section className="mt-6">
-              <h2 className={sectionHeading}>Goals</h2>
-              <p className={paragraphClasses}>{Goals}</p>
+              <h2 className={sectionHeading}>Future Goals</h2>
+              <p className={paragraphClasses}>{FutureGoals}</p>
             </section>
           </div>
         </div>

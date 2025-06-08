@@ -16,8 +16,14 @@ import { JSX } from "react";
  * @returns The home page layout.
  */
 function HomePage(): JSX.Element {
-  const containerClasses = cn("flex grow flex-col items-center justify-center");
-  const mainClasses = cn("p-4 pt-24 text-center sm:pt-28");
+  const containerClasses = cn(
+    "flex grow flex-col items-center justify-center",
+    // ensure it fills the available space
+    "min-h-[calc(100vh-theme(spacing.14))]" // subtract nav height (~3.5rem)
+  );
+  const mainClasses = cn(
+    "p-4 text-center" // dropped all pt-XX so it's truly centered
+  );
   const contentWrapper = cn(
     "mx-auto w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 p-4"
   );

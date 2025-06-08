@@ -1,6 +1,12 @@
+// data/PortfolioData.tsx
 "use client";
 
-export const Education = [
+import { Certification, DataBox } from "@/types/Types";
+
+/**
+ * Each item can now optionally list the specific skills gained.
+ */
+export const Education: DataBox[] = [
   {
     id: "edu1",
     title: "AWS re/Start Certification",
@@ -8,7 +14,13 @@ export const Education = [
     details: [
       "Acquired practical skills and knowledge in core AWS services and foundational cloud computing concepts.",
       "Developed expertise in Python scripting, Linux administration, and network fundamentals essential for cloud support.",
-      "Successfully completed hands-on projects demonstrating effective application of AWS cloud solutions.",
+      "Completed hands-on projects demonstrating the practical application of AWS cloud solutions.",
+    ],
+    skills: [
+      "AWS (EC2, S3, IAM)",
+      "Python scripting",
+      "Linux administration",
+      "Network fundamentals",
     ],
   },
   {
@@ -16,158 +28,167 @@ export const Education = [
     title: "Bachelor of Computer and Information Sciences",
     summary: "2021 - 2023",
     details: [
-      "Majored in Software Development and Networks & Cyber Security.",
-      "Graduated with a GPA of 5.5 (B+ average), highlighting consistent academic performance and understanding of key IT concepts.",
+      "Majored in Software Development and Networks & Cybersecurity.",
+      "Graduated with a GPA of 5.5 (B+ average), demonstrating consistent academic performance and a solid understanding of key IT concepts.",
+    ],
+    skills: [
+      "Software Development",
+      "Networks & Cyber Security",
+      "Coding Fundamentals",
+      "Programming Best Practices",
+      "Network Architecture & Protocols",
+      "Academic Research",
+      "Problem Solving",
     ],
   },
 ];
 
-export const WorkExperience = [
+export const WorkExperience: DataBox[] = [
   {
     id: "work1",
     title: "Night Fill Long Life Assistant - Woolworths",
     summary: "11/2022 - 06/2023",
     details: [
-      "Efficiently managed night shift responsibilities, ensuring optimal product availability for customers.",
+      "Efficiently managed night-shift responsibilities, ensuring optimal product availability for customers.",
       "Prepared the store for morning operations, supporting seamless daytime activities.",
-      "Collaborated effectively within a team of 4-5 members to maintain productivity and store presentation.",
+      "Collaborated within a team of 4-5 members to maintain productivity and store presentation.",
+    ],
+    skills: [
+      "Inventory management",
+      "Team collaboration",
+      "Time management",
+      "Multitasking",
     ],
   },
   {
     id: "work2",
-    title: "Lifeguard – Mt Albert Aquatic Centre",
+    title: "Lifeguard - Mt Albert Aquatic Centre",
     summary: "10/2019 - 05/2023",
     details: [
-      "Maintained vigilant supervision to ensure visitor safety, significantly reducing the likelihood of incidents.",
-      "Performed routine facility checks and promptly addressed safety hazards, maintaining a clean and secure environment.",
-      "Provided exceptional customer service, fostering a welcoming atmosphere for guests.",
+      "Maintained vigilant supervision to ensure visitor safety, significantly reducing incident risk.",
+      "Performed routine facility checks and promptly addressed safety hazards.",
+      "Provided exceptional customer service, fostering a welcoming environment for guests.",
     ],
-  },
-  {
-    id: "work3",
-    title: "Water Polo Coach – Point Chevalier School",
-    summary: "11/2020 - 12/2020",
-    details: [
-      "Led and coached a primary school flippa ball team, developing young players' skills and teamwork.",
-      "Applied previous water polo experience to effectively mentor children aged 8 to 11, promoting sportsmanship and collaboration.",
-    ],
-  },
-  {
-    id: "work4",
-    title: "Lifeguard – Waitakere Water Polo Club",
-    summary: "06/2020 - 09/2020",
-    details: [
-      "Provided reliable lifeguard support at West Wave Aquatic Centre during staff shortages.",
-      "Assisted in ensuring the safety of club activities, demonstrating adaptability and commitment.",
+    skills: [
+      "Risk assessment",
+      "Emergency response",
+      "Facility maintenance",
+      "Customer service",
     ],
   },
 ];
 
-export const Projects = [
+export const Projects: DataBox[] = [
   {
     id: "project1",
     title: "Chat Bot Platform for Counties Manukau Health",
     summary: "02/2023 - 11/2023",
     details: [
-      "Developed a chatbot using Microsoft Bot Framework Composer to improve digital communication within Counties Manukau Health.",
-      "Successfully integrated the chatbot with Microsoft Teams, enhancing internal communication and efficiency.",
-      "Delivered a solution focusing on accessibility and ease of use, with positive feedback from stakeholders.",
+      "Developed a chatbot using Microsoft Bot Framework Composer to improve digital communications as a part of a team of 4",
+      "Focused on accessibility and ease of use, receiving positive stakeholder feedback.",
     ],
     link: {
       url: "https://www.countiesmanukau.health.nz/",
       text: "Counties Manukau Health",
     },
-  },
-  {
-    id: "project2",
-    title: "RamenNFT",
-    subtitle: "Social Media Manager",
-    summary: "12/2021 - 02/2022",
-    details: [
-      "Managed social media content and campaigns on Twitter and Instagram, gaining insights into Web3 and digital art trends.",
-      "Successfully launched initial marketing strategies, gaining early engagement and followers.",
+    skills: [
+      "Microsoft Bot Framework",
+      "TypeScript",
+      "Teams integration",
+      "Accessibility design",
     ],
   },
   {
-    id: "project3",
+    id: "project2",
     title: "iFridge",
-    subtitle: "Backend Developer",
+    subtitle: "Software Developer",
     summary: "07/2022 - 11/2022",
     details: [
-      "Developed robust backend solutions, including data scraping and analysis tools, to assist major supermarket chains with inventory management and consumer insights.",
-      "Played a pivotal role in enhancing project functionality, contributing to the successful delivery of actionable analytics.",
+      "Software as a Service that can generate 50+ recipes using items listed in their digital fridge with a Team of 4 of us.",
     ],
     link: {
       url: "https://github.com/TheIFridge",
       text: "GitHub Repo",
     },
+    skills: [
+      "Node.js backend",
+      "Web scraping",
+      "Data analysis",
+      "API design",
+      "TypeScript",
+      "DataBase",
+      "Firebase",
+    ],
   },
   {
-    id: "project4",
+    id: "project3",
     title: "Personal GitHub Projects",
-    subtitle: "My Personal Projects",
-    summary: "",
+    subtitle: "Ongoing Side Projects",
+    summary: "2021 - current",
     details: [
-      "Actively manage and maintain a diverse portfolio of over 10+ personal projects, showcasing proficiency across various programming languages and frameworks.",
-      "Demonstrate continuous learning and skill improvement through personal coding projects.",
+      "Maintain a portfolio of 10+ personal projects in a variety of languages and frameworks.",
+      "Demonstrate continuous learning via side builds and experiments.",
     ],
-    link: {
-      url: "https://github.com/wobkobi",
-      text: "GitHub Repo",
-    },
+    link: [
+      {
+        url: "https://github.com/wobkobi",
+        text: "My GitHub",
+      },
+      { url: "/projects", text: "View on this Site" },
+    ],
   },
 ];
 
-export const skills = [
+export const Certifications: Certification[] = [
+  {
+    id: "cert1",
+    title: "CCNA - Enterprise Networking, Security, and Automation",
+    year: "2023",
+  },
+  {
+    id: "cert2",
+    title: "CCNA - Switching, Routing, and Wireless Essentials",
+    year: "2022",
+  },
+  {
+    id: "cert3",
+    title: "CCNA - Introduction to Networks",
+    year: "2021",
+  },
+];
+
+/**
+ * Global list of purely technical skills used across the site.
+ * “Soft” skills have been moved into each DataBox’s own `skills` field.
+ */
+export const skills: string[] = [
   "AWS",
-  "Adaptability",
-  "Algorithms",
-  "API Integration",
-  "Attentive Listening",
-  "Benchmarking",
   "Bot Development",
   "C",
   "Cloud Computing",
-  "Communication Skills",
   "CSS",
-  "Customer Service",
   "Discord.js",
   "Discord.py",
   "Excel",
-  "Flexible Attitude",
   "Git",
   "GitHub Actions",
   "Google Maps API",
-  "Gmail",
   "HTML",
-  "IT Services",
   "Java",
   "JavaScript",
   "LaTeX",
   "Linux",
   "Multiprocessing",
-  "Multitasking",
   "Next.js",
   "Node.js",
-  "Office 365",
-  "OneDrive",
-  "OpenAI API",
   "PHP",
-  "Proactive Attitude",
-  "Problem Solving",
   "Python",
   "React.js",
-  "Resilience",
-  "Software Development",
   "SQL",
   "Tailwind CSS",
-  "Task Management",
-  "Team Work",
-  "Troubleshooting",
   "TypeScript",
   "Vercel",
   "Virtualisation",
   "Web Scraping",
   "Windows Server",
-  "Word",
 ];
