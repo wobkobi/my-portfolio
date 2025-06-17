@@ -1,4 +1,4 @@
-name: Auto-merge Dependabot updates
+name: Auto-merge Dependabot PRs
 
 on:
   check_suite:
@@ -13,31 +13,17 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.check_suite.conclusion == 'success'
     steps:
-      - uses: actions/github-script@v6
+      - name: Merge Dependabot PRs
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            // Loop through every PR attached to this successful check suite
             for (const pr of context.payload.check_suite.pull_requests) {
-              // 1) Only Dependabot PRs
+              // Only merge PRs opened by Dependabot
               if (pr.user.login !== 'dependabot[bot]') continue;
 
-              // 2) Only those labelled “automerge”
-              const { data: labels } = await github.rest.issues.listLabelsOnIssue({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: pr.number
-              });
-              if (!labels.some(l => l.name === 'automerge')) continue;
-
-              // 3) Ensure all statuses are green
-              const { data: statuses } = await github.rest.repos.listCommitStatusesForRef({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                ref: pr.head.sha
-              });
-              if (statuses.some(s => s.state !== 'success')) continue;
-
-              // 4) Merge!
+              // Merge using squash (change to 'merge' or 'rebase' if you prefer)
               await github.rest.pulls.merge({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
