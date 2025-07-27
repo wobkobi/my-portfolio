@@ -182,7 +182,7 @@ function PortfolioPage(): JSX.Element {
           </section>
 
           <a
-            href="/files/HarrisonRaynesResume.pdf"
+            href="/files/Harrison Raynes CV.pdf"
             download
             className={cn(
               "bg-indigo_dye hover:bg-caribbean_current focus:ring-indigo_dye focus:ring-opacity-50",

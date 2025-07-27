@@ -63,8 +63,8 @@ function HomePage(): JSX.Element {
 
           <div className="mt-4 flex justify-center">
             <a
-              href="/files/HarrisonRaynesResume.pdf"
-              download="HarrisonRaynesResume.pdf"
+              href="/files/Harrison Raynes CV.pdf"
+              download="Harrison Raynes CV.pdf"
               className={buttonClass}>
               Download CV
             </a>
