@@ -46,19 +46,19 @@ function AboutPage(): JSX.Element {
         <div className={contentWrapper}>
           <h1 className={titleClasses}>About Me</h1>
           <div className={cardClasses}>
-            <section className="mt-6">
+            <section className={cn("mt-6")}>
               <h2 className={sectionHeading}>Introduction</h2>
               <p className={paragraphClasses}>{AboutMe}</p>
             </section>
-            <section className="mt-6">
+            <section className={cn("mt-6")}>
               <h2 className={sectionHeading}>My Journey</h2>
               <p className={paragraphClasses}>{MyJourney}</p>
             </section>
-            <section className="mt-6">
+            <section className={cn("mt-6")}>
               <h2 className={sectionHeading}>Skills and Projects</h2>
               <p className={paragraphClasses}>{SkillsAndProjects}</p>
             </section>
-            <section className="mt-6">
+            <section className={cn("mt-6")}>
               <h2 className={sectionHeading}>Future Goals</h2>
               <p className={paragraphClasses}>{FutureGoals}</p>
             </section>

@@ -92,7 +92,7 @@ function DetailBox({
       )}
 
       {link && (
-        <div className="mt-4 flex flex-wrap justify-center gap-3">
+        <div className={cn("mt-4 flex flex-wrap justify-center gap-3")}>
           {Array.isArray(link) ? (
             link.map((link, i) => (
               <a
@@ -102,9 +102,12 @@ function DetailBox({
                 rel="noopener noreferrer"
                 className={buttonClass}>
                 {isGitHubUrl(link.url) ? (
-                  <FiGithub className="h-4 w-4" aria-hidden="true" />
+                  <FiGithub className={cn("h-4 w-4")} aria-hidden="true" />
                 ) : (
-                  <FiExternalLink className="h-4 w-4" aria-hidden="true" />
+                  <FiExternalLink
+                    className={cn("h-4 w-4")}
+                    aria-hidden="true"
+                  />
                 )}
                 <span>{link.text}</span>
               </a>
@@ -116,9 +119,9 @@ function DetailBox({
               rel="noopener noreferrer"
               className={buttonClass}>
               {isGitHubUrl(link.url) ? (
-                <FiGithub className="h-4 w-4" aria-hidden="true" />
+                <FiGithub className={cn("h-4 w-4")} aria-hidden="true" />
               ) : (
-                <FiExternalLink className="h-4 w-4" aria-hidden="true" />
+                <FiExternalLink className={cn("h-4 w-4")} aria-hidden="true" />
               )}
               <span>{link.text}</span>
             </a>
@@ -128,12 +131,16 @@ function DetailBox({
 
       {skills && skills.length > 0 && (
         <>
-          <h4 className="mt-4 text-center font-semibold">Skills Gained:</h4>
-          <ul className="flex flex-wrap justify-center gap-2 pt-2">
+          <h4 className={cn("mt-4 text-center font-semibold")}>
+            Skills Gained:
+          </h4>
+          <ul className={cn("flex flex-wrap justify-center gap-2 pt-2")}>
             {getSortedUniqueSkills(skills).map((skill, i) => (
               <li
                 key={`${id}-skill-${i}`}
-                className="bg-indigo_dye dark:bg-caribbean_current rounded-sm px-2 py-1 text-xs text-white">
+                className={cn(
+                  "bg-indigo_dye dark:bg-caribbean_current rounded-sm px-2 py-1 text-xs text-white"
+                )}>
                 {skill}
               </li>
             ))}
