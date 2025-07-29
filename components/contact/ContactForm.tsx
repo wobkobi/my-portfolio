@@ -76,7 +76,9 @@ function ContactForm(): JSX.Element {
           className={cn(inputClass, errors.name && "border-red-500")}
           {...register("name", { required: "Name is required" })}
         />
-        {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+        {errors.name && (
+          <p className={cn("text-red-500")}>{errors.name.message}</p>
+        )}
 
         <input
           type="email"
@@ -84,7 +86,9 @@ function ContactForm(): JSX.Element {
           className={cn(inputClass, errors.email && "border-red-500")}
           {...register("email", { required: "Email is required" })}
         />
-        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+        {errors.email && (
+          <p className={cn("text-red-500")}>{errors.email.message}</p>
+        )}
 
         <input
           type="text"
@@ -93,7 +97,7 @@ function ContactForm(): JSX.Element {
           {...register("subject", { required: "Subject is required" })}
         />
         {errors.subject && (
-          <p className="text-red-500">{errors.subject.message}</p>
+          <p className={cn("text-red-500")}>{errors.subject.message}</p>
         )}
 
         <textarea
@@ -103,7 +107,7 @@ function ContactForm(): JSX.Element {
           {...register("message", { required: "Message is required" })}
         />
         {errors.message && (
-          <p className="text-red-500">{errors.message.message}</p>
+          <p className={cn("text-red-500")}>{errors.message.message}</p>
         )}
 
         <button type="submit" disabled={isSubmitting} className={buttonClass}>

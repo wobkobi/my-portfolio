@@ -56,9 +56,9 @@ function ThemeSwitch(): JSX.Element | null {
       role="switch"
       aria-checked={theme === "dark"}>
       {theme === "light" ? (
-        <FiMoon className="text-xl sm:text-2xl" aria-hidden="true" />
+        <FiMoon className={cn("text-xl sm:text-2xl")} aria-hidden="true" />
       ) : (
-        <FiSun className="text-xl sm:text-2xl" aria-hidden="true" />
+        <FiSun className={cn("text-xl sm:text-2xl")} aria-hidden="true" />
       )}
     </button>
   );

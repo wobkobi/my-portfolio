@@ -61,36 +61,47 @@ function ProjectsPage(): JSX.Element {
               <div
                 key={project.id}
                 className={cn(
-                  "dark:bg-jet-400 flex flex-col items-center",
-                  "bg-platinum-800 rounded-lg p-4 shadow"
+                  "dark:bg-jet-400 bg-platinum-800 rounded-lg p-4 shadow",
+                  "flex flex-col items-center"
                 )}>
-                {project.image && (
-                  <div
-                    className="relative mb-4 h-60 w-full cursor-pointer overflow-hidden rounded"
-                    onClick={() => handleImageClick(project.image)}>
+                <div
+                  className={cn(
+                    "relative mb-4 h-60 w-full overflow-hidden rounded"
+                  )}
+                  onClick={() =>
+                    project.image && handleImageClick(project.image)
+                  }>
+                  {project.image ? (
                     <Image
                       src={project.image}
                       alt={project.name}
                       fill
-                      className="bg-transparent object-contain"
+                      className={cn("bg-transparent object-contain")}
                     />
-                  </div>
-                )}
+                  ) : (
+                    <div className={cn("invisible h-full w-full")} />
+                  )}
+                </div>
+
                 <h2
                   className={cn(
                     "text-indigo_dye dark:text-caribbean_current mb-2",
-                    "text-xl font-semibold"
+                    "text-center text-xl font-semibold"
                   )}>
                   {project.name}
                 </h2>
-                <p className="mb-4 text-gray-700 dark:text-gray-300">
+                <p
+                  className={cn(
+                    "mb-4 text-center text-gray-700 dark:text-gray-300"
+                  )}>
                   {project.description}
                 </p>
-                <div className="mt-auto mb-4">
+
+                <div className={cn("mt-auto mb-4")}>
                   <h3
                     className={cn(
                       "text-indigo_dye dark:text-caribbean_current mb-2",
-                      "text-lg font-semibold"
+                      "text-center text-lg font-semibold"
                     )}>
                     Skills Used:
                   </h3>
@@ -102,13 +113,16 @@ function ProjectsPage(): JSX.Element {
                     {getSortedUniqueSkills(project.skills).map((skill, i) => (
                       <li
                         key={i}
-                        className="bg-indigo_dye dark:bg-caribbean_current rounded px-2 py-1 text-white">
+                        className={cn(
+                          "bg-indigo_dye dark:bg-caribbean_current rounded px-2 py-1 text-white"
+                        )}>
                         {skill}
                       </li>
                     ))}
                   </ul>
                 </div>
-                <div className="flex flex-wrap justify-center gap-3">
+
+                <div className={cn("flex flex-wrap justify-center gap-3")}>
                   <a
                     href={
                       Array.isArray(project.links)
@@ -118,7 +132,7 @@ function ProjectsPage(): JSX.Element {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={buttonClass}>
-                    <FiGithub className="h-4 w-4" aria-hidden="true" />
+                    <FiGithub className={cn("h-4 w-4")} aria-hidden="true" />
                     <span>GitHub Repo</span>
                   </a>
                   {Array.isArray(project.links) && (
@@ -127,7 +141,10 @@ function ProjectsPage(): JSX.Element {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={buttonClass}>
-                      <FiExternalLink className="h-4 w-4" aria-hidden="true" />
+                      <FiExternalLink
+                        className={cn("h-4 w-4")}
+                        aria-hidden="true"
+                      />
                       <span>Live Preview</span>
                     </a>
                   )}
@@ -144,13 +161,15 @@ function ProjectsPage(): JSX.Element {
           )}
           onClick={closePopup}>
           <div
-            className="relative h-4/5 w-4/5 cursor-pointer overflow-hidden"
+            className={cn(
+              "relative h-4/5 w-4/5 cursor-pointer overflow-hidden"
+            )}
             onClick={closePopup}>
             <Image
               src={selectedImage}
               alt="Project Fullscreen"
               fill
-              className="bg-transparent object-contain"
+              className={cn("bg-transparent object-contain")}
             />
           </div>
         </div>

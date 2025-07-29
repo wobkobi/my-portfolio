@@ -61,7 +61,7 @@ function HomePage(): JSX.Element {
             </Link>
           </div>
 
-          <div className="mt-4 flex justify-center">
+          <div className={cn("mt-4 flex justify-center")}>
             <a
               href="/files/Harrison Raynes CV.pdf"
               download="Harrison Raynes CV.pdf"

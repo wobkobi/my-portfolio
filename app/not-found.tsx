@@ -20,7 +20,7 @@ function NotFound(): JSX.Element {
       className={cn(
         "dark:bg-jet flex min-h-screen items-center justify-center bg-white"
       )}>
-      <div className="p-4 text-center">
+      <div className={cn("p-4 text-center")}>
         <h2
           className={cn(
             "text-indigo_dye dark:text-caribbean_current text-4xl font-bold sm:text-5xl"
