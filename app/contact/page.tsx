@@ -44,7 +44,7 @@ function ContactPage(): JSX.Element {
       <main className={mainClasses}>
         <h1 className={titleClasses}>Contact Me</h1>
         <div className={cn(contentWrapper, cardClasses)}>
-          <div className="mb-8 text-center">
+          <div className={cn("mb-8 text-center")}>
             <div className={emailWrapperClasses}>
               <FiMail className={iconClasses} aria-hidden="true" />
               <a

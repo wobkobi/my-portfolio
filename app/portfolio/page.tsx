@@ -129,21 +129,24 @@ function PortfolioPage(): JSX.Element {
               {Certifications.map((cert) => (
                 <div
                   key={cert.id}
-                  className="flex w-full items-center justify-center p-4 sm:max-w-sm md:w-1/2 lg:w-1/4">
+                  className={cn(
+                    "flex w-full items-center justify-center p-4 sm:max-w-sm md:w-1/2 lg:w-1/4"
+                  )}>
                   <div
                     className={cn(
                       "h-28 w-full",
-                      "bg-platinum-800",
-                      "dark:bg-jet-400",
+                      "bg-platinum-800 dark:bg-jet-400",
                       "rounded-sm p-3 shadow-md",
                       "flex flex-col items-center justify-center",
-                      "transition-colors duration-200"
+                      "transition-colors duration-200",
+                      "overflow-hidden"
                     )}>
                     <h3
                       className={cn(
                         "text-indigo_dye dark:text-caribbean_current",
                         "text-center text-base font-semibold",
-                        "break-words"
+                        "break-words",
+                        "line-clamp-2"
                       )}>
                       {cert.title}
                     </h3>
@@ -182,7 +185,7 @@ function PortfolioPage(): JSX.Element {
           </section>
 
           <a
-            href="/files/HarrisonRaynesResume.pdf"
+            href="/files/Harrison Raynes CV.pdf"
             download
             className={cn(
               "bg-indigo_dye hover:bg-caribbean_current focus:ring-indigo_dye focus:ring-opacity-50",

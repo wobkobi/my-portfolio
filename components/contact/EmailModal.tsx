@@ -41,7 +41,7 @@ function EmailModal({
         <p className={cn("text-jet dark:text-platinum mb-6 text-center")}>
           {message}
         </p>
-        <div className="flex justify-center">
+        <div className={cn("flex justify-center")}>
           <button
             onClick={onClose}
             className={cn(
