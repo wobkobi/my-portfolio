@@ -116,7 +116,7 @@ export const Projects: DataBox[] = [
       "Data analysis",
       "API design",
       "TypeScript",
-      "DataBase",
+      "Database",
       "Firebase",
     ],
   },

@@ -66,7 +66,8 @@ function ProjectsPage(): JSX.Element {
                 )}>
                 <div
                   className={cn(
-                    "relative mb-4 h-60 w-full overflow-hidden rounded"
+                    "relative mb-4 h-60 w-full overflow-hidden rounded",
+                    project.image && "cursor-pointer"
                   )}
                   onClick={() =>
                     project.image && handleImageClick(project.image)
