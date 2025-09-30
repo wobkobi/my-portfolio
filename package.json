@@ -33,7 +33,7 @@
     "@next/bundle-analyzer": "^15.5.4",
     "@next/eslint-plugin-next": "^15.5.4",
     "@tailwindcss/postcss": "^4.1.13",
-    "@types/react": "19.1.13",
+    "@types/react": "19.1.16",
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",
     "cross-env": "^10.0.0",
