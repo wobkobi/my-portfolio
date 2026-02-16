@@ -12,7 +12,6 @@ import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import cn from "@/utils/cn";
 import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Viewport } from "next";
 import { Roboto } from "next/font/google";
 import React, { JSX } from "react";
@@ -96,8 +95,6 @@ function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
           </main>
           <Footer />
         </Providers>
-        {/* Vercel performance and analytics integrations */}
-        <SpeedInsights />
         <Analytics />
       </body>
     </html>
