@@ -5,6 +5,7 @@ import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import jsdoc from "eslint-plugin-jsdoc";
 import prettier from "eslint-plugin-prettier";
+import nextPlugin from "@next/eslint-plugin-next";
 import globals from "globals";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -12,7 +13,8 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Compat wrapper to merge ESLint’s recommended configs
+// Keep FlatCompat for the legacy configs that still work.
+// Do NOT run Next configs through FlatCompat (they now include flat-config metadata like "name").
 const compat = new FlatCompat({
   baseDirectory: __dirname,
   recommendedConfig: js.configs.recommended,
@@ -28,23 +30,26 @@ export default [
       "dist/**",
       "coverage/**",
       "build/**",
-      "next.config.mjs",
-      "postcss.config.js",
-      "eslint.config.js",
+      "next.config.*",
+      "postcss.config.*",
+      "tailwind.config.*",
+      "eslint.config.*",
     ],
   },
 
   // 2) JSDoc recommended rules for TypeScript (report as errors)
   jsdoc.configs["flat/recommended-typescript-error"],
 
-  // 3) Bring in ESLint, TypeScript-ESLint, React/Next and Prettier recommended rules
+  // 3) ESLint + TypeScript recommended + Prettier via FlatCompat (safe)
   ...compat.extends(
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@next/next/recommended",
-    "plugin:@next/next/core-web-vitals",
     "prettier"
   ),
+
+  // 3.5) Next recommended rules (flat) WITHOUT FlatCompat
+  nextPlugin.configs.recommended,
+  nextPlugin.configs["core-web-vitals"],
 
   // 4) Project-specific overrides
   {
@@ -71,7 +76,7 @@ export default [
     settings: {
       "import/resolver": {
         node: {
-          extensions: [".js", ".jsx", ".ts", ".tsx", ".mjs"],
+          extensions: [".js", ".jsx", ".ts", ".tsx", ".mjs", ".cjs"],
         },
       },
       jsdoc: {
@@ -89,6 +94,10 @@ export default [
 
       // Consistent type definitions
       "@typescript-eslint/consistent-type-definitions": "error",
+
+      // Next rules can be overridden here if you want
+      // Example:
+      // "@next/next/no-img-element": "off",
 
       // JSDoc enforcement rules
       "jsdoc/require-jsdoc": "error",
