@@ -10,7 +10,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -33,7 +33,8 @@
     "utils",
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "eslint.config.js"
+    "eslint.config.js",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules", ".next", "dist", "coverage", ".turbo"]
 }
