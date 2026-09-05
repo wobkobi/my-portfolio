@@ -1,5 +1,5 @@
+// app/providers.tsx
 /**
- * @file providers.tsx
  * @description
  * Wraps the application with theme context, enabling light/dark mode support
  * based on system preference or user selection.

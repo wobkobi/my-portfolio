@@ -1,6 +1,5 @@
 // components/NavBar.tsx
 /**
- * @file NavBar.tsx
  * @description
  * A responsive, auto-hiding navigation bar that spans full width on mobile
  * and becomes a curved inline pill on desktop. Hides on scroll-down, shows
@@ -13,6 +12,18 @@ import ThemeSwitch from "@/components/ThemeSwitch";
 import cn from "@/utils/cn";
 import Link from "next/link";
 import { JSX, useEffect, useRef, useState } from "react";
+
+// Outer nav container: mobile full-width, desktop inline pill. The show/hide
+// transform is applied on top of this in the component.
+const navBaseClasses =
+  "fixed top-3 z-50 transition-opacity transition-transform duration-300 ease-out bg-platinum-700 dark:bg-jet-500 inset-x-0 py-1 sm:left-1/2 sm:top-5 sm:max-w-screen-md sm:-translate-x-1/2 sm:transform sm:bg-platinum-700 sm:dark:bg-jet-500 sm:inline-block sm:rounded-full sm:px-4 sm:py-2";
+
+// Flex wrapper for links and theme switch
+const containerClasses = "flex flex-wrap items-center justify-center gap-4 sm:flex-nowrap";
+
+// Link styling
+const linkClass =
+  "px-2 py-1 font-medium transition-colors text-base sm:text-lg md:text-xl text-jet-400 dark:text-platinum hover:text-indigo_dye dark:hover:text-caribbean_current";
 
 /**
  * NavBar component.
@@ -68,28 +79,9 @@ function NavBar(): JSX.Element {
     };
   }, []);
 
-  // Outer nav container: mobile full-width, desktop inline pill
   const navClasses = cn(
-    "fixed top-0 z-50",
-    "transition-transform transition-opacity duration-300 ease-out",
-    visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6",
-    "inset-x-0 py-1 bg-platinum-700 dark:bg-jet-500",
-    "sm:max-w-screen-md sm:left-1/2 sm:transform sm:-translate-x-1/2",
-    "sm:inline-block sm:rounded-full sm:px-4 sm:py-2 sm:bg-platinum-700 sm:dark:bg-jet-500"
-  );
-
-  // Flex wrapper for links and theme switch
-  const containerClasses = cn(
-    "flex flex-wrap items-center justify-center gap-4",
-    "sm:flex-nowrap"
-  );
-
-  // Link styling
-  const linkClass = cn(
-    "px-2 py-1 font-medium transition-colors",
-    "text-base sm:text-lg md:text-xl",
-    "text-jet-400 dark:text-platinum",
-    "hover:text-indigo_dye dark:hover:text-caribbean_current"
+    navBaseClasses,
+    visible ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0",
   );
 
   return (
@@ -98,7 +90,8 @@ function NavBar(): JSX.Element {
       onMouseEnter={() => {
         setVisible(true);
         resetHideTimer();
-      }}>
+      }}
+    >
       <div className={containerClasses}>
         <Link href="/" className={linkClass}>
           Home

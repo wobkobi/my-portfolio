@@ -1,5 +1,5 @@
+// utils/SendEmail.tsx
 /**
- * @file SendEmail.ts
  * @description
  * Utility function to POST contact form data to the email API endpoint and
  * return a success message or throw an error.

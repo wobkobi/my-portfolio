@@ -1,6 +1,5 @@
 // components/portfolio/DetailBox.tsx
 /**
- * @file DetailBox.tsx
  * @description
  * Renders detailed information for a DataBox item, showing either a
  * single paragraph or a bulleted list, plus an optional set of action links
@@ -8,10 +7,26 @@
  */
 
 import { DetailBoxProps } from "@/types/Types";
-import cn from "@/utils/cn";
 import { getSortedUniqueSkills } from "@/utils/sortSkills";
 import { JSX } from "react";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
+
+// Grows to the standard screen breakpoints rather than staying card-sized
+const container =
+  "m-2 mx-auto w-full rounded-sm p-4 shadow-lg bg-platinum-800 dark:bg-jet-400 max-w-screen-md sm:max-w-screen-lg lg:max-w-screen-xl";
+
+const title =
+  "mb-2 text-center text-indigo_dye dark:text-caribbean_current text-sm font-semibold sm:text-base md:text-lg";
+
+const paragraph = "text-jet dark:text-platinum text-base sm:text-lg";
+
+const list = "list-disc pl-5 text-left text-base sm:text-lg";
+
+const listItem = "text-jet dark:text-platinum";
+
+// Matches the button styling on the Projects page
+const buttonClass =
+  "flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition dark:bg-indigo_dye bg-caribbean_current text-white dark:hover:bg-caribbean_current hover:bg-indigo_dye";
 
 /**
  * Safely detect if a URL is on the github.com host (including subdomains).
@@ -34,7 +49,7 @@ function isGitHubUrl(urlString: string): boolean {
  * @param props.id - Unique identifier for list keys.
  * @param props.subtitle - Heading text displayed above details.
  * @param props.details - Array of detail lines.
- *  @param props.skills - Optional array of skills gained.
+ * @param props.skills - Optional array of skills gained.
  * @param props.isVisible - Whether the box should render.
  * @param [props.link] - Optional link.
  * @returns The detail box or null if hidden.
@@ -49,35 +64,9 @@ function DetailBox({
 }: DetailBoxProps): JSX.Element | null {
   if (!isVisible) return null;
 
-  const container = cn(
-    "m-2 mx-auto w-full rounded-sm p-4 shadow-lg",
-    "bg-platinum-800 dark:bg-jet-400",
-    // let it grow to your standard screen breakpoints:
-    "max-w-screen-md sm:max-w-screen-lg lg:max-w-screen-xl"
-  );
-
-  const title = cn(
-    "mb-2 text-center",
-    "text-indigo_dye dark:text-caribbean_current",
-    "text-sm font-semibold sm:text-base md:text-lg"
-  );
-
-  const paragraph = cn("text-jet dark:text-platinum", "text-base sm:text-lg");
-
-  const list = cn("list-disc pl-5 text-left", "text-base sm:text-lg");
-
-  const listItem = cn("text-jet dark:text-platinum");
-
-  // exactly your ProjectsPage buttonClass
-  const buttonClass = cn(
-    "flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition",
-    "dark:bg-indigo_dye bg-caribbean_current text-white",
-    "dark:hover:bg-caribbean_current hover:bg-indigo_dye"
-  );
-
   return (
     <div className={container}>
-      <h3 className={title}>{subtitle}</h3>
+      {subtitle && <h3 className={title}>{subtitle}</h3>}
 
       {details.length > 1 ? (
         <ul className={list}>
@@ -92,7 +81,7 @@ function DetailBox({
       )}
 
       {link && (
-        <div className={cn("mt-4 flex flex-wrap justify-center gap-3")}>
+        <div className="mt-4 flex flex-wrap justify-center gap-3">
           {Array.isArray(link) ? (
             link.map((link, i) => (
               <a
@@ -100,28 +89,22 @@ function DetailBox({
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={buttonClass}>
+                className={buttonClass}
+              >
                 {isGitHubUrl(link.url) ? (
-                  <FiGithub className={cn("h-4 w-4")} aria-hidden="true" />
+                  <FiGithub className="h-4 w-4" aria-hidden="true" />
                 ) : (
-                  <FiExternalLink
-                    className={cn("h-4 w-4")}
-                    aria-hidden="true"
-                  />
+                  <FiExternalLink className="h-4 w-4" aria-hidden="true" />
                 )}
                 <span>{link.text}</span>
               </a>
             ))
           ) : (
-            <a
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={buttonClass}>
+            <a href={link.url} target="_blank" rel="noopener noreferrer" className={buttonClass}>
               {isGitHubUrl(link.url) ? (
-                <FiGithub className={cn("h-4 w-4")} aria-hidden="true" />
+                <FiGithub className="h-4 w-4" aria-hidden="true" />
               ) : (
-                <FiExternalLink className={cn("h-4 w-4")} aria-hidden="true" />
+                <FiExternalLink className="h-4 w-4" aria-hidden="true" />
               )}
               <span>{link.text}</span>
             </a>
@@ -131,16 +114,13 @@ function DetailBox({
 
       {skills && skills.length > 0 && (
         <>
-          <h4 className={cn("mt-4 text-center font-semibold")}>
-            Skills Gained:
-          </h4>
-          <ul className={cn("flex flex-wrap justify-center gap-2 pt-2")}>
+          <h4 className="mt-4 text-center font-semibold">Skills Gained:</h4>
+          <ul className="flex flex-wrap justify-center gap-2 pt-2">
             {getSortedUniqueSkills(skills).map((skill, i) => (
               <li
                 key={`${id}-skill-${i}`}
-                className={cn(
-                  "bg-indigo_dye dark:bg-caribbean_current rounded-sm px-2 py-1 text-xs text-white"
-                )}>
+                className="bg-indigo_dye dark:bg-caribbean_current rounded-sm px-2 py-1 text-xs text-white"
+              >
                 {skill}
               </li>
             ))}

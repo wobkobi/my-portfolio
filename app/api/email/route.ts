@@ -1,20 +1,21 @@
+// app/api/email/route.ts
 /**
- * @file app/api/email/route.ts
  * @description
  * Serverless API route to accept contact form submissions and queue emails via
  * a pooled Nodemailer transport. Uses Gmail SMTP with connection pooling for
  * efficient delivery. Returns an immediate JSON acknowledgement.
  */
 
+import { FormData } from "@/types/Types";
 import { NextResponse, type NextRequest } from "next/server";
-import nodemailer from "nodemailer";
+import nodemailer, { type Transporter } from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
 
 /**
  * Nodemailer transport configuration using SMTP pooling.
  * Pooling reuses connections for multiple messages, improving performance.
  */
-const transport: nodemailer.Transporter = nodemailer.createTransport({
+const transport: Transporter = nodemailer.createTransport({
   pool: true, // enable connection pooling
   maxConnections: 5, // allow up to 5 simultaneous SMTP connections
   service: "gmail", // use Gmail SMTP service
@@ -35,7 +36,7 @@ const transport: nodemailer.Transporter = nodemailer.createTransport({
  */
 export async function POST(request: NextRequest): Promise<NextResponse> {
   // Parse JSON body from the request
-  const { email, name, subject, message } = await request.json();
+  const { email, name, subject, message } = (await request.json()) as FormData;
 
   /**
    * Mail options for Nodemailer.

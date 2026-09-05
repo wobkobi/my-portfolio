@@ -1,5 +1,5 @@
+// utils/sortSkills.tsx
 /**
- * @file sortSkills.ts
  * @description
  * Utility to dedupe and alphabetically sort an array of skill strings using locale-aware comparison.
  */
