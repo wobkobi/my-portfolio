@@ -1,17 +1,16 @@
 // app/layout.tsx
 /**
- * @file RootLayout.tsx
  * @description
  * Defines the root HTML layout for the Next.js application, including global
  * providers, navigation, footer, analytics, and performance insights. Applies
- * the Roboto font, meta viewport for responsive scaling, and utility classes via the `cn` helper.
+ * the Roboto font and a meta viewport for responsive scaling.
  */
 
 import Providers from "@/app/providers";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
-import cn from "@/utils/cn";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Viewport } from "next";
 import { Roboto } from "next/font/google";
 import React, { JSX } from "react";
@@ -28,33 +27,45 @@ const roboto = Roboto({
  * - `openGraph` and `twitter` improve link previews on social platforms.
  */
 export const metadata = {
-  title: "Harrison Raynes | Full-Stack Developer",
+  title: "Harrison Raynes | IT Support & Infrastructure",
   description:
-    "Portfolio of Harrison Raynes — an Auckland-based developer specializing in web development, cloud computing, and network architecture.",
+    "Portfolio of Harrison Raynes — CCNA-certified IT support and infrastructure technician in Auckland, and owner of To the Point Tech, providing onsite and remote support to homes and small businesses across New Zealand.",
   authors: { name: "Harrison Raynes", url: "https://www.harrisonraynes.com" },
   keywords: [
     "Harrison Raynes",
-    "Software Developer",
-    "Full Stack",
-    "Next.js",
-    "AWS",
+    "IT Support Technician",
+    "Service Desk",
+    "Infrastructure",
+    "CCNA",
+    "Network Administration",
+    "Linux Administration",
+    "TrueNAS",
+    "Docker",
+    "Active Directory",
+    "Microsoft 365",
     "Networking",
     "Portfolio",
     "Auckland",
+    "IT Support",
+    "Tech Support",
+    "To the Point Tech",
+    "Computer Repair",
+    "Wi-Fi Setup",
+    "New Zealand",
   ],
   openGraph: {
     type: "website",
     locale: "en_NZ",
     url: "https://www.harrisonraynes.com",
-    title: "Harrison Raynes | Full-Stack Developer",
+    title: "Harrison Raynes | IT Support & Infrastructure",
     description:
-      "Explore the projects, skills, and certifications of Harrison Raynes — a New Zealand-based developer.",
+      "Explore the skills, infrastructure work, and experience of Harrison Raynes — CCNA-certified IT support and infrastructure technician, and owner of To the Point Tech.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Harrison Raynes | Full-Stack Developer",
+    title: "Harrison Raynes | IT Support & Infrastructure",
     description:
-      "Portfolio, projects, and certifications of Harrison Raynes — Auckland-based dev.",
+      "Portfolio of Harrison Raynes — CCNA-certified IT support and infrastructure technician based in Auckland, NZ.",
   },
 };
 
@@ -76,26 +87,19 @@ export const viewport: Viewport = {
  */
 function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
-    <html
-      lang="en"
-      className={cn(roboto.className, "h-full")}
-      suppressHydrationWarning>
+    <html lang="en" className={`${roboto.className} h-full`} suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={cn(
-          // add padding-top so content isn't hidden behind the navbar on mobile
-          "flex min-h-screen flex-col pt-14",
-          "sm:pt-20",
-          "bg-platinum-900 dark:bg-jet-200"
-        )}>
+        // padding-top keeps content clear of the fixed navbar
+        className="bg-platinum-900 dark:bg-jet-200 flex min-h-screen flex-col pt-20 sm:pt-28"
+      >
         <Providers>
           <NavBar />
-          <main className={cn("flex grow items-center justify-center")}>
-            {children}
-          </main>
+          <main className="flex grow items-center justify-center">{children}</main>
           <Footer />
         </Providers>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

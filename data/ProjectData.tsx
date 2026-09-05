@@ -1,3 +1,4 @@
+// data/ProjectData.tsx
 "use client";
 
 import { Project } from "@/types/Types";
@@ -5,14 +6,15 @@ import { Project } from "@/types/Types";
 export const projects: Project[] = [
   {
     id: "1",
-    name: "Auckland Transport Tracker",
+    name: "AT Route Performance",
     description:
-      "Gets real-time data for Auckland buses, trains, and ferries.\n" +
-      "Compares actual arrivals against scheduled stop times.\n" +
-      "Work in progress. Backend currently operational.",
+      "Measures how far Auckland Transport runs from its own published schedule.\n" +
+      "Polls AT's GTFS-RT feed every couple of minutes and stores each stop arrival with its deviation.\n" +
+      "Rolls completed service days into per-route summaries behind daily boards, rankings, and per-route and per-stop pages.\n" +
+      "Counts cancellations separately and filters out ghost readings so a cancelled service cannot flatter a route.",
     image: "",
-    links: "https://github.com/wobkobi/public-transport-routing-app",
-    skills: ["TypeScript", "PostgreSQL", "Next.js", "Auckland Transport API"],
+    links: "https://github.com/wobkobi/at-route-performance",
+    skills: ["TypeScript", "Next.js", "MongoDB", "Prisma", "Auckland Transport API", "Leaflet"],
   },
   {
     id: "2",
@@ -23,37 +25,34 @@ export const projects: Project[] = [
       "Attaches the .ics file directly in Discord. Roadmap includes more calendar features.",
     image: "",
     links: "https://github.com/wobkobi/discord-event-to-ics",
-    skills: [
-      "Python",
-      "discord.py",
-      "ICS Calendar library",
-      "Nginx",
-      "Cloudflare",
-    ],
+    skills: ["Python", "discord.py", "ICS Calendar library", "Nginx", "Cloudflare"],
   },
   {
     id: "3",
     name: "ChatGPT Discord Bot",
     description:
-      "Large personal project focused on high-quality chat in Discord.\n" +
-      "Persona replies with thread-aware memory and cooldown controls.\n" +
-      "Emoji replacement, LaTeX-to-image, and image/file inputs.\n" +
-      "Supports edge cases, math rendering, and Tenor/Giphy media.\n" +
-      "Encrypted memory storage and rotating logs for clean debugging.",
+      "Discord bot using the OpenAI API to generate replies with configurable personality, tailored to each user.\n" +
+      "Thread-aware memory, emoji replacement, LaTeX-to-image conversion, and image/file inputs enhance chats.\n" +
+      "Slash commands for controlling cooldown between messages, encrypted memory storage, and rotating logs make debugging easy.",
     image: "/images/chatgpt-discord-bot.jpg",
-    links: "https://github.com/wobkobi/ChatGPT-Discord-Bot",
-    skills: [
-      "TypeScript",
-      "Discord.js",
-      "OpenAI API",
-      "Shell Scripting",
-      "LaTeX Rendering",
-      "Tenor API",
-    ],
+    links: "https://github.com/wobkobi/discord-chatgpt-bot",
+    skills: ["TypeScript", "Discord.js", "OpenAI API", "LaTeX Rendering", "Tenor API", "Giphy API"],
   },
   {
     id: "4",
-    name: "ReactionBot (StinkyBot - Working Title)",
+    name: "Triangle Location Dashboard",
+    description:
+      "Website to select addresses and candidate meeting places on Google Maps.\n" +
+      "Computes geographic midpoint and picks the most central option.\n" +
+      "Drag-and-drop lists and auto-fit map bounds for better UX.\n" +
+      "Ranks by real driving times via the Routes API, falling back to straight-line distance.",
+    image: "/images/project-triangle.jpg",
+    links: ["https://github.com/wobkobi/project-triangle", "https://project-triangle.vercel.app/"],
+    skills: ["TypeScript", "Next.js", "Tailwind CSS", "Google Maps JavaScript API"],
+  },
+  {
+    id: "5",
+    name: "ReactionBot",
     description:
       "Combines multiple bot ideas into one.\n" +
       "Reacts with emojis using regex-based phrase triggers.\n" +
@@ -63,25 +62,5 @@ export const projects: Project[] = [
     image: "",
     links: "https://github.com/wobkobi/reactionBot",
     skills: ["Python", "discord.py", "TypeScript", "Discord.js"],
-  },
-  {
-    id: "5",
-    name: "Triangle Location Dashboard",
-    description:
-      "Website to select addresses and candidate meeting places on Google Maps.\n" +
-      "Computes geographic midpoint and picks the most central option.\n" +
-      "Drag-and-drop lists and auto-fit map bounds for better UX.\n" +
-      "Planned: use routes and travel times instead of straight lines.",
-    image: "/images/project-triangle.jpg",
-    links: [
-      "https://github.com/wobkobi/project-triangle",
-      "https://project-triangle.vercel.app/",
-    ],
-    skills: [
-      "TypeScript",
-      "Next.js",
-      "Tailwind CSS",
-      "Google Maps JavaScript API",
-    ],
   },
 ];
