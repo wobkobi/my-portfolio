@@ -1,5 +1,5 @@
+// types/Types.tsx
 /**
- * @file Types.tsx
  * @description
  * Type definitions for the application including data models, component props,
  * and form payloads. Provides strong typing for portfolio, contact, and error UI.

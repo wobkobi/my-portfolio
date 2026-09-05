@@ -1,13 +1,10 @@
 // postcss.config.js
-// Configuration for PostCSS plugins, including Tailwind CSS and Autoprefixer
-
+// Tailwind v4 handles vendor prefixing via Lightning CSS, driven by the
+// browserslist field in package.json, so no autoprefixer step is needed.
 
 /** @type {import('postcss').Config} */
 export default {
   plugins: {
-    // Tailwind CSS v4.0-v4.1 PostCSS plugin
     "@tailwindcss/postcss": {},
-    // Automatically add vendor prefixes for wider browser support
-    autoprefixer: {},
   },
 };

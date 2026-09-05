@@ -1,5 +1,5 @@
+// utils/cn.tsx
 /**
- * @file cn.ts
  * @description
  * Utility to merge Tailwind CSS class names with intelligent deduplication.
  * Combines multiple class inputs, resolves conflicts, and returns a single string.

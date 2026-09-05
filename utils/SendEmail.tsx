@@ -1,5 +1,5 @@
+// utils/SendEmail.tsx
 /**
- * @file SendEmail.ts
  * @description
  * Utility function to POST contact form data to the email API endpoint and
  * return a success message or throw an error.
@@ -43,7 +43,14 @@ async function sendEmail(data: FormData): Promise<{ message: string }> {
     throw new Error(errorMessage);
   }
 
-  return response.json();
+  const body: unknown = await response.json();
+  const message =
+    typeof body === "object" && body !== null && "message" in body
+      ? (body as Record<string, unknown>).message
+      : undefined;
+
+  // The route always responds with { message }; fall back if that ever changes.
+  return { message: typeof message === "string" ? message : "Email sent" };
 }
 
 export default sendEmail;
