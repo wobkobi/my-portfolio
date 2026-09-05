@@ -30,7 +30,7 @@ function GlobalError({ error: err, reset }: GlobalErrorProps): JSX.Element {
         <h2 className="text-coquelicot dark:text-moonstone text-center text-2xl font-bold">
           Something went wrong!
         </h2>
-        <p className="dark:text-seasalt mt-4 text-center text-gray-600">
+        <p className="dark:text-seasalt text-gray-600 mt-4 text-center">
           Please try again or contact support if the problem persists.
         </p>
         <button

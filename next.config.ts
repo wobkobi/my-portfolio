@@ -14,6 +14,7 @@ const cspProd =
   "connect-src 'self'; " +
   "worker-src 'self' blob:; " +
   "manifest-src 'self'; " +
+  "object-src 'none'; " +
   "frame-ancestors 'none'; " +
   "base-uri 'self'; " +
   "form-action 'self';";
@@ -26,12 +27,15 @@ const cspDev =
   "font-src 'self' data: https://fonts.gstatic.com; " +
   "connect-src 'self' ws: http://localhost:3000 http://127.0.0.1:3000 https://va.vercel-scripts.com; " +
   "worker-src 'self' blob:; " +
+  "object-src 'none'; " +
   "frame-ancestors 'none'; " +
   "base-uri 'self'; " +
   "form-action 'self';";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Drop the X-Powered-By: Next.js header so responses do not advertise the framework/version.
+  poweredByHeader: false,
   typescript: { ignoreBuildErrors: false },
 
   turbopack: {
@@ -53,6 +57,10 @@ const nextConfig: NextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "same-origin" },
           { key: "Permissions-Policy", value: "geolocation=(), microphone=()" },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
           { key: "Content-Security-Policy", value: isDev ? cspDev : cspProd },
         ],
       },
@@ -67,6 +75,10 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
+  },
+
+  images: {
+    formats: ["image/avif", "image/webp"],
   },
 
   experimental: {

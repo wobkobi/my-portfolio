@@ -56,7 +56,7 @@ function ProjectsPage(): JSX.Element {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="dark:bg-jet-400 bg-platinum-800 flex flex-col items-center rounded-lg p-4 shadow"
+              className="flex flex-col items-center rounded-lg bg-platinum-800 p-4 shadow dark:bg-jet-400"
             >
               <div
                 className={cn(
@@ -77,22 +77,22 @@ function ProjectsPage(): JSX.Element {
                 )}
               </div>
 
-              <h2 className="text-indigo_dye dark:text-caribbean_current mb-2 text-center text-xl font-semibold">
+              <h2 className="mb-2 text-center text-xl font-semibold text-indigo_dye dark:text-caribbean_current">
                 {project.name}
               </h2>
-              <p className="mb-4 text-center text-gray-700 dark:text-gray-300">
+              <p className="text-gray-700 dark:text-gray-300 mb-4 text-center">
                 {project.description}
               </p>
 
-              <div className="mb-4 mt-auto">
-                <h3 className="text-indigo_dye dark:text-caribbean_current mb-2 text-center text-lg font-semibold">
+              <div className="mt-auto mb-4">
+                <h3 className="mb-2 text-center text-lg font-semibold text-indigo_dye dark:text-caribbean_current">
                   Skills Used:
                 </h3>
-                <ul className="flex flex-wrap justify-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                <ul className="text-gray-700 dark:text-gray-300 flex flex-wrap justify-center gap-2 text-sm">
                   {getSortedUniqueSkills(project.skills).map((skill, i) => (
                     <li
                       key={i}
-                      className="bg-indigo_dye dark:bg-caribbean_current rounded px-2 py-1 text-white"
+                      className="rounded bg-indigo_dye px-2 py-1 text-white dark:bg-caribbean_current"
                     >
                       {skill}
                     </li>
@@ -128,7 +128,7 @@ function ProjectsPage(): JSX.Element {
       </PageWrapper>
       {isPopupOpen && selectedImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-brightness-75 backdrop-filter"
+          className="bg-black/30 fixed inset-0 z-50 flex items-center justify-center backdrop-brightness-75 backdrop-filter"
           onClick={closePopup}
         >
           <div className="relative h-4/5 w-4/5 cursor-pointer overflow-hidden" onClick={closePopup}>

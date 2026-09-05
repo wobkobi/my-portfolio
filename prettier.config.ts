@@ -3,14 +3,14 @@ import type { Config } from "prettier";
 
 const config: Config = {
   $schema: "https://json.schemastore.org/prettierrc",
-  // organize-imports must run before tailwindcss; the Tailwind plugin has to be last.
   plugins: [
     "prettier-plugin-organize-imports",
     "prettier-plugin-packagejson",
     "prettier-plugin-tailwindcss",
   ],
-  tailwindConfig: "./tailwind.config.ts",
-  tailwindFunctions: ["cn", "clsx"],
+  tailwindStylesheet: "./app/globals.css",
+  // Sort classes inside cn()/clsx()/twMerge() calls too, not just className attributes.
+  tailwindFunctions: ["cn", "clsx", "twMerge"],
 
   printWidth: 100,
   tabWidth: 2,

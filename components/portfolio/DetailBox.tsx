@@ -119,7 +119,7 @@ function DetailBox({
             {getSortedUniqueSkills(skills).map((skill, i) => (
               <li
                 key={`${id}-skill-${i}`}
-                className="bg-indigo_dye dark:bg-caribbean_current rounded-sm px-2 py-1 text-xs text-white"
+                className="rounded-sm bg-indigo_dye px-2 py-1 text-xs text-white dark:bg-caribbean_current"
               >
                 {skill}
               </li>

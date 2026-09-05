@@ -91,7 +91,7 @@ function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
       <body
         suppressHydrationWarning
         // padding-top keeps content clear of the fixed navbar
-        className="bg-platinum-900 dark:bg-jet-200 flex min-h-screen flex-col pt-20 sm:pt-28"
+        className="flex min-h-screen flex-col bg-platinum-900 pt-20 sm:pt-28 dark:bg-jet-200"
       >
         <Providers>
           <NavBar />

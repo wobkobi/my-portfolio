@@ -19,11 +19,11 @@ const buttonClass =
 function HomePage(): JSX.Element {
   return (
     <PageWrapper className="min-h-[calc(100vh-(--spacing(20)))]">
-      <h1 className="text-indigo_dye dark:text-caribbean_current mb-8 text-center text-3xl font-bold md:text-4xl lg:text-5xl xl:text-6xl">
+      <h1 className="mb-8 text-center text-3xl font-bold text-indigo_dye md:text-4xl lg:text-5xl xl:text-6xl dark:text-caribbean_current">
         Harrison Raynes
       </h1>
 
-      <p className="dark:text-platinum text-center text-lg text-gray-600 sm:text-xl md:text-2xl">
+      <p className="text-gray-600 text-center text-lg sm:text-xl md:text-2xl dark:text-platinum">
         IT Support &amp; Infrastructure · CCNA Certified · Auckland, NZ
       </p>
 
