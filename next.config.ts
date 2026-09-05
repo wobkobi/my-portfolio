@@ -32,7 +32,6 @@ const cspDev =
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "standalone",
   typescript: { ignoreBuildErrors: false },
 
   turbopack: {
