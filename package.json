@@ -1,6 +1,6 @@
 {
   "name": "my-portfolio",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "next build",
     "dev": "next dev",
     "format": "prettier --write \"**/*.{js,ts,jsx,tsx,mjs,css,html,md,json,yml,yaml}\"",
-    "lint": "eslint --fix --cache \"{app,components,data,types,utils}/**/*.{js,ts,jsx,tsx}\"",
+    "lint": "eslint --fix --cache \"src/**/*.{js,ts,jsx,tsx}\"",
     "prepare": "simple-git-hooks",
     "start": "next start",
     "typecheck": "tsc --noEmit"
@@ -50,12 +50,12 @@
     "@types/node": "^26.4.1",
     "@types/nodemailer": "^8.0.1",
     "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.5",
+    "@types/react-dom": "^19.2.7",
     "cross-env": "^10.1.0",
     "eslint": "9.39.5",
     "eslint-config-next": "^16.3.4",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-jsdoc": "^64.3.5",
+    "eslint-plugin-jsdoc": "^64.3.6",
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-tailwind-canonical-classes": "^1.4.1",
     "globals": "^17.12.0",

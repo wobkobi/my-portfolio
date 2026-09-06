@@ -10,14 +10,8 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
-// Source directories covered by tsconfig, so type-aware linting can run on them.
-const SOURCE_GLOBS = [
-  "app/**/*.{ts,tsx}",
-  "components/**/*.{ts,tsx}",
-  "data/**/*.{ts,tsx}",
-  "types/**/*.{ts,tsx}",
-  "utils/**/*.{ts,tsx}",
-];
+// Source tree covered by tsconfig, so type-aware linting can run on it.
+const SOURCE_GLOBS = ["src/**/*.{ts,tsx}"];
 
 export default defineConfig([
   // Core ESLint recommended rules - the Next presets do not include these.
@@ -29,7 +23,7 @@ export default defineConfig([
   ...nextVitals,
   ...nextTs,
 
-  // Type-aware TS rules, scoped to the directories tsconfig includes. Root
+  // Type-aware TS rules, scoped to the src tree tsconfig includes. Root
   // config files sit outside that project graph and stay on the untyped set.
   ...tseslint.configs.recommendedTypeChecked.map((c) => ({
     ...c,
@@ -116,7 +110,7 @@ export default defineConfig([
     rules: {
       "tailwind-canonical-classes/tailwind-canonical-classes": [
         "warn",
-        { cssPath: "app/globals.css" },
+        { cssPath: "src/app/globals.css" },
       ],
     },
   },
