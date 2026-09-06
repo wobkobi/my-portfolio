@@ -11,9 +11,16 @@ import { NextResponse, type NextRequest } from "next/server";
 import nodemailer, { type Transporter } from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
 
+// Read once so the transport and the handler agree on what is configured.
+const MY_EMAIL = process.env.MY_EMAIL;
+const MY_PASSWORD = process.env.MY_PASSWORD;
+
 /**
  * Nodemailer transport configuration using SMTP pooling.
  * Pooling reuses connections for multiple messages, improving performance.
+ * Auth is left off entirely when either credential is unset, so that importing
+ * this module during a build that holds no secrets still succeeds. A request
+ * arriving without credentials is refused by the handler instead.
  */
 const transport: Transporter = nodemailer.createTransport({
   pool: true, // enable connection pooling
@@ -22,19 +29,23 @@ const transport: Transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465, // SSL port
   secure: true, // use SSL
-  auth: {
-    user: process.env.MY_EMAIL,
-    pass: process.env.MY_PASSWORD,
-  },
+  ...(MY_EMAIL && MY_PASSWORD ? { auth: { user: MY_EMAIL, pass: MY_PASSWORD } } : {}),
 });
 
 /**
  * POST handler for the email API.
  * @async
  * @param request - The incoming Next.js API request.
- * @returns JSON response acknowledging queuing.
+ * @returns JSON response acknowledging queuing, or 500 when the mailbox is unset.
  */
 export async function POST(request: NextRequest): Promise<NextResponse> {
+  // Nothing can be sent without a mailbox, so refuse rather than acknowledge a
+  // send that silently drops.
+  if (!MY_EMAIL) {
+    console.error("MY_EMAIL is not set; the contact form cannot send mail.");
+    return NextResponse.json({ message: "Email is not configured" }, { status: 500 });
+  }
+
   // Parse JSON body from the request
   const { email, name, subject, message } = (await request.json()) as FormData;
 
@@ -42,8 +53,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
    * Mail options for Nodemailer.
    */
   const mailOptions: Mail.Options = {
-    from: process.env.MY_EMAIL, // sender address
-    to: process.env.MY_EMAIL, // recipient (self)
+    from: MY_EMAIL, // sender address
+    to: MY_EMAIL, // recipient (self)
     subject, // subject line from form
     text: `From: ${name}\nEmail: ${email}\n\n${message}`,
   };

@@ -9,3 +9,15 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    # Stated rather than left to the default of 5, which the npm queue has hit
+    # before: at the cap Dependabot opens nothing new until a PR is cleared.
+    open-pull-requests-limit: 5
+
+  # Keeps the `uses:` tags in .github/workflows current. Without this, pinned
+  # actions silently fall behind and the runner warns about their declared
+  # Node runtime (node20 actions forced onto node24).
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3

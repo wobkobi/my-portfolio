@@ -42,9 +42,12 @@ export interface DetailBoxProps {
   id: string;
   subtitle: string;
   details: string[];
-  skills?: string[];
+  // Spelt with an explicit undefined because callers forward the matching
+  // DataBox fields straight through, and under exactOptionalPropertyTypes a
+  // plain `?:` would reject passing one that happens to be absent.
+  skills?: string[] | undefined;
   isVisible: boolean;
-  link?: LinkItem | LinkItem[];
+  link?: LinkItem | LinkItem[] | undefined;
 }
 
 /**
