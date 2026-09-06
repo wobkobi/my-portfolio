@@ -8,7 +8,7 @@ const config: Config = {
     "prettier-plugin-packagejson",
     "prettier-plugin-tailwindcss",
   ],
-  tailwindStylesheet: "./app/globals.css",
+  tailwindStylesheet: "./src/app/globals.css",
   // Sort classes inside cn()/clsx()/twMerge() calls too, not just className attributes.
   tailwindFunctions: ["cn", "clsx", "twMerge"],
 
