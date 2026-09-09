@@ -67,6 +67,7 @@ function Projects(): JSX.Element {
                   src={project.image}
                   alt={project.name}
                   fill
+                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
                   className="bg-transparent object-contain"
                 />
               ) : (
@@ -133,6 +134,7 @@ function Projects(): JSX.Element {
               src={selectedImage}
               alt="Project Fullscreen"
               fill
+              sizes="80vw"
               className="bg-transparent object-contain"
             />
           </div>
