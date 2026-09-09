@@ -185,7 +185,7 @@ export const Projects: DataBox[] = [
         url: "https://github.com/wobkobi",
         text: "My GitHub",
       },
-      { url: "/projects", text: "View on this Site" },
+      { url: "#projects", text: "View on this Site" },
     ],
   },
 ];

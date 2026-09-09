@@ -1,13 +1,7 @@
-// src/app/portfolio/page.tsx
-/**
- * @description
- * Renders the Portfolio page with Education, Work Experience, Projects,
- * Certifications, Skills, and CV download.
- */
+// src/components/sections/Portfolio.tsx
 
 "use client";
 
-import PageWrapper from "@/components/PageWrapper";
 import DetailBox from "@/components/portfolio/DetailBox";
 import ExpandableBox from "@/components/portfolio/ExpandableBox";
 import { Certifications, Education, Projects, skills, WorkExperience } from "@/data/PortfolioData";
@@ -23,10 +17,13 @@ const sectionWrapper = "mb-8";
 const gridWrapper = "flex flex-wrap justify-center gap-4";
 
 /**
- * PortfolioPage component.
- * @returns The portfolio page layout.
+ * Portfolio section.
+ *
+ * Education, Work Experience, Projects, Certifications, Skills, and CV
+ * download. Only one box is expanded at a time across every subsection.
+ * @returns The portfolio layout.
  */
-function PortfolioPage(): JSX.Element {
+function Portfolio(): JSX.Element {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const detailRef = useRef<HTMLDivElement>(null);
   const uniqueSkills = getSortedUniqueSkills(skills);
@@ -48,14 +45,14 @@ function PortfolioPage(): JSX.Element {
   const toggle = (id: string): void => setExpandedId((prev) => (prev === id ? null : id));
 
   /**
-   * Render a section of ExpandableBoxes.
-   * @param title - The heading for the section.
+   * Render a subsection of ExpandableBoxes.
+   * @param title - The heading for the subsection.
    * @param items - Array of DataBox items to render.
-   * @returns A JSX element containing that section.
+   * @returns A JSX element containing that subsection.
    */
   const renderSection = (title: string, items: DataBox[]): JSX.Element => (
     <section className={sectionWrapper} key={title}>
-      <h2 className={sectionHeading}>{title}</h2>
+      <h3 className={sectionHeading}>{title}</h3>
       <div className={gridWrapper}>
         {items.map((item) => (
           <div key={item.id} className="w-full p-4 sm:max-w-sm md:w-1/2 lg:w-1/4">
@@ -93,14 +90,14 @@ function PortfolioPage(): JSX.Element {
   );
 
   return (
-    <PageWrapper>
-      <h1 className={titleClasses}>Portfolio</h1>
+    <>
+      <h2 className={titleClasses}>Portfolio</h2>
       {renderSection("Education", Education)}
       {renderSection("Work Experience", WorkExperience)}
       {renderSection("Projects", Projects)}
 
       <section className={sectionWrapper}>
-        <h2 className={sectionHeading}>Certifications</h2>
+        <h3 className={sectionHeading}>Certifications</h3>
         <div className={gridWrapper}>
           {Certifications.map((cert) => (
             <div
@@ -108,9 +105,9 @@ function PortfolioPage(): JSX.Element {
               className="flex w-full items-center justify-center p-4 sm:max-w-sm md:w-1/2 lg:w-1/4"
             >
               <div className="flex h-28 w-full flex-col items-center justify-center overflow-hidden rounded-sm bg-platinum-800 p-3 shadow-md transition-colors duration-200 dark:bg-jet-400">
-                <h3 className="break-word line-clamp-2 text-center text-base font-semibold text-indigo_dye dark:text-caribbean_current">
+                <h4 className="break-word line-clamp-2 text-center text-base font-semibold text-indigo_dye dark:text-caribbean_current">
                   {cert.title}
-                </h3>
+                </h4>
                 <p className="mt-1 text-center text-sm text-jet-600 dark:text-jet-800">
                   {cert.year}
                 </p>
@@ -121,7 +118,7 @@ function PortfolioPage(): JSX.Element {
       </section>
 
       <section className={sectionWrapper}>
-        <h2 className={sectionHeading}>Skills</h2>
+        <h3 className={sectionHeading}>Skills</h3>
         <div className="mx-auto flex w-[85%] flex-wrap justify-center gap-1">
           {uniqueSkills.map((skill) => (
             <span
@@ -141,8 +138,8 @@ function PortfolioPage(): JSX.Element {
       >
         Download CV
       </a>
-    </PageWrapper>
+    </>
   );
 }
 
-export default PortfolioPage;
+export default Portfolio;

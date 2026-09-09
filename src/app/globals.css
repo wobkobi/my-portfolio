@@ -6,7 +6,8 @@
  * 3) Custom theme variables (@theme) for design tokens
  * 4) Custom dark-mode selector (@custom-variant)
  * 5) Base-layer compatibility resets and typography
- * 6) Custom scrollbar styling
+ * 6) Page surface and section seams
+ * 7) Custom scrollbar styling
  */
 
 /* 1) Google Font */
@@ -129,9 +130,67 @@
   html {
     overflow-y: scroll;
   }
+
+  /* Anchor links in the navbar and hero glide to their section instead of
+     jumping, for everyone who has not asked for less motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
 }
 
-/* 6) Custom scrollbar styling */
+/* 6) Page surface and section seams */
+
+/*
+ * A fixed sheet behind the content: two soft brand glows over a fine technical
+ * grid, so one long page does not read as a flat panel. Being fixed, the
+ * content glides across it rather than dragging it along. The layout lifts
+ * everything above it with z-10.
+ */
+.site-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(60rem 40rem at 85% -8%, rgba(83, 154, 158, 0.2), transparent 62%),
+    radial-gradient(55rem 38rem at 8% 2%, rgba(40, 75, 99, 0.16), transparent 64%),
+    linear-gradient(rgba(40, 75, 99, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(40, 75, 99, 0.05) 1px, transparent 1px);
+  background-size:
+    auto,
+    auto,
+    34px 34px,
+    34px 34px;
+}
+
+.dark .site-backdrop {
+  background-image:
+    radial-gradient(60rem 40rem at 85% -8%, rgba(83, 154, 158, 0.16), transparent 62%),
+    radial-gradient(55rem 38rem at 8% 2%, rgba(62, 115, 151, 0.14), transparent 64%),
+    linear-gradient(rgba(123, 182, 185, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123, 182, 185, 0.05) 1px, transparent 1px);
+}
+
+/*
+ * Boundary between two sections. Faded at both ends so it reads as a seam in
+ * the surface rather than a rule drawn across the page.
+ */
+.section-seam::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent, rgba(40, 75, 99, 0.3), transparent);
+}
+
+.dark .section-seam::before {
+  background-image: linear-gradient(to right, transparent, rgba(123, 182, 185, 0.26), transparent);
+}
+
+/* 7) Custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 12px;
 }

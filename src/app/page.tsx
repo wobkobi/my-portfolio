@@ -1,51 +1,44 @@
 // src/app/page.tsx
-/**
- * @description
- * Renders the home page with the site title, headline, and primary navigation
- * links to Portfolio, Projects, and CV download.
- */
 
-import PageWrapper from "@/components/PageWrapper";
-import Link from "next/link";
+import Section from "@/components/Section";
+import About from "@/components/sections/About";
+import Contact from "@/components/sections/Contact";
+import Hero from "@/components/sections/Hero";
+import Portfolio from "@/components/sections/Portfolio";
+import Projects from "@/components/sections/Projects";
 import { JSX } from "react";
-
-const buttonClass =
-  "whitespace-nowrap bg-indigo_dye hover:bg-caribbean_current focus:ring-indigo_dye dark:bg-caribbean_current dark:hover:bg-indigo_dye inline-block rounded-md px-6 py-4 text-lg font-medium text-white shadow-lg transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 sm:px-7 sm:py-4 sm:text-xl";
 
 /**
  * HomePage component.
- * @returns The home page layout.
+ *
+ * The whole site as one scrolling page. Section ids are the anchor targets the
+ * navbar and hero link to, and the ones the retired routes redirect to. Tints
+ * alternate so neighbouring bands stay distinguishable.
+ * @returns The single-page layout.
  */
 function HomePage(): JSX.Element {
   return (
-    <PageWrapper className="min-h-[calc(100vh-(--spacing(20)))]">
-      <h1 className="mb-8 text-center text-3xl font-bold text-indigo_dye md:text-4xl lg:text-5xl xl:text-6xl dark:text-caribbean_current">
-        Harrison Raynes
-      </h1>
+    <>
+      <section id="top" className="relative w-full scroll-mt-24 sm:scroll-mt-32">
+        <Hero />
+      </section>
 
-      <p className="text-center text-lg text-jet-600 sm:text-xl md:text-2xl dark:text-platinum">
-        IT Support &amp; Infrastructure · CCNA Certified · Auckland, NZ
-      </p>
+      <Section id="portfolio" tinted>
+        <Portfolio />
+      </Section>
 
-      <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <Link href="/portfolio" passHref className={buttonClass}>
-          View Portfolio
-        </Link>
-        <Link href="/projects" passHref className={buttonClass}>
-          View My Projects
-        </Link>
-      </div>
+      <Section id="projects">
+        <Projects />
+      </Section>
 
-      <div className="mt-4 flex justify-center">
-        <a
-          href="/files/Harrison Raynes CV.pdf"
-          download="Harrison Raynes CV.pdf"
-          className={buttonClass}
-        >
-          Download CV
-        </a>
-      </div>
-    </PageWrapper>
+      <Section id="about" tinted>
+        <About />
+      </Section>
+
+      <Section id="contact">
+        <Contact />
+      </Section>
+    </>
   );
 }
 

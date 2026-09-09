@@ -43,6 +43,19 @@ const nextConfig: NextConfig = {
   },
 
   /**
+   * Permanent redirects from the routes that used to hold each section, so
+   * inbound links and indexed results land on the matching anchor.
+   * @returns Redirect rules for the retired routes.
+   */
+  async redirects() {
+    return ["about", "portfolio", "projects", "contact"].map((section) => ({
+      source: `/${section}`,
+      destination: `/#${section}`,
+      permanent: true,
+    }));
+  },
+
+  /**
    * Security headers for every route.
    * Sets clickjacking, MIME-sniffing, referrer, permissions, and CSP
    * (CSP switches between dev and prod variants).

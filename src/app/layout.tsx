@@ -93,9 +93,10 @@ function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
         // padding-top keeps content clear of the fixed navbar
         className="flex min-h-screen flex-col bg-platinum-900 pt-20 sm:pt-28 dark:bg-jet-200"
       >
+        <div className="site-backdrop" aria-hidden="true" />
         <Providers>
           <NavBar />
-          <main className="flex grow items-center justify-center">{children}</main>
+          <main className="relative z-10 flex grow flex-col">{children}</main>
           <Footer />
         </Providers>
         <Analytics />

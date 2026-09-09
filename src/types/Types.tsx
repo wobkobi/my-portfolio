@@ -69,6 +69,20 @@ export interface ExpandableBoxProps {
 }
 
 /**
+ * Props for one band of the single page.
+ * id - Anchor target for the navbar and the redirects from the retired routes.
+ * children - The section content.
+ * [tinted] - Raise the band a little off the page surface.
+ * [seam] - Draw the hairline boundary along the band's top edge.
+ */
+export interface SectionProps {
+  id: string;
+  children: ReactNode;
+  tinted?: boolean;
+  seam?: boolean;
+}
+
+/**
  * Props for top‑level Providers component wrapping the app.
  * children - React children nodes to render.
  */

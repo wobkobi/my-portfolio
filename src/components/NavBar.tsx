@@ -1,16 +1,13 @@
 // src/components/NavBar.tsx
-/**
- * @description
- * A responsive, auto-hiding navigation bar that spans full width on mobile
- * and becomes a curved inline pill on desktop. Hides on scroll-down, shows
- * on scroll-up or hover, and auto-hides 30s after a hover.
- */
+// A responsive, auto-hiding navigation bar that spans full width on mobile and
+// becomes a curved inline pill on desktop. Hides on scroll-down, shows on
+// scroll-up or hover, and auto-hides 30s after a hover. Links are same-page
+// anchors, so they use plain <a> rather than next/link.
 
 "use client";
 
 import ThemeSwitch from "@/components/ThemeSwitch";
 import cn from "@/utils/cn";
-import Link from "next/link";
 import { JSX, useEffect, useRef, useState } from "react";
 
 // Outer nav container: mobile full-width, desktop inline pill. The show/hide
@@ -93,21 +90,21 @@ function NavBar(): JSX.Element {
       }}
     >
       <div className={containerClasses}>
-        <Link href="/" className={linkClass}>
+        <a href="#top" className={linkClass}>
           Home
-        </Link>
-        <Link href="/portfolio" className={linkClass}>
+        </a>
+        <a href="#portfolio" className={linkClass}>
           Portfolio
-        </Link>
-        <Link href="/projects" className={linkClass}>
+        </a>
+        <a href="#projects" className={linkClass}>
           Projects
-        </Link>
-        <Link href="/about" className={linkClass}>
+        </a>
+        <a href="#about" className={linkClass}>
           About
-        </Link>
-        <Link href="/contact" className={linkClass}>
+        </a>
+        <a href="#contact" className={linkClass}>
           Contact
-        </Link>
+        </a>
         <ThemeSwitch />
       </div>
     </nav>
