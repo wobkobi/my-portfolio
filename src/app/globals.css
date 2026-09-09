@@ -143,10 +143,11 @@
 /* 6) Page surface and section seams */
 
 /*
- * A fixed sheet behind the content: two soft brand glows over a fine technical
- * grid, so one long page does not read as a flat panel. Being fixed, the
- * content glides across it rather than dragging it along. The layout lifts
- * everything above it with z-10.
+ * A fixed sheet behind the content: a fine technical grid, so one long page
+ * does not read as a flat panel. Being fixed, the content glides across it
+ * rather than dragging it along. The layout lifts everything above it with
+ * z-10. Deliberately even, so no section reads as a different colour from its
+ * neighbours.
  */
 .site-backdrop {
   position: fixed;
@@ -154,21 +155,15 @@
   z-index: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(60rem 40rem at 85% -8%, rgba(83, 154, 158, 0.2), transparent 62%),
-    radial-gradient(55rem 38rem at 8% 2%, rgba(40, 75, 99, 0.16), transparent 64%),
     linear-gradient(rgba(40, 75, 99, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(40, 75, 99, 0.05) 1px, transparent 1px);
   background-size:
-    auto,
-    auto,
     34px 34px,
     34px 34px;
 }
 
 .dark .site-backdrop {
   background-image:
-    radial-gradient(60rem 40rem at 85% -8%, rgba(83, 154, 158, 0.16), transparent 62%),
-    radial-gradient(55rem 38rem at 8% 2%, rgba(62, 115, 151, 0.14), transparent 64%),
     linear-gradient(rgba(123, 182, 185, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(123, 182, 185, 0.05) 1px, transparent 1px);
 }
