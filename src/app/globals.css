@@ -77,6 +77,11 @@
   --color-indigo_dye-900: #cadde9;
   --color-indigo_dye: #284b63;
 
+  /* Danger: form validation and destructive state */
+  --color-danger-500: #b3261e;
+  --color-danger-600: #e5645a;
+  --color-danger: #b3261e;
+
   /* White shades */
   --color-white-100: #333333;
   --color-white-200: #666666;

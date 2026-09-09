@@ -80,7 +80,7 @@ function ProjectsPage(): JSX.Element {
               <h2 className="mb-2 text-center text-xl font-semibold text-indigo_dye dark:text-caribbean_current">
                 {project.name}
               </h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-4 text-center">
+              <p className="mb-4 text-center text-jet-600 dark:text-platinum-500">
                 {project.description}
               </p>
 
@@ -88,7 +88,7 @@ function ProjectsPage(): JSX.Element {
                 <h3 className="mb-2 text-center text-lg font-semibold text-indigo_dye dark:text-caribbean_current">
                   Skills Used:
                 </h3>
-                <ul className="text-gray-700 dark:text-gray-300 flex flex-wrap justify-center gap-2 text-sm">
+                <ul className="flex flex-wrap justify-center gap-2 text-sm text-jet-600 dark:text-platinum-500">
                   {getSortedUniqueSkills(project.skills).map((skill, i) => (
                     <li
                       key={i}
@@ -128,7 +128,7 @@ function ProjectsPage(): JSX.Element {
       </PageWrapper>
       {isPopupOpen && selectedImage && (
         <div
-          className="bg-black/30 fixed inset-0 z-50 flex items-center justify-center backdrop-brightness-75 backdrop-filter"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-jet-100/60 backdrop-brightness-75 backdrop-filter"
           onClick={closePopup}
         >
           <div className="relative h-4/5 w-4/5 cursor-pointer overflow-hidden" onClick={closePopup}>

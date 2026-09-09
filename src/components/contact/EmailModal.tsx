@@ -24,18 +24,18 @@ function EmailModal({ isOpen, message, onClose }: EmailModalProps): JSX.Element 
 
   return (
     <div
-      className="bg-black/20 fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-jet-100/50 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="dark:bg-rich-black mx-auto max-w-md rounded-lg bg-white p-5 shadow-sm"
+        className="mx-auto max-w-md rounded-lg bg-white p-5 shadow-sm dark:bg-jet-200"
         onClick={(e) => e.stopPropagation()}
       >
-        <p className="text-rich-black dark:text-seasalt mb-6 text-center">{message}</p>
+        <p className="mb-6 text-center text-jet-200 dark:text-platinum">{message}</p>
         <div className="flex justify-center">
           <button
             onClick={onClose}
-            className="bg-coquelicot hover:bg-moonstone dark:bg-moonstone dark:hover:bg-coquelicot rounded-sm px-4 py-2 font-medium text-white transition duration-300 ease-in-out"
+            className="rounded-sm bg-indigo_dye px-4 py-2 font-medium text-white transition duration-300 ease-in-out hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye"
           >
             Close
           </button>

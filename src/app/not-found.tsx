@@ -14,19 +14,19 @@ import { JSX } from "react";
  */
 function NotFound(): JSX.Element {
   return (
-    <div className="dark:bg-rich-black flex min-h-screen items-center justify-center bg-white">
+    <div className="flex min-h-screen items-center justify-center bg-white dark:bg-jet-200">
       <div className="p-4 text-center">
-        <h2 className="text-coquelicot dark:text-moonstone text-4xl font-bold sm:text-5xl">
+        <h2 className="text-4xl font-bold text-indigo_dye sm:text-5xl dark:text-caribbean_current">
           404: Not Found
         </h2>
-        <p className="text-rich-black dark:text-seasalt mt-4 text-lg sm:text-xl">
+        <p className="mt-4 text-lg text-jet-200 sm:text-xl dark:text-platinum">
           It seems the page you were looking for doesn&apos;t exist.
         </p>
-        <p className="text-rich-black dark:text-seasalt mt-4 text-lg sm:text-xl">womp womp</p>
+        <p className="mt-4 text-lg text-jet-200 sm:text-xl dark:text-platinum">womp womp</p>
         <Link
           href="/"
           passHref
-          className="bg-coquelicot hover:bg-moonstone dark:bg-moonstone dark:hover:bg-coquelicot mt-6 inline-block rounded-sm px-4 py-2 font-medium text-white transition-colors duration-300 dark:text-white"
+          className="mt-6 inline-block rounded-sm bg-indigo_dye px-4 py-2 font-medium text-white transition-colors duration-300 hover:bg-caribbean_current dark:bg-caribbean_current dark:text-white dark:hover:bg-indigo_dye"
         >
           Return Home
         </Link>

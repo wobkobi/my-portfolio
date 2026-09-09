@@ -111,7 +111,7 @@ function PortfolioPage(): JSX.Element {
                 <h3 className="break-word line-clamp-2 text-center text-base font-semibold text-indigo_dye dark:text-caribbean_current">
                   {cert.title}
                 </h3>
-                <p className="text-gray-200 dark:text-gray-400 mt-1 text-center text-sm">
+                <p className="mt-1 text-center text-sm text-jet-600 dark:text-jet-800">
                   {cert.year}
                 </p>
               </div>
@@ -137,7 +137,7 @@ function PortfolioPage(): JSX.Element {
       <a
         href="/files/Harrison Raynes CV.pdf"
         download
-        className="focus:ring-opacity-50 inline-block rounded-md bg-indigo_dye px-4 py-2 text-sm font-medium text-white shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:bg-caribbean_current focus:ring-2 focus:ring-indigo_dye focus:outline-none md:px-6 md:py-3 md:text-lg dark:bg-caribbean_current dark:hover:bg-indigo_dye"
+        className="inline-block rounded-md bg-indigo_dye px-4 py-2 text-sm font-medium text-white shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:bg-caribbean_current focus:ring-2 focus:ring-indigo_dye focus:outline-none md:px-6 md:py-3 md:text-lg dark:bg-caribbean_current dark:hover:bg-indigo_dye"
       >
         Download CV
       </a>

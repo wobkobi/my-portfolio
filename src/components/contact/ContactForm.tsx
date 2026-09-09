@@ -16,11 +16,11 @@ import EmailModal from "./EmailModal";
 
 // Common input classes
 const inputClass =
-  "text-rich-black dark:bg-rich-black dark:text-seasalt w-full rounded-sm border bg-white p-3 dark:border-transparent";
+  "text-jet-200 dark:bg-jet-200 dark:text-platinum w-full rounded-sm border bg-white p-3 dark:border-transparent";
 
 // Button base; the disabled state is layered on in the component
 const buttonBaseClass =
-  "bg-coquelicot hover:bg-moonstone dark:bg-moonstone dark:hover:bg-coquelicot mt-2 w-full rounded px-4 py-2 text-white";
+  "bg-indigo_dye hover:bg-caribbean_current dark:bg-caribbean_current dark:hover:bg-indigo_dye mt-2 w-full rounded px-4 py-2 text-white";
 
 /**
  * ContactForm component.
@@ -70,34 +70,38 @@ function ContactForm(): JSX.Element {
         <input
           type="text"
           placeholder="Name or Company Name"
-          className={cn(inputClass, errors.name && "border-red-500")}
+          className={cn(inputClass, errors.name && "border-danger dark:border-danger-600")}
           {...register("name", { required: "Name is required" })}
         />
-        {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+        {errors.name && <p className="text-danger dark:text-danger-600">{errors.name.message}</p>}
 
         <input
           type="email"
           placeholder="Email"
-          className={cn(inputClass, errors.email && "border-red-500")}
+          className={cn(inputClass, errors.email && "border-danger dark:border-danger-600")}
           {...register("email", { required: "Email is required" })}
         />
-        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+        {errors.email && <p className="text-danger dark:text-danger-600">{errors.email.message}</p>}
 
         <input
           type="text"
           placeholder="Subject"
-          className={cn(inputClass, errors.subject && "border-red-500")}
+          className={cn(inputClass, errors.subject && "border-danger dark:border-danger-600")}
           {...register("subject", { required: "Subject is required" })}
         />
-        {errors.subject && <p className="text-red-500">{errors.subject.message}</p>}
+        {errors.subject && (
+          <p className="text-danger dark:text-danger-600">{errors.subject.message}</p>
+        )}
 
         <textarea
           placeholder="Message"
           rows={4}
-          className={cn(inputClass, errors.message && "border-red-500")}
+          className={cn(inputClass, errors.message && "border-danger dark:border-danger-600")}
           {...register("message", { required: "Message is required" })}
         />
-        {errors.message && <p className="text-red-500">{errors.message.message}</p>}
+        {errors.message && (
+          <p className="text-danger dark:text-danger-600">{errors.message.message}</p>
+        )}
 
         <button type="submit" disabled={isSubmitting} className={buttonClass}>
           {isSubmitting ? "Sending..." : "Submit"}
