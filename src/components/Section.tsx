@@ -8,7 +8,7 @@ import { JSX } from "react";
 // body's pt-20 sm:pt-28 in the root layout, so change both together.
 const bandClasses = "relative w-full scroll-mt-24 sm:scroll-mt-32";
 
-const containerClasses = "mx-auto w-full max-w-6xl px-4 py-16 text-center sm:px-6 sm:py-24";
+const containerClasses = "mx-auto w-full max-w-6xl px-4 py-12 text-center sm:px-6 sm:py-16";
 
 // Tinted bands alternate down the page. Kept translucent so the surface behind
 // still shows through instead of being covered by a flat panel.

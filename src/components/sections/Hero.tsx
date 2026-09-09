@@ -5,7 +5,7 @@ import { JSX } from "react";
 // svh rather than vh so mobile browser chrome does not push the buttons off
 // screen, and short of full height so the next section stays in view.
 const heroClasses =
-  "mx-auto flex min-h-[68svh] w-full max-w-4xl flex-col items-center justify-center px-4 py-12 text-center sm:min-h-[72svh] sm:px-6";
+  "mx-auto flex min-h-[55svh] w-full max-w-4xl flex-col items-center justify-center px-4 py-12 text-center sm:min-h-[60svh] sm:px-6";
 
 const primaryButton =
   "rounded-md bg-indigo_dye px-6 py-3.5 text-base font-medium text-white shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:bg-caribbean_current focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo_dye sm:text-lg dark:bg-caribbean_current dark:hover:bg-indigo_dye";
