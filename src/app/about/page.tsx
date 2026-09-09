@@ -14,7 +14,7 @@ const titleClasses =
 const sectionHeading =
   "text-indigo_dye dark:text-caribbean_current mb-4 text-center text-xl font-semibold sm:text-2xl md:text-3xl";
 const paragraphClasses =
-  "dark:text-platinum text-center text-base text-gray-600 sm:text-lg md:text-xl";
+  "dark:text-platinum text-center text-base text-jet-600 sm:text-lg md:text-xl";
 
 /**
  * AboutPage component.

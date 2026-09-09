@@ -14,7 +14,7 @@ import { FiMoon, FiSun } from "react-icons/fi";
 
 // Base button classes
 const baseClass =
-  "focus:outline-hidden rounded-md p-2 focus-visible:ring-2 focus-visible:ring-opacity-50 transition-colors duration-300 ease-in-out flex cursor-pointer items-center justify-center";
+  "focus:outline-hidden rounded-md p-2 focus-visible:ring-2 focus-visible:ring-indigo_dye dark:focus-visible:ring-caribbean_current transition-colors duration-300 ease-in-out flex cursor-pointer items-center justify-center";
 
 /** Shared teardown for the mount store, which never actually emits. */
 const noop = (): void => {};
@@ -60,12 +60,14 @@ function ThemeSwitch(): JSX.Element | null {
 
   // Theme-dependent colour classes
   const themeClass =
-    theme === "light" ? "hover:text-coquelicot text-gray-900" : "hover:text-moonstone text-white";
+    theme === "light"
+      ? "hover:text-indigo_dye text-jet-400"
+      : "hover:text-caribbean_current text-white";
 
   return (
     <button
       onClick={(): void => setTheme(theme === "light" ? "dark" : "light")}
-      className={cn(baseClass, themeClass, "dark:hover:text-moonstone dark:text-white")}
+      className={cn(baseClass, themeClass, "dark:text-white dark:hover:text-caribbean_current")}
       aria-label="Toggle Dark Mode"
       title="Toggle Dark Mode"
       role="switch"

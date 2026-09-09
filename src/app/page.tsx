@@ -10,7 +10,7 @@ import Link from "next/link";
 import { JSX } from "react";
 
 const buttonClass =
-  "whitespace-nowrap bg-indigo_dye hover:bg-caribbean_current focus:ring-indigo_dye focus:ring-opacity-50 dark:bg-caribbean_current dark:hover:bg-indigo_dye inline-block rounded-md px-6 py-4 text-lg font-medium text-white shadow-lg transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 sm:px-7 sm:py-4 sm:text-xl";
+  "whitespace-nowrap bg-indigo_dye hover:bg-caribbean_current focus:ring-indigo_dye dark:bg-caribbean_current dark:hover:bg-indigo_dye inline-block rounded-md px-6 py-4 text-lg font-medium text-white shadow-lg transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 sm:px-7 sm:py-4 sm:text-xl";
 
 /**
  * HomePage component.
@@ -23,7 +23,7 @@ function HomePage(): JSX.Element {
         Harrison Raynes
       </h1>
 
-      <p className="text-gray-600 text-center text-lg sm:text-xl md:text-2xl dark:text-platinum">
+      <p className="text-center text-lg text-jet-600 sm:text-xl md:text-2xl dark:text-platinum">
         IT Support &amp; Infrastructure · CCNA Certified · Auckland, NZ
       </p>
 

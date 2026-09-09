@@ -1,6 +1,6 @@
 {
   "name": "my-portfolio",
-  "version": "1.7.4",
+  "version": "1.7.7",
   "private": true,
   "type": "module",
   "scripts": {
@@ -14,7 +14,7 @@
     "typecheck": "tsc --noEmit"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged && npm run typecheck",
+    "pre-commit": "if ! find node_modules/.npm-update-stamp -mmin -1440 2>/dev/null | grep -q .; then npm update --package-lock-only --allow-remote=all --no-audit --no-fund && touch node_modules/.npm-update-stamp; fi && npm install --package-lock-only --allow-remote=all --no-audit --no-fund && git add package-lock.json package.json && npx lint-staged && npm run typecheck",
     "pre-push": "npm run lint && npm run build"
   },
   "lint-staged": {
@@ -47,7 +47,7 @@
     "@eslint/js": "^9.39.5",
     "@next/bundle-analyzer": "^16.3.4",
     "@tailwindcss/postcss": "^4.3.3",
-    "@types/node": "^26.4.1",
+    "@types/node": "^26.5.0",
     "@types/nodemailer": "^8.0.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
@@ -67,8 +67,8 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "simple-git-hooks": "^2.14.0",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.2",
-    "typescript-eslint": "^8.69.0"
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.70.0"
   },
   "engines": {
     "node": "24.x",

@@ -26,7 +26,10 @@ function PageWrapper({
 }): JSX.Element {
   return (
     <div className={cn("flex grow flex-col items-center justify-center", className)}>
-      <div className="p-4 text-center">
+      {/* w-full is load-bearing: items-center on the column above sets the
+          horizontal axis, so without it this sizes to fit-content and pages
+          with no wide content, such as Contact, collapse to a narrow column. */}
+      <div className="w-full p-4 text-center">
         <div className="mx-auto w-full p-4 sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12">
           {children}
         </div>
