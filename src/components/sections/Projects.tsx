@@ -1,12 +1,8 @@
 // src/components/sections/Projects.tsx
 
-"use client";
-
 import { projects } from "@/data/ProjectData";
-import cn from "@/utils/cn";
 import { getSortedUniqueSkills } from "@/utils/sortSkills";
-import Image from "next/image";
-import { JSX, useState } from "react";
+import { JSX } from "react";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 
 const titleClasses =
@@ -17,76 +13,41 @@ const buttonClass =
 /**
  * Projects section.
  *
- * Grid of project cards with images, descriptions, skills and links. Clicking
- * a card image opens it in a fullscreen lightbox.
+ * A card per project: what it does, the stack it uses, and where the code
+ * lives. Descriptions are authored a claim per line, so each line becomes a
+ * bullet rather than collapsing into one dense paragraph.
  * @returns The projects layout.
  */
 function Projects(): JSX.Element {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  /**
-   * Toggle the lightbox for a project image, closing it if that image is already open.
-   * @param image - Path of the project image that was clicked.
-   */
-  const handleImageClick = (image: string): void => {
-    if (selectedImage === image) {
-      setIsPopupOpen(false);
-      setSelectedImage(null);
-    } else {
-      setSelectedImage(image);
-      setIsPopupOpen(true);
-    }
-  };
-  /**
-   * Dismiss the image lightbox and clear the current selection.
-   */
-  const closePopup = (): void => {
-    setIsPopupOpen(false);
-    setSelectedImage(null);
-  };
-
   return (
     <>
       <h2 className={titleClasses}>My Projects</h2>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <div
-            key={project.id}
-            className="flex flex-col items-center rounded-lg bg-platinum-800 p-4 shadow dark:bg-jet-400"
-          >
+        {projects.map((project) => {
+          const claims = project.description.split("\n").filter(Boolean);
+
+          return (
             <div
-              className={cn(
-                "relative mb-4 h-48 w-full overflow-hidden rounded",
-                project.image && "cursor-pointer",
-              )}
-              onClick={() => project.image && handleImageClick(project.image)}
+              key={project.id}
+              className="flex flex-col rounded-lg bg-platinum-800 p-4 shadow dark:bg-jet-400"
             >
-              {project.image ? (
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  fill
-                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
-                  className="bg-transparent object-contain"
-                />
+              <h3 className="mb-3 text-center text-xl font-semibold text-indigo_dye dark:text-caribbean_current">
+                {project.name}
+              </h3>
+
+              {claims.length > 1 ? (
+                <ul className="mb-4 list-disc space-y-1 pl-5 text-left text-sm text-jet-600 dark:text-platinum-500">
+                  {claims.map((claim, i) => (
+                    <li key={i}>{claim}</li>
+                  ))}
+                </ul>
               ) : (
-                <div className="invisible h-full w-full" />
+                <p className="mb-4 text-center text-sm text-jet-600 dark:text-platinum-500">
+                  {claims[0]}
+                </p>
               )}
-            </div>
 
-            <h3 className="mb-2 text-center text-xl font-semibold text-indigo_dye dark:text-caribbean_current">
-              {project.name}
-            </h3>
-            <p className="mb-4 text-center text-jet-600 dark:text-platinum-500">
-              {project.description}
-            </p>
-
-            <div className="mt-auto mb-4">
-              <h4 className="mb-2 text-center text-lg font-semibold text-indigo_dye dark:text-caribbean_current">
-                Skills Used:
-              </h4>
-              <ul className="flex flex-wrap justify-center gap-2 text-sm text-jet-600 dark:text-platinum-500">
+              <ul className="mt-auto mb-4 flex flex-wrap justify-center gap-2 text-sm">
                 {getSortedUniqueSkills(project.skills).map((skill, i) => (
                   <li
                     key={i}
@@ -96,50 +57,33 @@ function Projects(): JSX.Element {
                   </li>
                 ))}
               </ul>
-            </div>
 
-            <div className="flex flex-wrap justify-center gap-3">
-              <a
-                href={Array.isArray(project.links) ? project.links[0] : project.links}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={buttonClass}
-              >
-                <FiGithub className="h-4 w-4" aria-hidden="true" />
-                <span>GitHub Repo</span>
-              </a>
-              {Array.isArray(project.links) && (
+              <div className="flex flex-wrap justify-center gap-3">
                 <a
-                  href={project.links[1]}
+                  href={Array.isArray(project.links) ? project.links[0] : project.links}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={buttonClass}
                 >
-                  <FiExternalLink className="h-4 w-4" aria-hidden="true" />
-                  <span>Live Preview</span>
+                  <FiGithub className="h-4 w-4" aria-hidden="true" />
+                  <span>GitHub Repo</span>
                 </a>
-              )}
+                {Array.isArray(project.links) && (
+                  <a
+                    href={project.links[1]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={buttonClass}
+                  >
+                    <FiExternalLink className="h-4 w-4" aria-hidden="true" />
+                    <span>Live Preview</span>
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
-
-      {isPopupOpen && selectedImage && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-jet-100/60 backdrop-brightness-75 backdrop-filter"
-          onClick={closePopup}
-        >
-          <div className="relative h-4/5 w-4/5 cursor-pointer overflow-hidden" onClick={closePopup}>
-            <Image
-              src={selectedImage}
-              alt="Project Fullscreen"
-              fill
-              sizes="80vw"
-              className="bg-transparent object-contain"
-            />
-          </div>
-        </div>
-      )}
     </>
   );
 }

@@ -95,7 +95,6 @@ export interface ProvidersProps {
  * id - Unique project identifier.
  * name - Display name of the project.
  * description - Brief description of functionality.
- * image - URL or path to project image.
  * links - Single or multiple URLs (e.g. repo, live demo).
  * skills - List of skills or technologies used.
  */
@@ -103,7 +102,6 @@ export interface Project {
   id: string;
   name: string;
   description: string;
-  image: string;
   links: string | string[];
   skills: string[];
 }
@@ -142,6 +140,17 @@ export interface EmailModalProps {
   isOpen: boolean;
   message: string;
   onClose: () => void;
+}
+
+/**
+ * A named group of skills, kept together so the list reads by area rather than
+ * as one alphabetical run of everything at once.
+ * name - Heading for the group.
+ * items - The skills it holds.
+ */
+export interface SkillGroup {
+  name: string;
+  items: string[];
 }
 
 export interface Certification {
