@@ -27,6 +27,8 @@ const roboto = Roboto({
  * - `openGraph` and `twitter` improve link previews on social platforms.
  */
 export const metadata = {
+  // Resolves relative URLs such as the home page's canonical against the production host
+  metadataBase: new URL("https://www.harrisonraynes.com"),
   title: "Harrison Raynes | IT Support & Infrastructure",
   description:
     "Portfolio of Harrison Raynes — CCNA-certified IT support and infrastructure technician in Auckland, and owner of To the Point Tech, providing onsite and remote support to homes and small businesses across New Zealand.",
