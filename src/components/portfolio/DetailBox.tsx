@@ -1,15 +1,12 @@
 // src/components/portfolio/DetailBox.tsx
-/**
- * @description
- * Renders detailed information for a DataBox item, showing either a
- * single paragraph or a bulleted list, plus an optional set of action links
- * styled as buttons with GitHub & external-link icons.
- */
+// Renders detailed information for a DataBox item, showing either a single
+// paragraph or a bulleted list, plus an optional set of action links styled as
+// buttons with GitHub, external-link, and jump-to-section icons.
 
-import { DetailBoxProps } from "@/types/Types";
+import { DetailBoxProps, LinkItem } from "@/types/Types";
 import { getSortedUniqueSkills } from "@/utils/sortSkills";
 import { JSX } from "react";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { FiArrowDown, FiExternalLink, FiGithub } from "react-icons/fi";
 
 // Grows to the standard screen breakpoints rather than staying card-sized
 const container =
@@ -44,6 +41,36 @@ function isGitHubUrl(urlString: string): boolean {
 }
 
 /**
+ * Render one action link as a button.
+ *
+ * A fragment href points at a section of the page the reader is already on, so
+ * it stays in the current tab; everything else opens in a new one.
+ * @param props - Component props.
+ * @param props.link - The URL and label to render.
+ * @returns The anchor element.
+ */
+function ActionLink({ link }: { link: LinkItem }): JSX.Element {
+  const isSectionJump = link.url.startsWith("#");
+
+  return (
+    <a
+      href={link.url}
+      className={buttonClass}
+      {...(isSectionJump ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+    >
+      {isSectionJump ? (
+        <FiArrowDown className="h-4 w-4" aria-hidden="true" />
+      ) : isGitHubUrl(link.url) ? (
+        <FiGithub className="h-4 w-4" aria-hidden="true" />
+      ) : (
+        <FiExternalLink className="h-4 w-4" aria-hidden="true" />
+      )}
+      <span>{link.text}</span>
+    </a>
+  );
+}
+
+/**
  * DetailBox component.
  * @param props - Props for rendering details.
  * @param props.id - Unique identifier for list keys.
@@ -66,7 +93,7 @@ function DetailBox({
 
   return (
     <div className={container}>
-      {subtitle && <h3 className={title}>{subtitle}</h3>}
+      {subtitle && <h4 className={title}>{subtitle}</h4>}
 
       {details.length > 1 ? (
         <ul className={list}>
@@ -82,39 +109,15 @@ function DetailBox({
 
       {link && (
         <div className="mt-4 flex flex-wrap justify-center gap-3">
-          {Array.isArray(link) ? (
-            link.map((link, i) => (
-              <a
-                key={`link-${i}`}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={buttonClass}
-              >
-                {isGitHubUrl(link.url) ? (
-                  <FiGithub className="h-4 w-4" aria-hidden="true" />
-                ) : (
-                  <FiExternalLink className="h-4 w-4" aria-hidden="true" />
-                )}
-                <span>{link.text}</span>
-              </a>
-            ))
-          ) : (
-            <a href={link.url} target="_blank" rel="noopener noreferrer" className={buttonClass}>
-              {isGitHubUrl(link.url) ? (
-                <FiGithub className="h-4 w-4" aria-hidden="true" />
-              ) : (
-                <FiExternalLink className="h-4 w-4" aria-hidden="true" />
-              )}
-              <span>{link.text}</span>
-            </a>
-          )}
+          {(Array.isArray(link) ? link : [link]).map((item, i) => (
+            <ActionLink key={`link-${i}`} link={item} />
+          ))}
         </div>
       )}
 
       {skills && skills.length > 0 && (
         <>
-          <h4 className="mt-4 text-center font-semibold">Skills Gained:</h4>
+          <h5 className="mt-4 text-center font-semibold">Skills Gained:</h5>
           <ul className="flex flex-wrap justify-center gap-2 pt-2">
             {getSortedUniqueSkills(skills).map((skill, i) => (
               <li

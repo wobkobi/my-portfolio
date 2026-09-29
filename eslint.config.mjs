@@ -23,6 +23,11 @@ export default defineConfig([
   ...nextVitals,
   ...nextTs,
 
+  // eslint-plugin-react detects the React version through context.getFilename(),
+  // which ESLint 10 removed, so every react/* rule crashes on load. Stating the
+  // version skips detection. Keep it in step with the react dependency.
+  { settings: { react: { version: "19.3" } } },
+
   // Type-aware TS rules, scoped to the src tree tsconfig includes. Root
   // config files sit outside that project graph and stay on the untyped set.
   ...tseslint.configs.recommendedTypeChecked.map((c) => ({

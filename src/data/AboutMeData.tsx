@@ -1,7 +1,5 @@
 // src/data/AboutMeData.tsx
 // Long-form About page copy. Kept in sync with the CV in public/files.
-"use client";
-
 export const AboutMe = [
   "My name is Harrison, and I’m an IT support and infrastructure technician based in Auckland. I hold a Bachelor of Computer and Information Science from AUT, majoring in Networks & Cybersecurity and Software Development, along with three CCNA certifications earned across three consecutive years and self-taught Linux server administration outside of work. Since October 2025 I’ve run my own support business, To the Point Tech, helping homes and small businesses across Auckland.",
 ];

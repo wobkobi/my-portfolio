@@ -1,10 +1,5 @@
-// src/app/contact/page.tsx
-/**
- * @description
- * Renders the Contact Me page.
- */
+// src/components/sections/Contact.tsx
 
-import PageWrapper from "@/components/PageWrapper";
 import ContactForm from "@/components/contact/ContactForm";
 import { JSX } from "react";
 import { FiMail } from "react-icons/fi";
@@ -18,13 +13,13 @@ const linkClasses =
   "text-indigo_dye hover:text-caribbean_current dark:text-caribbean_current dark:hover:text-indigo_dye";
 
 /**
- * ContactPage component.
- * @returns The contact page layout.
+ * Contact section.
+ * @returns The Contact Me layout.
  */
-function ContactPage(): JSX.Element {
+function Contact(): JSX.Element {
   return (
-    <PageWrapper>
-      <h1 className={titleClasses}>Contact Me</h1>
+    <>
+      <h2 className={titleClasses}>Contact Me</h2>
       <div className={cardClasses}>
         <div className="mb-8 text-center">
           <div className={emailWrapperClasses}>
@@ -36,8 +31,8 @@ function ContactPage(): JSX.Element {
         </div>
         <ContactForm />
       </div>
-    </PageWrapper>
+    </>
   );
 }
 
-export default ContactPage;
+export default Contact;

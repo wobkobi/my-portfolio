@@ -56,7 +56,7 @@ function ExpandableBoxFunction(props: ExpandableBoxProps, ref: Ref<HTMLDivElemen
       tabIndex={0}
       aria-pressed={isExpanded}
     >
-      <h2 className={titleClasses}>{title}</h2>
+      <h4 className={titleClasses}>{title}</h4>
       {summary && <p className={summaryClasses}>{summary}</p>}
     </div>
   );

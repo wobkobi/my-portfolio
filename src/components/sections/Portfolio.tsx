@@ -1,13 +1,7 @@
-// src/app/portfolio/page.tsx
-/**
- * @description
- * Renders the Portfolio page with Education, Work Experience, Projects,
- * Certifications, Skills, and CV download.
- */
+// src/components/sections/Portfolio.tsx
 
 "use client";
 
-import PageWrapper from "@/components/PageWrapper";
 import DetailBox from "@/components/portfolio/DetailBox";
 import ExpandableBox from "@/components/portfolio/ExpandableBox";
 import { Certifications, Education, Projects, skills, WorkExperience } from "@/data/PortfolioData";
@@ -21,15 +15,20 @@ const sectionHeading =
   "text-indigo_dye dark:text-caribbean_current mb-4 text-center text-2xl font-semibold sm:text-3xl md:text-4xl";
 const sectionWrapper = "mb-8";
 const gridWrapper = "flex flex-wrap justify-center gap-4";
+const groupHeading = "mb-2 text-center text-sm font-semibold text-jet-600 dark:text-jet-800";
+const skillChip =
+  "rounded-sm bg-indigo_dye px-3 py-1 text-xs font-medium text-white md:text-sm dark:bg-caribbean_current-500";
 
 /**
- * PortfolioPage component.
- * @returns The portfolio page layout.
+ * Portfolio section.
+ *
+ * Education, Work Experience, Projects, Certifications, Skills, and CV
+ * download. Only one box is expanded at a time across every subsection.
+ * @returns The portfolio layout.
  */
-function PortfolioPage(): JSX.Element {
+function Portfolio(): JSX.Element {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const detailRef = useRef<HTMLDivElement>(null);
-  const uniqueSkills = getSortedUniqueSkills(skills);
 
   useEffect(() => {
     if (expandedId && detailRef.current) {
@@ -48,17 +47,17 @@ function PortfolioPage(): JSX.Element {
   const toggle = (id: string): void => setExpandedId((prev) => (prev === id ? null : id));
 
   /**
-   * Render a section of ExpandableBoxes.
-   * @param title - The heading for the section.
+   * Render a subsection of ExpandableBoxes.
+   * @param title - The heading for the subsection.
    * @param items - Array of DataBox items to render.
-   * @returns A JSX element containing that section.
+   * @returns A JSX element containing that subsection.
    */
   const renderSection = (title: string, items: DataBox[]): JSX.Element => (
     <section className={sectionWrapper} key={title}>
-      <h2 className={sectionHeading}>{title}</h2>
+      <h3 className={sectionHeading}>{title}</h3>
       <div className={gridWrapper}>
         {items.map((item) => (
-          <div key={item.id} className="w-full p-4 sm:max-w-sm md:w-1/2 lg:w-1/4">
+          <div key={item.id} className="w-full p-2 sm:max-w-sm md:w-1/2 lg:w-1/4">
             <ExpandableBox
               id={item.id}
               title={item.title}
@@ -93,43 +92,43 @@ function PortfolioPage(): JSX.Element {
   );
 
   return (
-    <PageWrapper>
-      <h1 className={titleClasses}>Portfolio</h1>
+    <>
+      <h2 className={titleClasses}>Portfolio</h2>
       {renderSection("Education", Education)}
       {renderSection("Work Experience", WorkExperience)}
       {renderSection("Projects", Projects)}
 
       <section className={sectionWrapper}>
-        <h2 className={sectionHeading}>Certifications</h2>
-        <div className={gridWrapper}>
+        <h3 className={sectionHeading}>Certifications</h3>
+        <ul className="mx-auto flex max-w-2xl flex-col gap-2">
           {Certifications.map((cert) => (
-            <div
+            <li
               key={cert.id}
-              className="flex w-full items-center justify-center p-4 sm:max-w-sm md:w-1/2 lg:w-1/4"
+              className="flex flex-col items-center gap-1 rounded-sm bg-platinum-800 px-4 py-2 shadow-sm sm:flex-row sm:justify-between sm:text-left dark:bg-jet-400"
             >
-              <div className="flex h-28 w-full flex-col items-center justify-center overflow-hidden rounded-sm bg-platinum-800 p-3 shadow-md transition-colors duration-200 dark:bg-jet-400">
-                <h3 className="break-word line-clamp-2 text-center text-base font-semibold text-indigo_dye dark:text-caribbean_current">
-                  {cert.title}
-                </h3>
-                <p className="mt-1 text-center text-sm text-jet-600 dark:text-jet-800">
-                  {cert.year}
-                </p>
-              </div>
-            </div>
+              <span className="font-semibold text-indigo_dye dark:text-caribbean_current">
+                {cert.title}
+              </span>
+              <span className="text-sm text-jet-600 dark:text-jet-800">{cert.year}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       <section className={sectionWrapper}>
-        <h2 className={sectionHeading}>Skills</h2>
-        <div className="mx-auto flex w-[85%] flex-wrap justify-center gap-1">
-          {uniqueSkills.map((skill) => (
-            <span
-              key={skill}
-              className="mb-2 rounded-sm bg-indigo_dye px-3 py-1 text-xs font-medium text-white md:text-sm dark:bg-caribbean_current-500"
-            >
-              {skill}
-            </span>
+        <h3 className={sectionHeading}>Skills</h3>
+        <div className="mx-auto flex max-w-4xl flex-col gap-5">
+          {skills.map((group) => (
+            <div key={group.name}>
+              <h4 className={groupHeading}>{group.name}</h4>
+              <ul className="flex flex-wrap justify-center gap-1.5">
+                {getSortedUniqueSkills(group.items).map((skill) => (
+                  <li key={skill} className={skillChip}>
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </section>
@@ -137,12 +136,12 @@ function PortfolioPage(): JSX.Element {
       <a
         href="/files/Harrison Raynes CV.pdf"
         download
-        className="inline-block rounded-md bg-indigo_dye px-4 py-2 text-sm font-medium text-white shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:bg-caribbean_current focus:ring-2 focus:ring-indigo_dye focus:outline-none md:px-6 md:py-3 md:text-lg dark:bg-caribbean_current dark:hover:bg-indigo_dye"
+        className="mt-4 inline-block rounded-md bg-indigo_dye px-4 py-2 text-sm font-medium text-white shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:bg-caribbean_current focus:ring-2 focus:ring-indigo_dye focus:outline-none md:px-6 md:py-3 md:text-lg dark:bg-caribbean_current dark:hover:bg-indigo_dye"
       >
         Download CV
       </a>
-    </PageWrapper>
+    </>
   );
 }
 
-export default PortfolioPage;
+export default Portfolio;

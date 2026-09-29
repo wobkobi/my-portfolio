@@ -69,6 +69,20 @@ export interface ExpandableBoxProps {
 }
 
 /**
+ * Props for one band of the single page.
+ * id - Anchor target for the navbar and the redirects from the retired routes.
+ * children - The section content.
+ * [tinted] - Raise the band a little off the page surface.
+ * [seam] - Draw the hairline boundary along the band's top edge.
+ */
+export interface SectionProps {
+  id: string;
+  children: ReactNode;
+  tinted?: boolean;
+  seam?: boolean;
+}
+
+/**
  * Props for top‑level Providers component wrapping the app.
  * children - React children nodes to render.
  */
@@ -81,7 +95,6 @@ export interface ProvidersProps {
  * id - Unique project identifier.
  * name - Display name of the project.
  * description - Brief description of functionality.
- * image - URL or path to project image.
  * links - Single or multiple URLs (e.g. repo, live demo).
  * skills - List of skills or technologies used.
  */
@@ -89,7 +102,6 @@ export interface Project {
   id: string;
   name: string;
   description: string;
-  image: string;
   links: string | string[];
   skills: string[];
 }
@@ -128,6 +140,17 @@ export interface EmailModalProps {
   isOpen: boolean;
   message: string;
   onClose: () => void;
+}
+
+/**
+ * A named group of skills, kept together so the list reads by area rather than
+ * as one alphabetical run of everything at once.
+ * name - Heading for the group.
+ * items - The skills it holds.
+ */
+export interface SkillGroup {
+  name: string;
+  items: string[];
 }
 
 export interface Certification {

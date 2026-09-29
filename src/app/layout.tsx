@@ -27,6 +27,8 @@ const roboto = Roboto({
  * - `openGraph` and `twitter` improve link previews on social platforms.
  */
 export const metadata = {
+  // Resolves relative URLs such as the home page's canonical against the production host
+  metadataBase: new URL("https://www.harrisonraynes.com"),
   title: "Harrison Raynes | IT Support & Infrastructure",
   description:
     "Portfolio of Harrison Raynes — CCNA-certified IT support and infrastructure technician in Auckland, and owner of To the Point Tech, providing onsite and remote support to homes and small businesses across New Zealand.",
@@ -93,9 +95,10 @@ function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
         // padding-top keeps content clear of the fixed navbar
         className="flex min-h-screen flex-col bg-platinum-900 pt-20 sm:pt-28 dark:bg-jet-200"
       >
+        <div className="site-backdrop" aria-hidden="true" />
         <Providers>
           <NavBar />
-          <main className="flex grow items-center justify-center">{children}</main>
+          <main className="relative z-10 flex grow flex-col">{children}</main>
           <Footer />
         </Providers>
         <Analytics />

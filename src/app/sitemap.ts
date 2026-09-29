@@ -1,9 +1,4 @@
 // src/app/sitemap.ts
-/**
- * @description
- * Generates the XML sitemap for the site, listing all public routes with
- * their last-modified dates and change frequencies.
- */
 
 import type { MetadataRoute } from "next";
 
@@ -11,7 +6,10 @@ const BASE_URL = "https://www.harrisonraynes.com";
 
 /**
  * Sitemap generator for Next.js.
- * @returns Array of sitemap entries for all public routes.
+ *
+ * The site is a single page, so section anchors are deliberately left out -
+ * they are not separately indexable URLs.
+ * @returns The sole sitemap entry.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -20,30 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
-    },
-    {
-      url: `${BASE_URL}/portfolio`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/projects`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/about`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.6,
     },
   ];
 }
